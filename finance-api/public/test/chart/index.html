@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+  <head>  
+    <script type="text/javascript" src="d3.v2.js" charset="utf-8" ></script>
+    <script type="text/javascript" src="columnChart.js"></script>
+<style>
+
+.chart rect {
+  stroke: white;
+  fill-opacity: .6;
+  fill: steelblue;
+
+}
+.bar.positive {
+  fill: steelblue;
+}
+
+.bar.negative {
+  fill: brown;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+
+</style>
+  
+  </head>
+  <body>
+  <div id="totalmoney"></div>
+
+  
+<script>
+
+ var totalMoney = {
+  "2016-01": {
+    "have": "1500.00",
+    "owe": "0.00",
+    "total": "1500.00"
+  },
+  "2016-02": {
+    "have": "2800.00",
+    "owe": "0.00",
+    "total": "2800.00"
+  },
+  "2016-03": {
+    "have": "4000.00",
+    "owe": "-500.00",
+    "total": "3950.00"
+  },
+  "2016-04": {
+    "have": "2700.00",
+    "owe": "-140.00",
+    "total": "2560.00"
+  },
+  "2016-05": {
+    "have": "4200.00",
+    "owe": "-653.30",
+    "total": "3546.70"
+  },
+  "2016-06": {
+    "have": "5400.00",
+    "owe": "-756.34",
+    "total": "4643.66"
+  },
+  "2016-07": {
+    "have": "3400.00",
+    "owe": "-235.45",
+    "total": "3164.55"
+  },
+  "2016-08": {
+    "have": "2561.14",
+    "owe": "-440.35",
+    "total": "2120.79"
+  },
+  "2016-09": {
+    "have": "3206.39",
+    "owe": "-340.20",
+    "total": "2866.19"
+  }
+ };
+
+// Convert JSON data into an array of points
+var data = [];
+for (var month in totalMoney) {
+    // Have
+    var haveItem = [];
+    haveItem.push(month);
+    haveItem.push(totalMoney[month].have);
+    data.push(haveItem);
+
+    // Owe
+    var oweItem = [];
+    oweItem.push(month);
+    oweItem.push(totalMoney[month].owe);
+    data.push(oweItem);
+
+}
+
+//var data = [["A",0.012], ["B",-0.025], ["C",0.008], ["D",0.023], ["E",-0.009], ["F", 0.005]];
+
+d3.select("#totalmoney")
+  .datum(data)
+    .call(columnChart()
+      .width(500) //960
+      .height(300) //500
+      .x(function(d, i) { return d[0]; })
+      .y(function(d, i) { return d[1]; }));
+</script>
+
+  </body>
+</html>

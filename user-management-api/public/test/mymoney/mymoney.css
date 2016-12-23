@@ -1,0 +1,47 @@
+body{
+	font-family: sans-serif;
+}
+.positive{
+		fill: lightsteelblue;
+		fill-opacity: 0.9;
+	}
+.negative{
+		fill: darkred;
+		fill-opacity: 0.9;
+	}
+.axis path,
+.axis line {
+			fill: none;
+			stroke: black;
+			shape-rendering: crispEdges;
+	}
+.axis text {
+			font-family: sans-serif;
+			font-size: 10px;	
+	}
+div.tooltip {   
+	  position: absolute;     
+	  text-align: center;
+	  vertical-align: middle;   
+	  width: 150px;                  
+	  height: 50px;                 
+	  padding: 5px; 
+	  color: #000000;          
+	  font-size: 12px;     
+	  background: #FFF;
+	  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+	  border: 2px;  
+	  border-radius: 8px;  
+	  pointer-events: none;                  
+	} 
+li{
+	overflow:hidden;
+	display: inline-block;
+}
+ul{
+	padding-left: 0;
+	padding-right: 0;
+}
+#chart-container{
+	float:left;
+}

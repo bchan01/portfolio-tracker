@@ -1,0 +1,28 @@
+.swagger-section #header {
+	background:linear-gradient(to bottom,#fbfbfb 0,#f5f5f5 61%,#e3e3e3 90%,#f1e3ea 93%,#f6c7e0 97%,#fea0d3 100%);
+	padding:0px;
+}
+
+.swagger-section #header form#api_selector {
+	padding-top: 15px;
+}
+
+.input a#setToken {
+	background-color:#ff7900;
+	border-color:#a5a5a5;
+	display:inline-block;
+	margin-bottom:0;
+	font-weight:400;
+	text-align:center;
+	cursor:pointer;
+	background-image:none;
+	border:1px solid #a5a5a5;
+	padding:4px 4px;
+	font-size:16px;
+	border-radius:0;
+}
+
+.input a#setToken:hover{
+	background-color:#fbfbfb;
+	color:#ff7900
+}

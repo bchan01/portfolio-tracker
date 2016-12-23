@@ -1,7 +1,7 @@
 // Server configuration data
 
 module.exports = {
-    'baseUri' : '/pt/api/finance',
+    'baseUri' : '/finance/api',
     'financeAPI' : {
         'requestTimeout' : 10000,
         'quoteUrl' : 'http://finance.yahoo.com/d/quotes.csv',

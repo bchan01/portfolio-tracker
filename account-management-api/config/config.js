@@ -2,7 +2,7 @@
 
 module.exports = {
 
-    'baseUri' : '/pt/api/account-management',
+    'baseUri' : '/account-management/api',
     'database': 'localhost:27017/pt-account',
     // Security
     'jwt' : {

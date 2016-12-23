@@ -10,7 +10,7 @@
 		{
 			"name": "Token - GET",
 			"request": {
-				"url": "http://localhost:3001/pt/api/user-management/tokens?username=admin&userPassword=admin",
+				"url": "http://localhost:3001/user-management/api/tokens?username=admin&userPassword=admin",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -21,7 +21,7 @@
 		{
 			"name": "Token -  POST",
 			"request": {
-				"url": "http://localhost:3001/pt/api/user-management/tokens",
+				"url": "http://localhost:3001/user-management/api/tokens",
 				"method": "POST",
 				"header": [
 					{
@@ -41,7 +41,7 @@
 		{
 			"name": "User - get user",
 			"request": {
-				"url": "http://localhost:3001/pt/api/user-management/users/admin",
+				"url": "http://localhost:3001/user-management/api/users/admin",
 				"method": "GET",
 				"header": [
 					{
@@ -58,7 +58,7 @@
 		{
 			"name": "Stock - Quotes",
 			"request": {
-				"url": "http://localhost:3003/pt/api/finance/stocks/quotes?symbols=FB,AAPL,NFLX,GOOG",
+				"url": "http://localhost:3003/finance/api/stocks/quotes?symbols=FB,AAPL,NFLX,GOOG",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -69,7 +69,7 @@
 		{
 			"name": "Stock - Historical Quotes",
 			"request": {
-				"url": "http://localhost:3003/pt/api/finance/stocks/historicalQuotes?symbol=AAPL&frequency=daily&startDate=12-14-1980&endDate=12-14-2016",
+				"url": "http://localhost:3003/finance/api/stocks/historicalQuotes?symbol=AAPL&frequency=daily&startDate=12-14-1980&endDate=12-14-2016",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -102,12 +102,12 @@
 		{
 			"name": "Portfolios - list",
 			"request": {
-				"url": "http://localhost:3002/pt/api/account-management/portfolios",
+				"url": "http://localhost:3002/account-management/api/portfolios",
 				"method": "GET",
 				"header": [
 					{
 						"key": "x-access-token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg1Y2FkMGI1MmYzM2M4MDliOTk0Nzg2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MjQ2ODY4MSwiZXhwIjoxNDgyNDY5MjgxLCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.N-kQL3AOrkWPjjVdq3TniH3_nQX5iMLhbgy-86JMkvk",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg1Y2FkMGI1MmYzM2M4MDliOTk0Nzg2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MjUxMjE1MCwiZXhwIjoxNDgyNTEyNzUwLCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.F7xrmXWGOrl6lcgno51m-yOW03JtcZcv2EoFyE6eX5U",
 						"description": ""
 					}
 				],

@@ -1,7 +1,7 @@
 // Server configuration data
 
 module.exports = {
-    'baseUri' : '/pt/api/user-management',
+    'baseUri' : '/user-management/api',
     'database': 'localhost:27017/pt-user',
     // Security
     'jwt' : {

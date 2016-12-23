@@ -15,10 +15,10 @@ This project is a work in progress.  My goal is to implement all of the followin
 
 Projects:
 
-* user-management-api - http://localhost:3001/pt/api/user-management
-* account-management-api - http://localhost:3002/pt/api/account-management
-* finance-api - http://localhost:3003/pt/api/finance
-* portfolio-tracker-webapp - http://localhost:3000/pt
+* user-management-api - http://localhost:3001/user-management/api
+* account-management-api - http://localhost:3002/account-management/api
+* finance-api - http://localhost:3003/finance/api
+* portfolio-tracker-web - http://localhost:3000/pt
 
 ---------------------------------------
 
@@ -31,8 +31,8 @@ This will generate /public/swagger/swagger.json
 * Edit "config/config.js" to point to the desired Database
 * Create Mongo Database with name="PortfolioTracker" and insert one user with script located in /scripts/init.js
 * Run: node server
-* API Base URL: http://localhost:<port>/pt/api/xx
-* Swagger: http://localhost:<port>/pt/api/xx/docs, 
+* API Base URL: http://localhost:<port>/<api-name>/api
+* Swagger: http://localhost:<port>/<api-name>/api/docs 
 # For at the top enter admin/admin, click "Set Token" before testing API
 
 ---------------------------------------

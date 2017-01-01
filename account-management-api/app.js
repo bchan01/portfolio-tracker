@@ -9,36 +9,30 @@ var mongoose = require('mongoose');
 var config = require('./config/config');
 var commonUtils = require('common-api-utils');
 
+// Routes
+var routes = require('./routes');
+
 var initialize = commonUtils.initialize;
-var authCheck = commonUtils.tokenValidator.validate(config['jwt']);
 
 var app = express();
 
 var db = mongoose.connect(config.database);
 
-/**
- * @SwaggerHeader
- * info:
- *   title: Portfolio Tracker API
- *   version: 1.0.0
- *   description: Manage and Track Financial Portfolio
- * basePath: /pt/api
- */
-
 app.use(initialize.handle); // initialize res.locals object
 
 app.use(logger('dev'));
+
+// Enable parsing of posted forms
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+// Set static directory before defining routes
+//app.use(express.static(path.join(__dirname, 'public')));
+app.use(config.baseUri + '/docs', express.static('./public/swagger'));
 
 // ------------- add routes here
-var portfolios = require('./routes/portfolios');
-app.use(config.baseUri + '/portfolios', authCheck, portfolios);
+app.use(config.baseUri, routes);
 
-
-// Swagger
-app.use(config.baseUri + '/docs', express.static('./public/swagger'));
 
 module.exports = app;

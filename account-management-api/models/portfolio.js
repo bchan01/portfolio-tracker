@@ -23,7 +23,7 @@ var mongoose = require('mongoose'),
   *         type: number
   *         format: double
   */
-  var Holding = new Schema({
+  var HoldingSchama = new Schema({
     symbol : { type: String, required: true },
     description : { type: String, required: true },
     shares : { type: Number, required: true },
@@ -49,7 +49,7 @@ var mongoose = require('mongoose'),
 var PortfolioSchema = new Schema({
     userId: { type: String, required: true },
     name: { type: String, required: true },
-    holdings : [Holding]
+    holdings : [HoldingSchama]
 }, { collection: 'Portfolio' });
 
 // Unique index

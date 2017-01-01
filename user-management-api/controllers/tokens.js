@@ -1,8 +1,6 @@
 'use strict';
 
-var  express = require('express'),
-    router 			= express.Router(),
-     commonUtils = require('common-api-utils'),
+var  commonUtils = require('common-api-utils'),
      responseHandler = commonUtils.auditableResponseHandler,
      config       = require('../config/config'),
      Q = require('q'),
@@ -12,7 +10,7 @@ var service = new  commonUtils.DataService(path.join(__dirname, '../models'),'us
 var tokenService = new  commonUtils.JWTTokenService(config['jwt']);
 var domainName = 'Token';
 
-router.get('/', function(req, res, next) {
+module.exports.tokenGet = function(req, res, next) {
   var passwd = req.query.userPassword;
   service.get({'username' : req.query.username})
     .then( function(data) {
@@ -25,9 +23,9 @@ router.get('/', function(req, res, next) {
       responseHandler.handleError(req, res, next, error, domainName);
     })
     .done();
-});
+};
 
-router.post('/', function(req, res, next) {
+module.exports.tokenPost = function(req, res, next) {
   var passwd = req.body.userPassword;
   service.get({'username' : req.body.username})
     .then( function(data) {
@@ -40,7 +38,4 @@ router.post('/', function(req, res, next) {
       responseHandler.handleError(req, res, next, error, domainName);
     })
     .done();
-});
-
-
-module.exports = router;
+};

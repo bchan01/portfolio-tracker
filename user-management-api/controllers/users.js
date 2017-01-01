@@ -8,7 +8,6 @@ var Q 		= require('q'),
     responseHandler = commonUtils.auditableResponseHandler,
     queryBuilder  = commonUtils.queryBuilder,
     config       = require('../config/config'),
-    router  = require('express').Router(),
     path = require('path');
 
 var service = new  commonUtils.DataService(path.join(__dirname, '../models'),'user', 'User');
@@ -56,7 +55,7 @@ var domainName = 'User';
  *           schema:
  *             $ref: "#/definitions/Response"
  */
-router.get('/:username', function(req, res, next) {
+module.exports.getByUsername = function(req, res, next) {
 	service.get({'username' : req.params.username}, {'userPassword' : 0})
 	.then( function(data) {
       responseHandler.handleSuccess(req, res, next, data, domainName);
@@ -65,7 +64,7 @@ router.get('/:username', function(req, res, next) {
       responseHandler.handleError(req, res, next, error, domainName);
 	})
 	.done();
-});
+};
 
 /**
  * @SwaggerPath
@@ -123,7 +122,7 @@ router.get('/:username', function(req, res, next) {
  *           schema:
  *             $ref: "#/definitions/Response"
  */
-router.get('/', function(req, res, next) {
+module.exports.getAll = function(req, res, next) {
     var query = { };
     if (req.query.email) {
         query["email"] = queryBuilder.startWithRegExp(req.query.email);
@@ -154,7 +153,7 @@ router.get('/', function(req, res, next) {
       responseHandler.handleError(req, res, next, error, domainName);
     })
     .done();
-});
+};
 
 /**
  * @SwaggerPath
@@ -182,7 +181,7 @@ router.get('/', function(req, res, next) {
  *           schema:
  *             $ref: "#/definitions/Response"
  */
-router.delete('/:username',  function(req, res, next) {  
+module.exports.deleteByUsername = function(req, res, next) {  
     service.delete({'username' : req.params.username})
     .then(function() {
         responseHandler.handleDeleteSuccess(req, res, next, domainName);
@@ -191,7 +190,7 @@ router.delete('/:username',  function(req, res, next) {
         responseHandler.handleError(req, res, next, error, domainName);
     })
     .done();
-});
+};
 
 /**
  * @SwaggerPath
@@ -226,7 +225,7 @@ router.delete('/:username',  function(req, res, next) {
  *           schema:
  *             $ref: "#/definitions/Response"
  */
-router.post('/', function(req, res, next) {
+module.exports.addOne  = function(req, res, next) {
     var input = req.body;
     var username = req.body.username; 
     Q.invoke(tokenService, 'encryptPassword', req.body.userPassword)  
@@ -243,7 +242,7 @@ router.post('/', function(req, res, next) {
         responseHandler.handleCreateError(req, res, next, error, domainName);
     })
     .done();
-});
+};
 
 
 /**
@@ -284,7 +283,7 @@ router.post('/', function(req, res, next) {
  *           schema:
  *             $ref: "#/definitions/Response"
  */
-router.put('/:username', function(req, res, next) {
+module.exports.updateByUsername = function(req, res, next) {
     var data = req.body;
     // Sanize - remove fields not updatable
     if (data.userPassword) {
@@ -303,7 +302,4 @@ router.put('/:username', function(req, res, next) {
             responseHandler.handleError(req, res, next, error, domainName);
         })
         .done();
-});
-
-
-module.exports = router;
+};

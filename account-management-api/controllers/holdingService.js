@@ -1,6 +1,7 @@
 var Q               = require('q'),
     mongoose = require('mongoose'),
-     _ = require('lodash')
+     _ = require('lodash'),
+     moment = require('moment'),
     portfolio = require('../models/portfolio');
 
 module.exports.getAll = function(portfolioId) {
@@ -42,6 +43,7 @@ module.exports.getById = function(portfolioId, holdingId) {
 };
 
 var parseHoldingInput = function(data) {
+    var result = { };
     var holding = { };
     if (data.symbol) {
         holding['symbol'] = data.symbol;
@@ -59,14 +61,26 @@ var parseHoldingInput = function(data) {
         holding['commission'] = data.commission;
     }
     if (data.tradeDate) {
-        holding['tradeDate'] = data.tradeDate;
+        var tradeDate =  moment(data.tradeDate, 'YYYY-MM-DD');
+        if (!tradeDate.isValid()) {
+            throw ({message: 'invalid format for trade date (YYYY-MM-DD)'});
+        }
+        holding['tradeDate'] = tradeDate.format('YYYY-MM-DD');
     }
-    return holding;
+    result['data'] = holding;
+    return result;
 };
 
 module.exports.add = function(portfolioId, data) {
     var defer = Q.defer();
-    var holding = parseHoldingInput(data);
+    var holding = {};
+    try {
+        var validationResult = parseHoldingInput(data);
+        holding = validationResult['data'];
+    } catch (exception) {
+         defer.reject({status: 400, message: exception.message});
+         return defer.promise;
+    }
     Q.ninvoke(portfolio, 'findById', portfolioId)
         .then(function(dbObj) {
             if (!dbObj) {
@@ -90,7 +104,14 @@ module.exports.add = function(portfolioId, data) {
 };
 module.exports.update = function(portfolioId, holdingId, data) {
     var defer = Q.defer();
-    var holding = parseHoldingInput(data);
+   var holding = {};
+    try {
+        var validationResult = parseHoldingInput(data);
+        holding = validationResult['data'];
+    } catch (exception) {
+         defer.reject({status: 400, message: exception.message});
+         return defer.promise;
+    }
     Q.ninvoke(portfolio, 'findById', portfolioId)
         .then(function(dbObj) {
             if (!dbObj) {

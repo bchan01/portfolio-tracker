@@ -28,8 +28,8 @@ var mongoose = require('mongoose'),
     description : { type: String, required: true },
     shares : { type: Number, required: true, min : 0 },
     purchasePrice :  { type: Number, required: true , min : 0},
-    tradeDate :  { type: Date, required: true,  "default" : Date.now },
-    commission : { type: Number, required: true, min : 0 }
+    tradeDate :  { type: Date, required: true},
+    commission : { type: Number, required: true, min : 0, default : 0.0 }
 });
 
 /**

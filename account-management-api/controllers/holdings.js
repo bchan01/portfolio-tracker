@@ -37,7 +37,7 @@ module.exports.add = function(req, res, next) {
         responseHandler.handleCreateSuccess(req, res, next, data, domainName);
     })
     .fail(function (error) {
-        responseHandler.handleCreateError(req, res, next, error, domainName);
+        responseHandler.handleError(req, res, next, error, domainName);
     })
     .done();
 };

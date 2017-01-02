@@ -5,13 +5,12 @@
 var Q 		= require('q'),
     commonUtils = require('common-api-utils'),
     responseHandler = commonUtils.auditableResponseHandler,
-    model = require('../models/portfolio'),
-    path = require('path');
-var service = new  commonUtils.DataService(path.join(__dirname, '../models'),'portfolio', 'portfolio');
-var domainName = 'Portfolio';
+    service = require('./holdingService');
+
+var domainName = 'Portfolio Holdings';
 
 module.exports.getAll = function(req, res, next) {
-  	service.getAll({'userId' : res.locals.username})
+  	service.getAll(req.params.portfolioId)
 		.then( function(data) {
       responseHandler.handleSuccess(req, res, next, data, domainName);
 		})
@@ -21,8 +20,8 @@ module.exports.getAll = function(req, res, next) {
 		.done();
 };
 
-module.exports.getOne = function(req, res, next) {
-    service.get({'_id' : req.params.portfolioId})
+module.exports.getById = function(req, res, next) {
+    service.getById(req.params.portfolioId, req.params.holdingId)
         .then( function(data) {
       responseHandler.handleSuccess(req, res, next, data, domainName);
         })
@@ -32,9 +31,8 @@ module.exports.getOne = function(req, res, next) {
         .done();
 };
 
-module.exports.addOne = function(req, res, next) {
-    var data = {'userId' : res.locals.username,  'name' : req.body.name};
-    service.create(data, {'userId' : res.locals.username, 'name' : req.body.name})
+module.exports.add = function(req, res, next) {
+    service.add(req.params.portfolioId, req.body)
     .then(function(data) {
         responseHandler.handleCreateSuccess(req, res, next, data, domainName);
     })
@@ -44,12 +42,9 @@ module.exports.addOne = function(req, res, next) {
     .done();
 };
 
-module.exports.updateOne = function(req, res, next) {
-    var data = {'userId' : res.locals.username};
-    if (req.body.name) {
-      data['name'] = req.body.name;
-    }
-    service.update(data, {'_id' : req.params.portfolioId})
+
+module.exports.update = function(req, res, next) {
+    service.update(req.params.portfolioId, req.params.holdingId, req.body)
     .then(function(data) {
         responseHandler.handleUpdateSuccess(req, res, next, data, domainName);
     })
@@ -59,8 +54,8 @@ module.exports.updateOne = function(req, res, next) {
     .done();
 };
 
-module.exports.deleteOne = function(req, res, next) {
-    service.delete({'_id' : req.params.portfolioId})
+module.exports.delete = function(req, res, next) {
+    service.deleteOne(req.params.portfolioId, req.params.holdingId)
     .then(function() {
         responseHandler.handleDeleteSuccess(req, res, next, domainName);
     })

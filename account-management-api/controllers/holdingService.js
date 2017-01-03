@@ -23,7 +23,11 @@ module.exports.getAll = function(portfolioId) {
             return calculateHoldingGains(holdings);
         })
         .then(function(holdings) {
-            defer.resolve(holdings);
+            if (!holdings  || holdings.length < 1) {
+                defer.reject({status: 404, message: 'Holdings not found.'});
+            } else {
+                defer.resolve(holdings);
+            }
         })
         .fail(function(err) {
             defer.reject(err);
@@ -45,10 +49,18 @@ module.exports.getById = function(portfolioId, holdingId) {
                 defer.reject({status: 404, message: 'Holding not found.'});
             }
             var holding = dbObj.holdings.id(holdingId);
-            if (!holding) {
-                defer.reject({status: 404, message: 'Holding not found.'});
+            if (holding) {
+                return calculateHoldingGains([holding]);
+            } else {
+                return calculateHoldingGains([]);
             }
-            defer.resolve(holding);
+        })
+        .then(function(holdings) {
+           if (!holdings  || holdings.length < 1) {
+                defer.reject({status: 404, message: 'Holdings not found.'});
+            } else {
+                defer.resolve(holdings[0]);
+            }
         })
         .fail(function(err) {
             defer.reject(err);
@@ -158,29 +170,34 @@ module.exports.delete = function(portfolioId, holdingId) {
  */
 var calculateHoldingGains = function(holdings) {
     var defer = Q.defer();
-    var symbols = _.map(holdings, 'symbol').join(',');
-    request(quoteProcessor.processRequest(symbols), function(error, response, body) {
-        if (!error && response.statusCode == 200) {
-            var stockQuotes = quoteProcessor.processResponse(body);
-            // Build map of stock price keyed by symbol
-            var stockQuotesBySymbol = _.zipObject(_.pluck(stockQuotes, 'symbol'), _.pluck(stockQuotes, 'price'));
-            // Populate holdings ....
-            var holdingValues  = [];
-            holdings.forEach( function (holding) {
-                var price = stockQuotesBySymbol[holding.symbol];
-                holding['price'] = parseFloat(price).toFixed(2);
-                holding['marketValue'] = (holding.shares * holding.price).toFixed(2);
-                holding['cost'] = (holding.shares * holding.purchasePrice + holding.commission).toFixed(2);
-                holding['gain'] = (holding.marketValue - holding.cost).toFixed(2);
-                holdingValues.push(holding);
-            });
-            console.log('calculateHoldingGains - in: ' + holdings.length + ',out:' + holdingValues.length);
-            defer.resolve(holdingValues);
-        } else {
-            console.log('calculateHoldingGains - Error retrieving quotes: ' + JSON.stringify(error));
-            defer.reject({status: 500, message: 'error retrieving stock quotes'});
-        }
-    });
+    if (!holdings || holdings.length < 1) {
+         defer.resolve([]);
+    } else {
+        var symbols = _.map(holdings, 'symbol').join(',');
+        
+        request(quoteProcessor.processRequest(symbols), function(error, response, body) {
+            if (!error && response.statusCode == 200) {
+                var stockQuotes = quoteProcessor.processResponse(body);
+                // Build map of stock price keyed by symbol
+                var stockQuotesBySymbol = _.zipObject(_.pluck(stockQuotes, 'symbol'), _.pluck(stockQuotes, 'price'));
+                // Populate holdings ....
+                var holdingValues  = [];
+                holdings.forEach( function (holding) {
+                    var price = stockQuotesBySymbol[holding.symbol];
+                    holding['price'] = parseFloat(price).toFixed(2);
+                    holding['marketValue'] = (holding.shares * holding.price).toFixed(2);
+                    holding['cost'] = (holding.shares * holding.purchasePrice + holding.commission).toFixed(2);
+                    holding['gain'] = (holding.marketValue - holding.cost).toFixed(2);
+                    holdingValues.push(holding);
+                });
+                console.log('calculateHoldingGains - in: ' + holdings.length + ',out:' + holdingValues.length);
+                defer.resolve(holdingValues);
+            } else {
+                console.log('calculateHoldingGains - Error retrieving quotes: ' + JSON.stringify(error));
+                defer.reject({status: 500, message: 'error retrieving stock quotes'});
+            }
+        });
+    }
     return defer.promise;
 };
 

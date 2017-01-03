@@ -1,3 +1,6 @@
+/**
+ * Created by bchan on 1/2/2017.
+ */
 'use strict';
  
  var parse = require('papaparse'),
@@ -13,9 +16,10 @@ const baseUrl = config.financeAPI.quoteUrl;
 const fieldKeys = config.financeAPI.quoteFields.keys;
 const fieleNames = config.financeAPI.quoteFields.names;
 
-function processRequest(req) {
+
+function processRequest(symbols) {
 	var options = {
-        uri: baseUrl + '?s=' + req.query.symbols + '&f=' + fieldKeys,
+        uri: baseUrl + '?s=' + symbols + '&f=' + fieldKeys,
         method : 'GET',
         timeout: timeout
     };

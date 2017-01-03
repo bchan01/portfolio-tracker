@@ -1,9 +1,17 @@
+/**
+ * Created by bchan on 12/31/2016.
+ */
 var Q               = require('q'),
     mongoose = require('mongoose'),
      _ = require('lodash'),
      moment = require('moment'),
-    portfolio = require('../models/portfolio');
+    portfolio = require('../models/portfolio'),
+    request = require("request"),
+    quoteProcessor = require('./stockQuoteProcessor');
 
+/**
+ *  Get all holdings belonging to a Portfolio
+ */
 module.exports.getAll = function(portfolioId) {
     var defer = Q.defer();
     Q.ninvoke(portfolio, 'findById', portfolioId)
@@ -11,7 +19,10 @@ module.exports.getAll = function(portfolioId) {
             if (!dbObj) {
                 defer.reject({status: 404, message: 'Porfolio not found.'});
             }
-            var holdings = dbObj.holdings ? dbObj.holdings : []
+            var holdings = dbObj.holdings ? dbObj.holdings : [];
+            return calculateHoldingGains(holdings);
+        })
+        .then(function(holdings) {
             defer.resolve(holdings);
         })
         .fail(function(err) {
@@ -20,6 +31,9 @@ module.exports.getAll = function(portfolioId) {
     return defer.promise;
 };
 
+/**
+ * Get a Holding by Id
+ */
 module.exports.getById = function(portfolioId, holdingId) {
     var defer = Q.defer();
     Q.ninvoke(portfolio, 'findById', portfolioId)
@@ -42,6 +56,9 @@ module.exports.getById = function(portfolioId, holdingId) {
     return defer.promise;
 };
 
+/**
+ * Helper function to parse holding creation and update input
+ */
 var parseHoldingInput = function(data) {
     var result = { };
     var holding = { };
@@ -71,6 +88,9 @@ var parseHoldingInput = function(data) {
     return result;
 };
 
+/**
+ * Add a new Holding to a given Portfolio
+ */
 module.exports.add = function(portfolioId, data) {
     var defer = Q.defer();
     var holding = {};
@@ -102,6 +122,10 @@ module.exports.add = function(portfolioId, data) {
         });
     return defer.promise;
 };
+
+/**
+ * Update an existing Holding within a Portfolio
+ */
 module.exports.update = function(portfolioId, holdingId, data) {
     var defer = Q.defer();
    var holding = {};
@@ -142,6 +166,9 @@ module.exports.update = function(portfolioId, holdingId, data) {
     return defer.promise;
 };
 
+/**
+ * Delete an existing Holding within a Portfolio
+ */
 module.exports.deleteOne = function(portfolioId, holdingId) {
     var defer = Q.defer();
     Q.ninvoke(portfolio, 'findById', portfolioId)
@@ -174,3 +201,33 @@ module.exports.deleteOne = function(portfolioId, holdingId) {
     return defer.promise;
 };
 
+/**
+ * Calculates Gain/Loss (based on current trade price) for each holding within a portfolio.
+ */
+var calculateHoldingGains = function(holdings) {
+    var defer = Q.defer();
+    var symbols = _.map(holdings, 'symbol').join(',');
+    request(quoteProcessor.processRequest(symbols), function(error, response, body) {
+        if (!error && response.statusCode == 200) {
+            var stockQuotes = quoteProcessor.processResponse(body);
+            // Build map of stock price keyed by symbol
+            var stockQuotesBySymbol = _.zipObject(_.pluck(stockQuotes, 'symbol'), _.pluck(stockQuotes, 'price'));
+            // Populate holdings ....
+            var holdingValues  = [];
+            holdings.forEach( function (holding) {
+                var price = stockQuotesBySymbol[holding.symbol];
+                holding['price'] = parseFloat(price).toFixed(2);
+                holding['marketValue'] = (holding.shares * holding.price).toFixed(2);
+                holding['cost'] = (holding.shares * holding.purchasePrice + holding.commission).toFixed(2);
+                holding['gain'] = (holding.marketValue - holding.cost).toFixed(2);
+                holdingValues.push(holding);
+            });
+            console.log('calculateHoldingGains - in: ' + holdings.length + ',out:' + holdingValues.length);
+            defer.resolve(holdingValues);
+        } else {
+            console.log('calculateHoldingGains - Error retrieving quotes: ' + JSON.stringify(error));
+            defer.reject({status: 500, message: 'error retrieving stock quotes'});
+        }
+    });
+    return defer.promise;
+};

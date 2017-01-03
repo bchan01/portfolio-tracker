@@ -13,5 +13,13 @@ module.exports = {
         'audience': 'PortfolioTracker',
         'subject' : 'noreply@b2mcomputing.com',
         'saltRounds' : 10,
+    },
+    'financeAPI' : {
+        'requestTimeout' : 10000,
+        'quoteUrl' : 'http://finance.yahoo.com/d/quotes.csv',
+        'quoteFields' : {
+            'keys' : 'sl1',
+            'names' : 'symbol,price'
+        }
     }
 };

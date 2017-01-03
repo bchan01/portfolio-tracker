@@ -29,8 +29,12 @@ var mongoose = require('mongoose'),
     shares : { type: Number, required: true, min : 0 },
     purchasePrice :  { type: Number, required: true , min : 0},
     tradeDate :  { type: Date, required: true},
-    commission : { type: Number, required: true, min : 0, default : 0.0 }
-});
+    commission : { type: Number, required: true, min : 0, default : 0.0 },
+    price : {type : Number},
+    cost : { type: Number},
+    marketValue : { type: Number},
+    gain : {type : Number}
+  });
 
 /**
   * @SwaggerDefinitions

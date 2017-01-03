@@ -191,12 +191,12 @@
 		{
 			"name": "Portfolios - GetOne",
 			"request": {
-				"url": "http://localhost:3002/account-management/api/portfolios/5868706f85deb036782902cc",
+				"url": "http://localhost:3002/account-management/api/portfolios/586872bb6aa63a3c296305d7",
 				"method": "GET",
 				"header": [
 					{
 						"key": "x-access-token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg1Y2FkMGI1MmYzM2M4MDliOTk0Nzg2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzI0MDAzMCwiZXhwIjoxNDgzMjQwNjMwLCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.3dWAhQIZd5lAWePwiMZOIdMJsn2rhCipr5vl2yn2DMc",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg1Y2FkMGI1MmYzM2M4MDliOTk0Nzg2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzM2OTA2OSwiZXhwIjoxNDgzMzY5NjY5LCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.pPWmP_VY9yw_wnSfsHBx51yijMvZ7xP8n11vu2vqwWw",
 						"description": ""
 					}
 				],
@@ -268,6 +268,113 @@
 					}
 				],
 				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Holdings - Get All",
+			"request": {
+				"url": "http://localhost:3002/account-management/api/portfolios/586872bb6aa63a3c296305d7/holdings",
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg1Y2FkMGI1MmYzM2M4MDliOTk0Nzg2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzQwNzUzOCwiZXhwIjoxNDgzNDA5MzM4LCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.MDoC_72SNJg71m6-Xu-b-MuvoFM36vXIXOdQUgqQPKQ",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Holdings - Add One",
+			"request": {
+				"url": "http://localhost:3002/account-management/api/portfolios/586872bb6aa63a3c296305d7/holdings",
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg1Y2FkMGI1MmYzM2M4MDliOTk0Nzg2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzM3NTA4NCwiZXhwIjoxNDgzMzc2ODg0LCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.67UA_GwHVmQ8hTG6d8xHAxvaSw8uNm8GTSPRc5Mwjsc",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"symbol\" : \"BABA\",\n    \"description\" : \"Ali Baba\",\n    \"shares\" : 500,\n    \"purchasePrice\" : 90.78,\n    \"commission\" : 9.99,\n    \"tradeDate\" : \"2013-02-02\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Holdings - Get One",
+			"request": {
+				"url": "http://localhost:3002/account-management/api/portfolios/586872bb6aa63a3c296305d7/holdings/586a77ddb6bc751549bbe442",
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg1Y2FkMGI1MmYzM2M4MDliOTk0Nzg2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzM3MTM0MCwiZXhwIjoxNDgzMzczMTQwLCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.7srkXAF_LfbSwo4ku88Nzo-g2_CZnu_x8KpsbOsAjE0",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Holdings - Update One",
+			"request": {
+				"url": "http://localhost:3002/account-management/api/portfolios/586872bb6aa63a3c296305d7/holdings/586a810481406d1eeccdac95",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg1Y2FkMGI1MmYzM2M4MDliOTk0Nzg2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzM3NTA4NCwiZXhwIjoxNDgzMzc2ODg0LCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.67UA_GwHVmQ8hTG6d8xHAxvaSw8uNm8GTSPRc5Mwjsc",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"symbol\" : \"BABA\",\n    \"description\" : \"Ali Baba\",\n    \"shares\" : 150,\n    \"purchasePrice\" : 99.55,\n    \"commission\" : 9.99,\n    \"tradeDate\" : \"2014-01-01\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Holdings - Delete One",
+			"request": {
+				"url": "http://localhost:3002/account-management/api/portfolios/586872bb6aa63a3c296305d7/holdings/586a832d35527b1fa5b49579",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg1Y2FkMGI1MmYzM2M4MDliOTk0Nzg2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzQwNzUzOCwiZXhwIjoxNDgzNDA5MzM4LCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.MDoC_72SNJg71m6-Xu-b-MuvoFM36vXIXOdQUgqQPKQ",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var stocksCtrl = require('../controllers/stocks.js');
+var stocksCtrl = require('../controllers/stockController');
 
 // Stock Quote
 router

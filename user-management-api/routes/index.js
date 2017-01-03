@@ -6,8 +6,8 @@ var commonUtils = require('common-api-utils');
 var authCheck = commonUtils.tokenValidator.validate(config['jwt']);
 
 
-var tokensCtrl = require('../controllers/tokens.js');
-var usersCtrl = require('../controllers/users.js');
+var tokensCtrl = require('../controllers/tokenController');
+var usersCtrl = require('../controllers/userController');
 
 // Token Routes
 router

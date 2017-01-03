@@ -5,8 +5,8 @@ var config = require('../config/config');
 var commonUtils = require('common-api-utils');
 var authCheck = commonUtils.tokenValidator.validate(config['jwt']);
 
-var portfoliosCtrl = require('../controllers/portfolios');
-var holdingsCtrl = require('../controllers/holdings');
+var portfoliosCtrl = require('../controllers/portfoliosController');
+var holdingsCtrl = require('../controllers/holdingsController');
 
 // Portfolio Routes
 router

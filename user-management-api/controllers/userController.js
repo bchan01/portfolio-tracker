@@ -225,7 +225,7 @@ module.exports.deleteByUsername = function(req, res, next) {
  *           schema:
  *             $ref: "#/definitions/Response"
  */
-module.exports.addOne  = function(req, res, next) {
+module.exports.add  = function(req, res, next) {
     var input = req.body;
     var username = req.body.username; 
     Q.invoke(tokenService, 'encryptPassword', req.body.userPassword)  

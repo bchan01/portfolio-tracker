@@ -9,7 +9,7 @@ var gruntModule = function(grunt) {
     
     'swagger-docs':  {
             dev:{
-                src: ['app.js', 'public/swagger/schemas/*.js', 'models/*.js', 'controllers/*.js', '!controllers/tokens.js'],
+                src: ['app.js', 'public/swagger/schemas/*.js', 'models/*.js', 'controllers/*Controller.js'],
                 dest: 'public/swagger/swagger.json'
       }
     }

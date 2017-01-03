@@ -21,10 +21,10 @@ var db = mongoose.connect(config.database);
 /**
  * @SwaggerHeader
  * info:
- *   title: Portfolio Tracker API
+ *   title: User Management API
  *   version: 1.0.0
- *   description: Manage and Track Financial Portfolio
- * basePath: /pt/api
+ *   description: Manage Users
+ * basePath: /user-management/api
  */
 
 app.use(initialize.handle); // initialize res.locals object

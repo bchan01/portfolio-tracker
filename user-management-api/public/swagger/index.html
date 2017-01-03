@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Portfolio Tracker API</title>
+  <title>User Management API</title>
   <link rel="icon" type="image/png" href="custom/images/favicon.ico" sizes="32x32" />
   <link rel="icon" type="image/png" href="custom/images/favicon.ico" sizes="16x16" />
   <link href='css/typography.css' media='screen' rel='stylesheet' type='text/css'/>
@@ -34,8 +34,8 @@
       if (url && url.length > 1) {
         url = decodeURIComponent(url[1]);
       } else {
-        //url = "http://petstore.swagger.io/v2/swagger.json";
-        url = "/pt/api/docs/swagger.json";
+        // API-specific
+        url = "/user-management/api/docs/swagger.json";
       }
 
       // Pre load translate...
@@ -88,7 +88,8 @@
       $('#setToken').click(function() {
         var username =  $('#username').val();
         var userPassword = $('#userPassword').val();
-        var tokenURL = '/pt/api/tokens?username=' + username + "&userPassword=" + userPassword;
+        // API-specific
+        var tokenURL = '/user-management/api/tokens?username=' + username + "&userPassword=" + userPassword;
         $.ajax({
            url: tokenURL,
            //data: tokenRequest,

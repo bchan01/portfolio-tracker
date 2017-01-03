@@ -14,7 +14,7 @@ var domainName = 'Portfolio';
  * Get all Portfolios belonging to a user
  */
 module.exports.getAll = function(req, res, next) {
-  	service.getAll({'userId' : res.locals.username})
+  	service.getAll({'userId' : res.locals.username}, {'holdings' : 0})
 		.then( function(data) {
       responseHandler.handleSuccess(req, res, next, data, domainName);
 		})
@@ -28,7 +28,7 @@ module.exports.getAll = function(req, res, next) {
  * Get Portfolio by ID
  */
 module.exports.getById = function(req, res, next) {
-    service.get({'_id' : req.params.portfolioId})
+    service.get({'_id' : req.params.portfolioId}, {'holdings' : 0})
         .then( function(data) {
       responseHandler.handleSuccess(req, res, next, data, domainName);
         })

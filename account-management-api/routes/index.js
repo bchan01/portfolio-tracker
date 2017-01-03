@@ -12,13 +12,13 @@ var holdingsCtrl = require('../controllers/holdings');
 router
   .route('/portfolios')
   .get(authCheck, portfoliosCtrl.getAll)
-  .post(authCheck, portfoliosCtrl.addOne);
+  .post(authCheck, portfoliosCtrl.add);
 
 router
   .route('/portfolios/:portfolioId')
-  .get(authCheck, portfoliosCtrl.getOne)
-  .put(authCheck, portfoliosCtrl.updateOne)
-  .delete(authCheck, portfoliosCtrl.deleteOne);
+  .get(authCheck, portfoliosCtrl.getById)
+  .put(authCheck, portfoliosCtrl.update)
+  .delete(authCheck, portfoliosCtrl.delete);
 
 // Holding Routes
 router

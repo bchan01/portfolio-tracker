@@ -9,6 +9,9 @@ var Q 		= require('q'),
 
 var domainName = 'Portfolio Holdings';
 
+/**
+ * Get all Holdings belonging to a Portfolio
+ */
 module.exports.getAll = function(req, res, next) {
   	service.getAll(req.params.portfolioId)
 		.then( function(data) {
@@ -20,6 +23,9 @@ module.exports.getAll = function(req, res, next) {
 		.done();
 };
 
+/**
+ * Get Holding by ID
+ */
 module.exports.getById = function(req, res, next) {
     service.getById(req.params.portfolioId, req.params.holdingId)
         .then( function(data) {
@@ -31,6 +37,9 @@ module.exports.getById = function(req, res, next) {
         .done();
 };
 
+/**
+ * Add a new Holding to a Portfolio
+ */
 module.exports.add = function(req, res, next) {
     service.add(req.params.portfolioId, req.body)
     .then(function(data) {
@@ -42,7 +51,9 @@ module.exports.add = function(req, res, next) {
     .done();
 };
 
-
+/**
+ * Update an existing Holding within a Portfolio
+ */
 module.exports.update = function(req, res, next) {
     service.update(req.params.portfolioId, req.params.holdingId, req.body)
     .then(function(data) {
@@ -54,8 +65,11 @@ module.exports.update = function(req, res, next) {
     .done();
 };
 
+/**
+ * Delete an existing Holding within a Portfolio
+ */
 module.exports.delete = function(req, res, next) {
-    service.deleteOne(req.params.portfolioId, req.params.holdingId)
+    service.delete(req.params.portfolioId, req.params.holdingId)
     .then(function() {
         responseHandler.handleDeleteSuccess(req, res, next, domainName);
     })

@@ -10,6 +10,9 @@ var Q 		= require('q'),
 var service = new  commonUtils.DataService(path.join(__dirname, '../models'),'portfolio', 'portfolio');
 var domainName = 'Portfolio';
 
+/**
+ * Get all Portfolios belonging to a user
+ */
 module.exports.getAll = function(req, res, next) {
   	service.getAll({'userId' : res.locals.username})
 		.then( function(data) {
@@ -21,7 +24,10 @@ module.exports.getAll = function(req, res, next) {
 		.done();
 };
 
-module.exports.getOne = function(req, res, next) {
+/**
+ * Get Portfolio by ID
+ */
+module.exports.getById = function(req, res, next) {
     service.get({'_id' : req.params.portfolioId})
         .then( function(data) {
       responseHandler.handleSuccess(req, res, next, data, domainName);
@@ -32,7 +38,10 @@ module.exports.getOne = function(req, res, next) {
         .done();
 };
 
-module.exports.addOne = function(req, res, next) {
+/**
+ * Add a new Portfolio
+ */
+module.exports.add = function(req, res, next) {
     var data = {'userId' : res.locals.username,  'name' : req.body.name};
     service.create(data, {'userId' : res.locals.username, 'name' : req.body.name})
     .then(function(data) {
@@ -44,7 +53,10 @@ module.exports.addOne = function(req, res, next) {
     .done();
 };
 
-module.exports.updateOne = function(req, res, next) {
+/**
+ * Update an existing Portfolio
+ */
+module.exports.update = function(req, res, next) {
     var data = {'userId' : res.locals.username};
     if (req.body.name) {
       data['name'] = req.body.name;
@@ -59,7 +71,10 @@ module.exports.updateOne = function(req, res, next) {
     .done();
 };
 
-module.exports.deleteOne = function(req, res, next) {
+/**
+ * Delete an existing Portfolio
+ */
+module.exports.delete = function(req, res, next) {
     service.delete({'_id' : req.params.portfolioId})
     .then(function() {
         responseHandler.handleDeleteSuccess(req, res, next, domainName);

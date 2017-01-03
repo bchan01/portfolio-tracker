@@ -169,7 +169,7 @@ module.exports.update = function(portfolioId, holdingId, data) {
 /**
  * Delete an existing Holding within a Portfolio
  */
-module.exports.deleteOne = function(portfolioId, holdingId) {
+module.exports.delete = function(portfolioId, holdingId) {
     var defer = Q.defer();
     Q.ninvoke(portfolio, 'findById', portfolioId)
         .then(function(dbObj) {

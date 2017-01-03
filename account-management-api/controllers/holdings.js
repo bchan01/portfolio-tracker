@@ -41,28 +41,34 @@ module.exports.getById = function(req, res, next) {
  * Add a new Holding to a Portfolio
  */
 module.exports.add = function(req, res, next) {
-    service.add(req.params.portfolioId, req.body)
-    .then(function(data) {
-        responseHandler.handleCreateSuccess(req, res, next, data, domainName);
-    })
-    .fail(function (error) {
-        responseHandler.handleError(req, res, next, error, domainName);
-    })
-    .done();
+     Q.invoke(service, 'parseHoldingInput', req.body) 
+        .then(function(newHolding) {
+             return service.add(req.params.portfolioId, newHolding);
+        })
+        .then(function(data) {
+            responseHandler.handleCreateSuccess(req, res, next, data, domainName);
+        })
+        .fail(function (error) {
+            responseHandler.handleError(req, res, next, error, domainName);
+        })
+        .done();
 };
 
 /**
  * Update an existing Holding within a Portfolio
  */
 module.exports.update = function(req, res, next) {
-    service.update(req.params.portfolioId, req.params.holdingId, req.body)
-    .then(function(data) {
-        responseHandler.handleUpdateSuccess(req, res, next, data, domainName);
-    })
-    .fail(function (error) {
-        responseHandler.handleError(req, res, next, error, domainName);
-    })
-    .done();
+     Q.invoke(service, 'parseHoldingInput', req.body) 
+        .then(function(updateHolding) {
+             return service.update(req.params.portfolioId, req.params.holdingId, updateHolding);
+        })
+        .then(function(data) {
+             responseHandler.handleUpdateSuccess(req, res, next, data, domainName);
+        })
+        .fail(function (error) {
+            responseHandler.handleError(req, res, next, error, domainName);
+        })
+        .done();
 };
 
 /**

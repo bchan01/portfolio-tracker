@@ -57,50 +57,10 @@ module.exports.getById = function(portfolioId, holdingId) {
 };
 
 /**
- * Helper function to parse holding creation and update input
- */
-var parseHoldingInput = function(data) {
-    var result = { };
-    var holding = { };
-    if (data.symbol) {
-        holding['symbol'] = data.symbol;
-    }
-    if (data.description) {
-        holding['description'] = data.description;
-    }
-    if (data.shares) {
-        holding['shares'] = data.shares;
-    }
-    if (data.purchasePrice) {
-        holding['purchasePrice'] = data.purchasePrice;
-    }
-    if (data.commission) {
-        holding['commission'] = data.commission;
-    }
-    if (data.tradeDate) {
-        var tradeDate =  moment(data.tradeDate, 'YYYY-MM-DD');
-        if (!tradeDate.isValid()) {
-            throw ({message: 'invalid format for trade date (YYYY-MM-DD)'});
-        }
-        holding['tradeDate'] = tradeDate.format('YYYY-MM-DD');
-    }
-    result['data'] = holding;
-    return result;
-};
-
-/**
  * Add a new Holding to a given Portfolio
  */
-module.exports.add = function(portfolioId, data) {
+module.exports.add = function(portfolioId, holding) {
     var defer = Q.defer();
-    var holding = {};
-    try {
-        var validationResult = parseHoldingInput(data);
-        holding = validationResult['data'];
-    } catch (exception) {
-         defer.reject({status: 400, message: exception.message});
-         return defer.promise;
-    }
     Q.ninvoke(portfolio, 'findById', portfolioId)
         .then(function(dbObj) {
             if (!dbObj) {
@@ -126,16 +86,8 @@ module.exports.add = function(portfolioId, data) {
 /**
  * Update an existing Holding within a Portfolio
  */
-module.exports.update = function(portfolioId, holdingId, data) {
+module.exports.update = function(portfolioId, holdingId, holding) {
     var defer = Q.defer();
-   var holding = {};
-    try {
-        var validationResult = parseHoldingInput(data);
-        holding = validationResult['data'];
-    } catch (exception) {
-         defer.reject({status: 400, message: exception.message});
-         return defer.promise;
-    }
     Q.ninvoke(portfolio, 'findById', portfolioId)
         .then(function(dbObj) {
             if (!dbObj) {
@@ -229,5 +181,46 @@ var calculateHoldingGains = function(holdings) {
             defer.reject({status: 500, message: 'error retrieving stock quotes'});
         }
     });
+    return defer.promise;
+};
+
+
+/**
+ * Helper function to parse holding creation and update input
+ */
+module.exports.parseHoldingInput = function(data) {
+    var defer = Q.defer();
+    var holding = { };
+    var errors = [];
+    if (data.symbol) {
+        holding['symbol'] = data.symbol;
+    }
+    if (data.description) {
+        holding['description'] = data.description;
+    }
+    if (data.shares) {
+        holding['shares'] = data.shares;
+    }
+    if (data.purchasePrice) {
+        holding['purchasePrice'] = data.purchasePrice;
+    }
+    if (data.commission) {
+        holding['commission'] = data.commission;
+    }
+    if (data.tradeDate) {
+        var tradeDate =  moment(data.tradeDate, 'YYYY-MM-DD');
+        if (!tradeDate.isValid()) {
+            errors.push('Invalid format for trade date (YYYY-MM-DD)');
+        } else {
+            holding['tradeDate'] = tradeDate.format('YYYY-MM-DD');
+        }
+    }
+    if (errors.length > 0) {
+         defer.reject({status : 400, message : 'Invalid Input parameter(s)',
+            errors : errors});
+    } else {
+        defer.resolve(holding);
+    }
+   
     return defer.promise;
 };

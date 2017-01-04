@@ -23,13 +23,13 @@ Projects:
 ---------------------------------------
 
 #### Generated Swagger Docs for API projects ####
-* Run: grunt swagger-docs --force
+* Run: grunt swagger-docs
 This will generate /public/swagger/swagger.json
 
 #### Build & Run API Projects Locally ####
 * Build: npm install
 * Edit "config/config.js" to point to the desired Database
-* Create Mongo Database with name="PortfolioTracker" and insert one user with script located in /scripts/init.js
+* Run "/scripts/init.js" to create and seed database
 * Run: node server
 * API Base URL: http://localhost:<port>/<api-name>/api
 * Swagger: http://localhost:<port>/<api-name>/api/docs 
@@ -50,7 +50,7 @@ This will generate /public/swagger/swagger.json
 
 #### Implementation Overview ####
 This API is implemented with Express using Token-based security, the following support modules are used:
-* Dependencies: https://github.com/bchan01/common-api-utils
+* Common utils used in all API's: https://github.com/bchan01/common-api-utils
 * bcrypt for password encryption
 * jsonwebtoken to generate and verify JWT token
 * mongoose to handle MongoDB persistence

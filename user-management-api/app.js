@@ -5,18 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-
 var config = require('./config/config');
-var commonUtils = require('common-api-utils');
 
 // Routes
 var routes = require('./routes');
-
-var initialize = commonUtils.initialize;
-
-var app = express();
-
-var db = mongoose.connect(config.database);
 
 /**
  * @SwaggerHeader
@@ -26,6 +18,11 @@ var db = mongoose.connect(config.database);
  *   description: Manage Users
  * basePath: /user-management/api
  */
+
+var app = express();
+
+// connect to mongo db
+var db = mongoose.connect(config.database);
 
 app.use(logger('dev'));
 

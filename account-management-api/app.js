@@ -5,16 +5,25 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-
 var config = require('./config/config');
-var commonUtils = require('common-api-utils');
 
 // Routes
 var routes = require('./routes');
 
+/**
+ * @SwaggerHeader
+ * info:
+ *   title: Account Management API
+ *   version: 1.0.0
+ *   description: Manage User Accounts
+ * basePath: /account-management/api
+ */
+
 var app = express();
 
+// connect to mongo db
 var db = mongoose.connect(config.database);
+
 
 app.use(logger('dev'));
 
@@ -29,6 +38,5 @@ app.use(config.baseUri + '/docs', express.static('./public/swagger'));
 
 // ------------- add routes here
 app.use(config.baseUri, routes);
-
 
 module.exports = app;

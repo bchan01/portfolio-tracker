@@ -4,7 +4,8 @@ var  commonUtils = require('common-api-utils'),
      responseHandler = commonUtils.auditableResponseHandler,
      config       = require('../config/config'),
      Q = require('q'),
-     path = require('path');
+     path = require('path'),
+     validator = require('./tokenValidator');
 
 var service = new  commonUtils.DataService(path.join(__dirname, '../models'),'user', 'User');
 var tokenService = new  commonUtils.JWTTokenService(config['jwt']);
@@ -74,18 +75,22 @@ var domainName = 'Token';
  *             $ref: "#/definitions/TokenResponse"
  */
 module.exports.tokenGet = function(req, res, next) {
-  var passwd = req.query.userPassword;
-  service.get({'username' : req.query.username})
-    .then( function(data) {
-        return tokenService.authenticate(data, passwd);
-    }).then(function(data) {
-      var responseData = { token : data, username: req.query.username};
-      res.locals.message = 'authenticated successfully';
-      responseHandler.handleSuccess(req, res, next, responseData, domainName);
-    }).fail(function (error) {
-      responseHandler.handleError(req, res, next, error, domainName);
-    })
-    .done();
+    var passwd = req.query.userPassword;
+    var username = req.query.username;
+    Q.invoke(validator, 'validateUserCredential', username, passwd) 
+        .then(function(result) {
+            return service.get({'username' : username})
+        })
+        .then( function(user) {
+            return tokenService.authenticate(user, passwd);
+        }).then(function(token) {
+            var responseData = { token : token, username: username};
+            res.locals.message = 'authenticated successfully';
+            responseHandler.handleSuccess(req, res, next, responseData, domainName);
+        }).fail(function (error) {
+            responseHandler.handleError(req, res, next, error, domainName);
+        })
+      .done();
 };
 
 
@@ -120,15 +125,20 @@ module.exports.tokenGet = function(req, res, next) {
  */
 module.exports.tokenPost = function(req, res, next) {
   var passwd = req.body.userPassword;
-  service.get({'username' : req.body.username})
-    .then( function(data) {
-        return tokenService.authenticate(data, passwd);
-    }).then(function(data) {
-      var responseData = { token : data, username: req.body.username};
-      res.locals.message = 'authenticated successfully';
-      responseHandler.handleSuccess(req, res, next, responseData, domainName);
-    }).fail(function (error) {
-      responseHandler.handleError(req, res, next, error, domainName);
-    })
-    .done();
+  var username = req.body.username;
+   Q.invoke(validator, 'validateUserCredential', username, passwd) 
+        .then(function(userCredential) {
+            return service.get({'username' : username})
+        })
+        .then( function(result) {
+            return tokenService.authenticate(result, passwd);
+        }).then(function(token) {
+            var responseData = { token : token, username: username};
+            res.locals.message = 'authenticated successfully';
+            responseHandler.handleSuccess(req, res, next, responseData, domainName);
+        }).fail(function (error) {
+            responseHandler.handleError(req, res, next, error, domainName);
+        })
+      .done();
 };
+

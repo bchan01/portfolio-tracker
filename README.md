@@ -1,6 +1,4 @@
-# Portfolio Tracker
-
-Portfolio Tracker MicroServices API and Single-Page Web App.
+# Portfolio Tracker - Microservices and Angular Web App
 
 This project is a work in progress.  My goal is to implement all of the following user requirements:
 

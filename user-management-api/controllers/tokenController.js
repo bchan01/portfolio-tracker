@@ -73,6 +73,14 @@ var domainName = 'Token';
  *           description: Successful operation
  *           schema:
  *             $ref: "#/definitions/TokenResponse"
+ *         400:
+ *           description: user Validation Error.
+ *           schema:
+ *             $ref: "#/definitions/Response"
+ *         401:
+ *           description: Unauthorized request
+ *           schema:
+ *             $ref: "#/definitions/Response"
  */
 module.exports.tokenGet = function(req, res, next) {
     var passwd = req.query.userPassword;
@@ -120,6 +128,10 @@ module.exports.tokenGet = function(req, res, next) {
  *             $ref: "#/definitions/TokenResponse"
  *         400:
  *           description: user Validation Error.
+ *           schema:
+ *             $ref: "#/definitions/Response"
+ *         401:
+ *           description: Unauthorized request
  *           schema:
  *             $ref: "#/definitions/Response"
  */

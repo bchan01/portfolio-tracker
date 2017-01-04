@@ -10,7 +10,44 @@ var Q 		= require('q'),
 var domainName = 'Portfolio Holdings';
 
 /**
- * Get all Holdings belonging to a Portfolio
+ * @SwaggerDefinitions
+ *   HoldingResponse:
+ *     type: object
+ *     properties:
+ *       outcome:
+ *         type: object
+ *         $ref: "#/definitions/Outcome"
+ *       data:
+ *         type: array
+ *         items:
+ *           $ref: "#/definitions/Holding"
+ */
+
+/**
+ * @SwaggerPath
+ *   /portfolios/{portfolioId}/holdings:
+ *     get:
+ *       summary: Get portolio holdings
+ *       description: Get all Holdings belonging to a Portfolio
+ *       produces:
+ *         - application/json
+ *       parameters:
+ *         - name: portfolioId
+ *           in: path
+ *           description: portfolio ID
+ *           required: true
+ *           type : string
+ *       tags:
+ *         - Portfolio Holdings
+ *       responses:
+ *         200:
+ *           description: Successful operation
+ *           schema:
+ *             $ref: "#/definitions/HoldingResponse"
+ *         401:
+ *           description: Unauthorized request
+ *           schema:
+ *             $ref: "#/definitions/Response"
  */
 module.exports.getAll = function(req, res, next) {
   	service.getAll(req.params.portfolioId)
@@ -24,7 +61,35 @@ module.exports.getAll = function(req, res, next) {
 };
 
 /**
- * Get Holding by ID
+ * @SwaggerPath
+ *   /portfolios/{portfolioId}/holdings/{holdingId}:
+ *     get:
+ *       summary: Get portolio holding
+ *       description: Get portolio holding by ID
+ *       produces:
+ *         - application/json
+ *       parameters:
+ *         - name: portfolioId
+ *           in: path
+ *           description: portfolio ID
+ *           required: true
+ *           type : string
+ *         - name: holdingId
+ *           in: path
+ *           description: holding ID
+ *           required: true
+ *           type : string
+ *       tags:
+ *         - Portfolio Holdings
+ *       responses:
+ *         200:
+ *           description: Successful operation
+ *           schema:
+ *             $ref: "#/definitions/HoldingResponse"
+ *         401:
+ *           description: Unauthorized request
+ *           schema:
+ *             $ref: "#/definitions/Response"
  */
 module.exports.getById = function(req, res, next) {
     service.getById(req.params.portfolioId, req.params.holdingId)
@@ -38,7 +103,42 @@ module.exports.getById = function(req, res, next) {
 };
 
 /**
- * Add a new Holding to a Portfolio
+ * @SwaggerPath
+ *   /portfolios/{portfolioId}/holdings:
+ *     post:
+ *       summary: Create Holding
+ *       description: Add a new Holding to a Portfolio
+ *       consumes:
+ *         - application/json
+ *       produces:
+ *         - application/json
+ *       parameters:
+ *         - name: portfolioId
+ *           in: path
+ *           description: portfolio ID
+ *           required: true
+ *           type : string
+ *         - name: holding
+ *           in: body
+ *           description: holding entity
+ *           required: true
+ *           schema:
+ *             $ref: "#/definitions/HoldingInput"
+ *       tags:
+ *         - Portfolio Holdings
+ *       responses:
+ *         200:
+ *           description: Successful operation
+ *           schema:
+ *             $ref: "#/definitions/HoldingResponse"
+ *         400:
+ *           description: user Validation Error.
+ *           schema:
+ *             $ref: "#/definitions/Response"
+ *         401:
+ *           description: Unauthorized request
+ *           schema:
+ *             $ref: "#/definitions/Response"
  */
 module.exports.add = function(req, res, next) {
      Q.invoke(service, 'parseHoldingInput', req.body) 
@@ -55,7 +155,47 @@ module.exports.add = function(req, res, next) {
 };
 
 /**
- * Update an existing Holding within a Portfolio
+ * @SwaggerPath
+ *   /portfolios/{portfolioId}/holdings/{holdingId}:
+ *     put:
+ *       summary: Update Holding
+ *       description: Update an existing Holding within a Portfolio
+ *       consumes:
+ *         - application/json
+ *       produces:
+ *         - application/json
+ *       parameters:
+ *         - name: portfolioId
+ *           in: path
+ *           description: portfolio ID
+ *           required: true
+ *           type : string
+ *         - name: holdingId
+ *           in: path
+ *           description: holding ID
+ *           required: true
+ *           type : string
+ *         - name: holding
+ *           in: body
+ *           description: holding entity
+ *           required: true
+ *           schema:
+ *             $ref: "#/definitions/HoldingInput"
+ *       tags:
+ *         - Portfolio Holdings
+ *       responses:
+ *         200:
+ *           description: Successful operation
+ *           schema:
+ *             $ref: "#/definitions/HoldingResponse"
+ *         400:
+ *           description: user Validation Error.
+ *           schema:
+ *             $ref: "#/definitions/Response"
+ *         401:
+ *           description: Unauthorized request
+ *           schema:
+ *             $ref: "#/definitions/Response"
  */
 module.exports.update = function(req, res, next) {
      Q.invoke(service, 'parseHoldingInput', req.body) 
@@ -72,7 +212,35 @@ module.exports.update = function(req, res, next) {
 };
 
 /**
- * Delete an existing Holding within a Portfolio
+ * @SwaggerPath
+ *   /portfolios/{portfolioId}/holdings/{holdingId}:
+ *     delete:
+ *       summary: Delete Porfolio
+ *       description: Delete an existing Holding within a Portfolio
+ *       produces:
+ *         - application/json
+ *       parameters:
+ *         - name: portfolioId
+ *           in: path
+ *           description: portfolio ID
+ *           required: true
+ *           type : string
+ *         - name: holdingId
+ *           in: path
+ *           description: holding ID
+ *           required: true
+ *           type : string
+ *       tags:
+ *         - Portfolio Holdings
+ *       responses:
+ *         200:
+ *           description: Successful operation
+ *           schema:
+ *             $ref: "#/definitions/Response"
+ *         401:
+ *           description: Unauthorized request
+ *           schema:
+ *             $ref: "#/definitions/Response"
  */
 module.exports.delete = function(req, res, next) {
     service.delete(req.params.portfolioId, req.params.holdingId)

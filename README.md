@@ -33,6 +33,14 @@ This will generate /public/swagger/swagger.json
 * Swagger: http://localhost:<port>/<api-name>/api/docs 
 # For at the top enter admin/admin, click "Set Token" before testing API
 
+#### Run Microservices with NGINX ####
+* Prereq: Install NGINX and copy '/scripts/nginx.conf' to your local installation (ex: /usr/local/etc/nginx/nginx.conf)
+* Start each API with: "node server" or "nodemon server"
+* Start NGINX (ex: sudo nginx on MacOS)
+* User Management: http://localhost/user-management/api/docs
+* Account-Management: http://localhost/account-management/api/docs
+* Financial Data: http://localhost/finance/api/docs
+
 ---------------------------------------
 
 #### API Project Directory Structure ####

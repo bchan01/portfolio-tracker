@@ -3,6 +3,29 @@ var mongoose = require('mongoose'),
 
 /**
   * @SwaggerDefinitions
+  *   HoldingInput:
+  *     type: object
+  *     properties:
+  *       symbol:
+  *         type: string
+  *       description:
+  *         type: string
+  *       shares:
+  *         type: number
+  *         format: double
+  *       purchasePrice:
+  *         type: number
+  *         format: double
+  *       tradeDate:
+  *         type: string
+  *         format: date
+  *       commission:
+  *         type: number
+  *         format: double
+  */
+
+/**
+  * @SwaggerDefinitions
   *   Holding:
   *     type: object
   *     properties:
@@ -47,6 +70,17 @@ var mongoose = require('mongoose'),
     marketValue : { type: Number},
     gain : {type : Number}
   });
+
+/**
+  * @SwaggerDefinitions
+  *   PortfolioInput:
+  *     type: object
+  *     properties:
+  *       userId:
+  *         type: string
+  *       name:
+  *         type: string
+  */
 
 /**
   * @SwaggerDefinitions

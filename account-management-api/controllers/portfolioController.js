@@ -10,8 +10,40 @@ var Q 		= require('q'),
 var service = new  commonUtils.DataService(path.join(__dirname, '../models'),'portfolio', 'portfolio');
 var domainName = 'Portfolio';
 
+
 /**
- * Get all Portfolios belonging to a user
+ * @SwaggerDefinitions
+ *   PortfolioResponse:
+ *     type: object
+ *     properties:
+ *       outcome:
+ *         type: object
+ *         $ref: "#/definitions/Outcome"
+ *       data:
+ *         type: array
+ *         items:
+ *           $ref: "#/definitions/Portfolio"
+ */
+
+/**
+ * @SwaggerPath
+ *   /portfolios:
+ *     get:
+ *       summary: Get all portolios
+ *       description: Get all portolios associated with the current user
+ *       produces:
+ *         - application/json
+ *       tags:
+ *         - Portfolios
+ *       responses:
+ *         200:
+ *           description: Successful operation
+ *           schema:
+ *             $ref: "#/definitions/PortfolioResponse"
+ *         401:
+ *           description: Unauthorized request
+ *           schema:
+ *             $ref: "#/definitions/Response"
  */
 module.exports.getAll = function(req, res, next) {
   	service.getAll({'userId' : res.locals.username}, {'holdings' : 0})
@@ -25,7 +57,30 @@ module.exports.getAll = function(req, res, next) {
 };
 
 /**
- * Get Portfolio by ID
+ * @SwaggerPath
+ *   /portfolios/{portfolioId}:
+ *     get:
+ *       summary: Get Porfolio by ID
+ *       description: Get portolio with a given ID
+ *       produces:
+ *         - application/json
+ *       parameters:
+ *         - name: portfolioId
+ *           in: path
+ *           description: portfolio ID
+ *           required: true
+ *           type : string
+ *       tags:
+ *         - Portfolios
+ *       responses:
+ *         200:
+ *           description: Successful operation
+ *           schema:
+ *             $ref: "#/definitions/PortfolioResponse"
+ *         401:
+ *           description: Unauthorized request
+ *           schema:
+ *             $ref: "#/definitions/Response"
  */
 module.exports.getById = function(req, res, next) {
     service.get({'_id' : req.params.portfolioId}, {'holdings' : 0})
@@ -39,7 +94,37 @@ module.exports.getById = function(req, res, next) {
 };
 
 /**
- * Add a new Portfolio
+ * @SwaggerPath
+ *   /portfolios:
+ *     post:
+ *       summary: Create Portfolio
+ *       description: Create new portfolio
+ *       consumes:
+ *         - application/json
+ *       produces:
+ *         - application/json
+ *       parameters:
+ *         - name: portfolio
+ *           in: body
+ *           description: portfolio entity
+ *           required: true
+ *           schema:
+ *             $ref: "#/definitions/PortfolioInput"
+ *       tags:
+ *         - Portfolios
+ *       responses:
+ *         200:
+ *           description: Successful operation
+ *           schema:
+ *             $ref: "#/definitions/PortfolioResponse"
+ *         400:
+ *           description: user Validation Error.
+ *           schema:
+ *             $ref: "#/definitions/Response"
+ *         401:
+ *           description: Unauthorized request
+ *           schema:
+ *             $ref: "#/definitions/Response"
  */
 module.exports.add = function(req, res, next) {
     var data = {'userId' : res.locals.username,  'name' : req.body.name};
@@ -54,7 +139,42 @@ module.exports.add = function(req, res, next) {
 };
 
 /**
- * Update an existing Portfolio
+ * @SwaggerPath
+ *   /portfolios/{portfolioId}:
+ *     put:
+ *       summary: Update Portfolio
+ *       description: Update an existing Portfolio
+ *       consumes:
+ *         - application/json
+ *       produces:
+ *         - application/json
+ *       parameters:
+ *         - name: portfolioId
+ *           in: path
+ *           description: portfolio ID
+ *           required: true
+ *           type : string
+ *         - name: portfolio
+ *           in: body
+ *           description: portfolio entity
+ *           required: true
+ *           schema:
+ *             $ref: "#/definitions/PortfolioInput"
+ *       tags:
+ *         - Portfolios
+ *       responses:
+ *         200:
+ *           description: Successful operation
+ *           schema:
+ *             $ref: "#/definitions/PortfolioResponse"
+ *         400:
+ *           description: user Validation Error.
+ *           schema:
+ *             $ref: "#/definitions/Response"
+ *         401:
+ *           description: Unauthorized request
+ *           schema:
+ *             $ref: "#/definitions/Response"
  */
 module.exports.update = function(req, res, next) {
     var data = {'userId' : res.locals.username};
@@ -72,7 +192,30 @@ module.exports.update = function(req, res, next) {
 };
 
 /**
- * Delete an existing Portfolio
+ * @SwaggerPath
+ *   /portfolios/{portfolioId}:
+ *     delete:
+ *       summary: Delete Porfolio
+ *       description: Delete an existing Portfolio
+ *       produces:
+ *         - application/json
+ *       parameters:
+ *         - name: portfolioId
+ *           in: path
+ *           description: portfolio ID
+ *           required: true
+ *           type : string
+ *       tags:
+ *         - Portfolios
+ *       responses:
+ *         200:
+ *           description: Successful operation
+ *           schema:
+ *             $ref: "#/definitions/Response"
+ *         401:
+ *           description: Unauthorized request
+ *           schema:
+ *             $ref: "#/definitions/Response"
  */
 module.exports.delete = function(req, res, next) {
     service.delete({'_id' : req.params.portfolioId})

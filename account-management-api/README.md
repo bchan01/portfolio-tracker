@@ -1,5 +1,4 @@
 # Account Management API #
 
-Provides the following capabilities
+#### Manage User Portfolios and Holdings ####
 
-* Create and retrieve portfolios

@@ -12,8 +12,6 @@ var commonUtils = require('common-api-utils');
 // Routes
 var routes = require('./routes');
 
-var initialize = commonUtils.initialize;
-
 var app = express();
 
 var db = mongoose.connect(config.database);

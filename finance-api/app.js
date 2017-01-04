@@ -15,8 +15,6 @@ var initialize = commonUtils.initialize;
 
 var app = express();
 
-app.use(initialize.handle); // initialize res.locals object
-
 app.use(logger('dev'));
 
 // Enable parsing of posted forms

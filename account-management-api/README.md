@@ -2,3 +2,5 @@
 
 #### Manage User Portfolios and Holdings ####
 
+![Swagger Docs](swagger.png)
+

@@ -12,10 +12,10 @@ const timeout = config.financeAPI.requestTimeout;
 const baseUrl = config.financeAPI.histQuoteUrl;
 // Daily 12/12/1980 - 12/14/2016
 //http://chart.finance.yahoo.com/table.csv?s=AAPL&a=11&b=12&c=1980&d=11&e=14&f=2016&g=d&ignore=.csv
-const HIST_QUOTE_FREQ = {
+var HIST_QUOTE_FREQ = {
     "daily" : "d",
     "weekly" : "w",
-    "monthy" : "m"
+    "monthly" : "m"
 };
 const HIST_QUOTE_CSV_HEADERS = 'Date,Open,High,Low,Close,Volume,Adj Close';
 const HIST_QUOTE_JSON_FIELDS = 'date,open,high,low,close,volume,adjustedClose';
@@ -26,7 +26,8 @@ function processRequest(req) {
     var endDate = req.query.endDate; //mm-dd-yyyy
     var frequency = req.query.frequency; //daily,weekly,monthly
     var options = {
-        uri: baseUrl + '?s=' + symbol + '&' + buildDateQueryForHistQuote(startDate,endDate) + '&g=' + HIST_QUOTE_FREQ[frequency],
+        uri: baseUrl + '?s=' + symbol + '&' + buildDateQueryForHistQuote(startDate,endDate) 
+            + '&g=' + HIST_QUOTE_FREQ[frequency] + '&ignore=.csv',
         method : 'GET',
         timeout: timeout
     };

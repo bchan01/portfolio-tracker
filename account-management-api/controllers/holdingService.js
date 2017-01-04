@@ -227,14 +227,13 @@ module.exports.parseHoldingInput = function(data) {
     if (data.tradeDate) {
         var tradeDate =  moment(data.tradeDate, 'YYYY-MM-DD');
         if (!tradeDate.isValid()) {
-            errors.push('Invalid format for trade date (YYYY-MM-DD)');
+            errors.push({message : 'Invalid format for trade date (YYYY-MM-DD)', name : 'tradeDate'});
         } else {
             holding['tradeDate'] = tradeDate.format('YYYY-MM-DD');
         }
     }
     if (errors.length > 0) {
-         defer.reject({status : 400, message : 'Invalid Input parameter(s)',
-            errors : errors});
+         defer.reject({status : 400, message : 'Invalid Input parameter(s)', errors : errors});
     } else {
         defer.resolve(holding);
     }

@@ -16,8 +16,6 @@ var app = express();
 
 var db = mongoose.connect(config.database);
 
-app.use(initialize.handle); // initialize res.locals object
-
 app.use(logger('dev'));
 
 // Enable parsing of posted forms

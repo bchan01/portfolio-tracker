@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Portfolio Tracker API</title>
+  <title>Finance API</title>
   <link rel="icon" type="image/png" href="custom/images/favicon.ico" sizes="32x32" />
   <link rel="icon" type="image/png" href="custom/images/favicon.ico" sizes="16x16" />
   <link href='css/typography.css' media='screen' rel='stylesheet' type='text/css'/>
@@ -34,8 +34,8 @@
       if (url && url.length > 1) {
         url = decodeURIComponent(url[1]);
       } else {
-        //url = "http://petstore.swagger.io/v2/swagger.json";
-        url = "/pt/api/docs/swagger.json";
+        // API-specific
+        url = "/finance/api/docs/swagger.json";
       }
 
       // Pre load translate...
@@ -88,7 +88,8 @@
       $('#setToken').click(function() {
         var username =  $('#username').val();
         var userPassword = $('#userPassword').val();
-        var tokenURL = '/pt/api/tokens?username=' + username + "&userPassword=" + userPassword;
+        // API-specific
+        var tokenURL = '/user-management/api/tokens?username=' + username + "&userPassword=" + userPassword;
         $.ajax({
            url: tokenURL,
            //data: tokenRequest,
@@ -121,6 +122,7 @@
 <div id='header'>
   <div class="swagger-ui-wrap">
    <img src="custom/images/pt.png" height="50" width="50">
+   <!-- No authentication needed
     <form id='api_selector'>
       <div class='input'><input placeholder="" id="input_apiKey" name="apiKey" type="hidden"/></div>
       <div class='input'><input value="admin" id="username" name="username" type="text"/></div>
@@ -128,6 +130,7 @@
       <div class='input'><a id="setToken" href="#">Set Token</a></div>
       <div class='input'><input placeholder="set x-access-token" id="token_status" name="token_status" type="text" border-style="none" readonly/></div>
     </form>
+    -->
   </div>
 </div>
 

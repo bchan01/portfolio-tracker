@@ -22,6 +22,18 @@ var mongoose = require('mongoose'),
   *       commission:
   *         type: number
   *         format: double
+  *       price:
+  *         type: number
+  *         format: double
+  *       cost:
+  *         type: number
+  *         format: double
+  *       marketValue:
+  *         type: number
+  *         format: double
+  *       gain:
+  *         type: number
+  *         format: double
   */
   var HoldingSchama = new Schema({
     symbol : { type: String, required: true },

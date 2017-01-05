@@ -63,6 +63,9 @@ NGINX can be used to proxy requests to all API's. This is one way to enable Web 
   * User Management: [http://localhost/user-management/api/docs](http://localhost/user-management/api/docs)
   * Account-Management: [http://localhost/account-management/api/docs](http://localhost/account-management/api/docs)
   * Financial Data: [http://localhost/finance/api/docs](http://localhost/finance/api/docs)
+  
+### Using Vagrant to Create VM to host Microservices ###
+Vagrant can be used to spin up a VM to host Portfolio Tracker Mircoservices with NGINX. Refer to [portfolio-tracker-vagrant project](https://github.com/bchan01/portfolio-tracker-vagrant)
 
 ---------------------------------------
 ### Microservice Implementation Overview ###

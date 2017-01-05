@@ -1,22 +1,24 @@
 # Portfolio Tracker - Microservices and Angular Web App
 
-This project is a work in progress.  My goal is to implement all of the following user requirements:
+This project is a work in progress. Features implemented so far are listed below:
 
 * Basic User management (create, update, change password)
-* Create Portfolio which holds a list of stocks (Holding)
-* Add/Update Holdings within a Portfolio
-* For a given Holding Entry, display the following fields: Stored(symbol, number of shared, purchase date, purchase price, commission), On Demand(current market price, gain/loss)
+* Create and maintain Portfolio which holds a list of stocks (Holding)
+* Add and maintain Holdings within a Portfolio
+* For a given Holding Entry, display the following fields: Stored(symbol, number of shared, purchase date, purchase price, commission), On Demand(current stock price, gain/loss)
 * Provide ability to retrieve Detailed Stock Quote
 * Provide ability to retrieve Historical Stock Quote with user-specified request parameters
 * Provide ability to retrieve Stock Price Chart with user-specified request parameters
-* Allow user to set price alert on a given Holding
 
-Projects:
+---------------------------------------
+### Microservices Architecture ###
 
 * user-management-api - http://localhost:3001/user-management/api
 * account-management-api - http://localhost:3002/account-management/api
 * finance-api - http://localhost:3003/finance/api
 * portfolio-tracker-web - http://localhost:3000/pt
+
+![Swagger Docs](docs/architecture.png)
 
 ---------------------------------------
 

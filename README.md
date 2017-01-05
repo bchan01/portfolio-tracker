@@ -13,41 +13,17 @@ This project is a work in progress. Features implemented so far are listed below
 * PLot Stock Price Chart
 
 ---------------------------------------
-### Microservices Architecture ###
+### Microservices Architecture (MEAN Stack) ###
 
-* user-management-api - http://localhost:3001/user-management/api
-* account-management-api - http://localhost:3002/account-management/api
-* finance-api - http://localhost:3003/finance/api
-* portfolio-tracker-web - http://localhost:3000/pt
+* user-management-api: manages users
+* account-management-api: manage user accounts
+* finance-api: retrieve financial data
+* portfolio-tracker-web - web application to be developed
 
 ![Swagger Docs](docs/architecture.png)
 
 ---------------------------------------
-
-#### Generated Swagger Docs for API projects ####
-* Run: grunt swagger-docs
-This will generate /public/swagger/swagger.json
-
-#### Build & Run API Projects Locally ####
-* Build: npm install
-* Edit "config/config.js" to point to the desired Database
-* Run "/scripts/init.js" to create and seed database
-* Run: node server
-* API Base URL: http://localhost:<port>/<api-name>/api
-* Swagger: http://localhost:<port>/<api-name>/api/docs 
-# For at the top enter admin/admin, click "Set Token" before testing API
-
-#### Run Microservices with NGINX ####
-* Prereq: Install NGINX and copy '/scripts/nginx.conf' to your local installation (ex: /usr/local/etc/nginx/nginx.conf)
-* Start each API with: "node server" or "nodemon server"
-* Start NGINX (ex: sudo nginx on MacOS)
-* User Management: http://localhost/user-management/api/docs
-* Account-Management: http://localhost/account-management/api/docs
-* Financial Data: http://localhost/finance/api/docs
-
----------------------------------------
-
-#### API Project Directory Structure ####
+### API Project Directory Structure ###
     XX-api
       |- config (environment-specific configurations, such as MongoDB connection, JWT parameters)
       |- routes (API routes)
@@ -55,10 +31,37 @@ This will generate /public/swagger/swagger.json
       |- models (mongoose schemas)
       |- app.js (tie together all the routes)
       |- server.js (application starting point)
-  
----------------------------------------
 
-#### Implementation Overview ####
+---------------------------------------
+### Generate Swagger Docs for API projects ###
+* Run "grunt swagger-docs" to generate swagger docs for each API project
+* User Management: http://localhost:3001/user-management/api/docs
+* Account-Management: http://localhost:3002/account-management/api/docs
+* Financial Data: http://localhost:3003/finance/api/docs
+* For secured endpoints, at the top of swagger home page, enter admin/admin and click "Set Token" to authenticate
+
+---------------------------------------
+#### Build & Run API Projects Locally ####
+* Build: npm install
+* Edit "config/config.js" to point to the desired Database
+* Run "/scripts/init.js" to create and seed database
+* Run "node server"
+* API Base URL: 
+  * user-management-api: http://localhost:3001/user-management/api
+  * account-management-api: http://localhost:3002/account-management/api
+  * finance-api: http://localhost:3003/finance/api
+
+---------------------------------------
+### Deploy and Run Microservices using NGINX ###
+* Install NGINX and copy '/scripts/nginx.conf' to your local installation (ex: /usr/local/etc/nginx/nginx.conf)
+* Start each API with: "node server" or "nodemon server"
+* Start NGINX (ex: "sudo nginx" in MacOS)
+* User Management: http://localhost/user-management/api/docs
+* Account-Management: http://localhost/account-management/api/docs
+* Financial Data: http://localhost/finance/api/docs
+
+---------------------------------------
+### API Implementation Overview ###
 This API is implemented with Express using Token-based security, the following support modules are used:
 * Common utils used in all API's: https://github.com/bchan01/common-api-utils
 * bcrypt for password encryption

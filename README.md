@@ -35,10 +35,10 @@ This project is a work in progress. Features implemented so far are listed below
 ---------------------------------------
 ### Generate Swagger for API Projects ###
 * Run "grunt swagger-docs" to generate swagger docs for each API project
-* User Management: http://localhost:3001/user-management/api/docs
-* Account-Management: http://localhost:3002/account-management/api/docs
-* Financial Data: http://localhost:3003/finance/api/docs
-* For secured endpoints, at the top of swagger home page, enter admin/admin and click "Set Token" to authenticate
+* user-management-api: http://localhost:3001/user-management/api/docs
+* account-management-api: http://localhost:3002/account-management/api/docs
+* finance-api: http://localhost:3003/finance/api/docs
+* To execute secured endpoints, at the top of swagger home page, enter admin/admin and click "Set Token" to authenticate once
 
 ---------------------------------------
 #### Build & Run API Projects Locally ####

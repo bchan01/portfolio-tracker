@@ -41,7 +41,7 @@ This project is a work in progress. Features implemented so far are listed below
 * To execute secured endpoints, at the top of swagger home page, enter admin/admin and click "Set Token" to authenticate once
 
 ---------------------------------------
-#### Build & Run API Projects Locally ####
+### Build & Run API Projects Locally ###
 * Build: npm install
 * Edit "config/config.js" to point to the desired Database
 * Run "/scripts/init.js" to create and seed database
@@ -53,17 +53,19 @@ This project is a work in progress. Features implemented so far are listed below
 
 ---------------------------------------
 ### Deploy and Run Microservices using NGINX ###
-* Install NGINX and copy '/scripts/nginx.conf' to your local installation (ex: /usr/local/etc/nginx/nginx.conf)
-* Start each API with: "node server" or "nodemon server"
-* Start NGINX (ex: "sudo nginx" in MacOS)
-* User Management: http://localhost/user-management/api/docs
-* Account-Management: http://localhost/account-management/api/docs
-* Financial Data: http://localhost/finance/api/docs
+* Install NGINX
+* copy '/scripts/nginx.conf' to your local installation (ex: /usr/local/etc/nginx/nginx.conf)
+* Start each API by running "node server" or "nodemon server"
+* Start NGINX (ex: "sudo nginx")
+* All API can be accessed without port number
+  * User Management: http://localhost/user-management/api/docs
+  * Account-Management: http://localhost/account-management/api/docs
+  * Financial Data: http://localhost/finance/api/docs
 
 ---------------------------------------
 ### API Implementation Overview ###
-This API is implemented with Express using Token-based security, the following support modules are used:
-* Common utils used in all API's: https://github.com/bchan01/common-api-utils
+This API is implemented with Express using Token-based security, the following support modules are used
+* Common utils used by all API's: https://github.com/bchan01/common-api-utils
 * bcrypt for password encryption
 * jsonwebtoken to generate and verify JWT token
 * mongoose to handle MongoDB persistence
@@ -71,6 +73,6 @@ This API is implemented with Express using Token-based security, the following s
 * lodash for utilities functions
 * papaparse for converting CSV to JSON
 * reqquest to make HTTP requests to external services
-* grunt swagger-docs for generating swagger docs for the API.
+* grunt swagger-docs for generating swagger for the API's
 
 

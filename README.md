@@ -1,4 +1,4 @@
-# Portfolio Tracker - Microservices and Angular Web App
+# Portfolio Tracker
 
 This project is a work in progress. Features implemented so far are listed below:
 

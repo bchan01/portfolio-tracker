@@ -57,14 +57,14 @@ This project is a work in progress. Features implemented so far are listed below
 * copy '/scripts/nginx.conf' to your local installation (ex: /usr/local/etc/nginx/nginx.conf)
 * Start each API by running "node server" or "nodemon server"
 * Start NGINX (ex: "sudo nginx")
-* All API can be accessed without port number
+* All API's can be accessed without port number
   * User Management: http://localhost/user-management/api/docs
   * Account-Management: http://localhost/account-management/api/docs
   * Financial Data: http://localhost/finance/api/docs
 
 ---------------------------------------
-### API Implementation Overview ###
-This API is implemented with Express using Token-based security, the following support modules are used
+### Microservice Implementation Overview ###
+The microservices are implemented with Express using Token-based security, the following node modules are used:
 * Common utils used by all API's: https://github.com/bchan01/common-api-utils
 * bcrypt for password encryption
 * jsonwebtoken to generate and verify JWT token
@@ -73,6 +73,6 @@ This API is implemented with Express using Token-based security, the following s
 * lodash for utilities functions
 * papaparse for converting CSV to JSON
 * reqquest to make HTTP requests to external services
-* grunt swagger-docs for generating swagger for the API's
+* grunt swagger-docs for generating swagger
 
 

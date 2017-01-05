@@ -18,7 +18,7 @@ This project is a work in progress. Features implemented so far are listed below
 * user-management-api: manages users
 * account-management-api: manage user accounts
 * finance-api: retrieve financial data
-* portfolio-tracker-web - web application to be developed
+* portfolio-tracker-web: web application to be developed
 
 ![Swagger Docs](docs/architecture.png)
 

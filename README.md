@@ -33,7 +33,7 @@ This project is a work in progress. Features implemented so far are listed below
       |- server.js (application starting point)
 
 ---------------------------------------
-### Generate Swagger Docs for API Projects ###
+### Generate Swagger for API Projects ###
 * Run "grunt swagger-docs" to generate swagger docs for each API project
 * User Management: http://localhost:3001/user-management/api/docs
 * Account-Management: http://localhost:3002/account-management/api/docs

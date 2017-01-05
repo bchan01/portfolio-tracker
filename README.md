@@ -36,9 +36,9 @@ This project is a work in progress. Features implemented so far are listed below
 ### Generate Swagger for API Projects ###
 * Run "grunt swagger-docs" to generate swagger docs for each API project
 * Swagger Home Page
-  * [user-management-api](http://localhost:3001/user-management/api/docs)
-  * [account-management-api](http://localhost:3002/account-management/api/docs)
-  * [finance-api](http://localhost:3003/finance/api/docs)
+  * user-management-api: [http://localhost:3001/user-management/api/docs](http://localhost:3001/user-management/api/docs)
+  * account-management-api: [http://localhost:3002/account-management/api/docs](http://localhost:3002/account-management/api/docs)
+  * finance-api: [http://localhost:3003/finance/api/docs](http://localhost:3003/finance/api/docs)
 * To execute secured endpoints, at the top of swagger home page, enter admin/admin and click "Set Token" to authenticate once
 
 ---------------------------------------
@@ -48,9 +48,9 @@ This project is a work in progress. Features implemented so far are listed below
 * Run "/scripts/init.js" to create and seed database
 * Run "node server"
 * API Base URL: 
-  * user-management-api: http://localhost:3001/user-management/api
-  * account-management-api: http://localhost:3002/account-management/api
-  * finance-api: http://localhost:3003/finance/api
+  * user-management-api: [http://localhost:3001/user-management/api](http://localhost:3001/user-management/api)
+  * account-management-api: [http://localhost:3002/account-management/api](http://localhost:3002/account-management/api)
+  * finance-api: [http://localhost:3003/finance/api](http://localhost:3003/finance/api)
 
 ---------------------------------------
 ### Deploy and Run Microservices using NGINX ###
@@ -59,9 +59,9 @@ This project is a work in progress. Features implemented so far are listed below
 * Start each API by running "node server" or "nodemon server"
 * Start NGINX (ex: "sudo nginx")
 * All API's can be accessed without port number
-  * User Management: http://localhost/user-management/api/docs
-  * Account-Management: http://localhost/account-management/api/docs
-  * Financial Data: http://localhost/finance/api/docs
+  * User Management: [http://localhost/user-management/api/docs](http://localhost/user-management/api/docs)
+  * Account-Management: [http://localhost/account-management/api/docs](http://localhost/account-management/api/docs)
+  * Financial Data: [http://localhost/finance/api/docs](http://localhost/finance/api/docs)
 
 ---------------------------------------
 ### Microservice Implementation Overview ###

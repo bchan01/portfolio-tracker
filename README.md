@@ -53,6 +53,8 @@ This project is a work in progress. Features implemented so far are listed below
 
 ---------------------------------------
 ### Deploy and Run Microservices using NGINX ###
+NGINX can be used to proxy requests to all API's. This is one way to enable Web App to call the API's without running into x CORS issue (Cross-Origin Resource Sharing). 
+
 * Install NGINX
 * copy '/scripts/nginx.conf' to your local installation (ex: /usr/local/etc/nginx/nginx.conf)
 * Start each API by running "node server" or "nodemon server"
@@ -65,8 +67,6 @@ This project is a work in progress. Features implemented so far are listed below
 ---------------------------------------
 ### Microservice Implementation Overview ###
 The microservices are implemented with Express using Token-based security, the following node modules are used:
-
-* Common utils used by all API's: https://github.com/bchan01/common-api-utils
 
 Node Module  | Usage
 ------------- | -------------

@@ -70,7 +70,7 @@ The microservices are implemented with Express using Token-based security, the f
 
 Node Module  | Usage
 ------------- | -------------
-Common utils used by all API's | ( https://github.com/bchan01/common-api-utils)
+Common API util project | ( https://github.com/bchan01/common-api-utils)
 bcrypt  | password encryption
 jsonwebtoken  | generate and verify JWT token
 mongoose | MongoDB persistence

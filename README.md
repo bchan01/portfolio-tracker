@@ -26,10 +26,10 @@ This project is a work in progress. Features implemented so far are listed below
 ### API Project Directory Structure ###
     XX-api
       |- config (environment-specific configurations, such as MongoDB connection, JWT parameters)
-      |- routes (API routes)
-      |- controllers
-      |- models (mongoose schemas)
-      |- app.js (tie together all the routes)
+      |- routes (define routes for endpoints)
+      |- controllers (implement endpoint logic)
+      |- models (define mongoose schemas)
+      |- app.js (initialize Express components and connect to database)
       |- server.js (application starting point)
 
 ---------------------------------------

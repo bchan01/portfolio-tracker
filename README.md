@@ -75,7 +75,7 @@ bcrypt  | password encryption
 jsonwebtoken  | generate and verify JWT token
 mongoose | MongoDB persistence
 Q | handle Async callbacks
-lodash | 
+lodash | useful utilities
 papaparse | convert CSV to JSON
 grunt swagger-docs | generate swagger
 

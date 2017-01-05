@@ -53,7 +53,7 @@ This project is a work in progress. Features implemented so far are listed below
 
 ---------------------------------------
 ### Deploy and Run Microservices using NGINX ###
-NGINX can be used to proxy requests to all API's. This is one way to enable Web App to call the API's without running into x CORS issue (Cross-Origin Resource Sharing). 
+NGINX can be used to proxy requests to all API's. This is one way to enable Web App to seamlessly consume REST API served from a different origin. Otherwise, it will encounter CORS issue (Cross-Origin Resource Sharing). 
 
 * Install NGINX
 * copy '/scripts/nginx.conf' to your local installation (ex: /usr/local/etc/nginx/nginx.conf)

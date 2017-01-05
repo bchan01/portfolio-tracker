@@ -8,9 +8,9 @@ This project is a work in progress. Features implemented so far are listed below
 * For a given Holding Entry, display the following fields: 
   * Stored: symbol, number of shared, purchase date, purchase price, commission
   * Calculated on demand: current stock price, gain/loss
-* Provide ability to retrieve Detailed Stock Quote
-* Provide ability to retrieve Historical Stock Quote with user-specified request parameters
-* Provide ability to retrieve Stock Price Chart with user-specified request parameters
+* Retrieve Detailed Stock Quote(s) for one or more symbols
+* Retrieve Historical Stock Quote for a given symbol
+* PLot Stock Price Chart
 
 ---------------------------------------
 ### Microservices Architecture ###

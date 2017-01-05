@@ -65,14 +65,17 @@ This project is a work in progress. Features implemented so far are listed below
 ---------------------------------------
 ### Microservice Implementation Overview ###
 The microservices are implemented with Express using Token-based security, the following node modules are used:
-* Common utils used by all API's: https://github.com/bchan01/common-api-utils
-* bcrypt for password encryption
-* jsonwebtoken to generate and verify JWT token
-* mongoose to handle MongoDB persistence
-* Q to handle Async callbacks
-* lodash for utilities functions
-* papaparse for converting CSV to JSON
-* reqquest to make HTTP requests to external services
-* grunt swagger-docs for generating swagger
 
+* Common utils used by all API's: https://github.com/bchan01/common-api-utils
+
+Node Module  | Usage
+------------- | -------------
+Common utils used by all API's | ( https://github.com/bchan01/common-api-utils)
+bcrypt  | password encryption
+jsonwebtoken  | generate and verify JWT token
+mongoose | MongoDB persistence
+Q | handle Async callbacks
+lodash | 
+papaparse | convert CSV to JSON
+grunt swagger-docs | generate swagger
 

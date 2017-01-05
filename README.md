@@ -13,7 +13,7 @@ This project is a work in progress. Features implemented so far are listed below
 * PLot Stock Price Chart
 
 ---------------------------------------
-### Microservices Architecture (MEAN Stack) ###
+### Microservice Architecture (MEAN Stack) ###
 
 * user-management-api: manages users
 * account-management-api: manage user accounts

@@ -2,15 +2,15 @@
 
 This project is a work in progress. Features implemented so far are listed below:
 
-* Basic User management (create, update, change password)
-* Create and maintain Portfolio which holds a list of stocks (Holding)
-* Add and maintain Holdings within a Portfolio
-* For a given Holding Entry, display the following fields: 
+* Basic user management (create, update, change password)
+* Create and maintain portfolio which holds a list of stocks (holding)
+* Add and maintain holdings within a portfolio
+* For a given holding, display the following fields: 
   * Stored: symbol, number of shared, purchase date, purchase price, commission
   * Calculated on demand: current stock price, gain/loss
-* Retrieve Detailed Stock Quote(s) for one or more symbols
-* Retrieve Historical Stock Quote for a given symbol
-* PLot Stock Price Chart
+* Retrieve detailed stock quotes for one or more symbols
+* Retrieve historical stock quote for a given symbol
+* PLot a chart of stock prices for a given symbol within a time range
 
 ---------------------------------------
 ### Microservice Architecture (MEAN Stack) ###
@@ -42,11 +42,10 @@ This project is a work in progress. Features implemented so far are listed below
 * To execute secured endpoints, at the top of swagger home page, enter admin/admin and click "Set Token" to authenticate once
 
 ---------------------------------------
-### Build & Run API Projects Locally ###
-* Build: npm install
-* Edit "config/config.js" to point to the desired Database
-* Run "/scripts/init.js" to create and seed database
-* Run "node server"
+### Build and Run API Projects Locally ###
+* Build project by running "npm install"
+* Create and seed database by runnning "/scripts/init.js"
+* Start API by running "node server" or "nodemon server"
 * API Base URL: 
   * user-management-api: [http://localhost:3001/user-management/api](http://localhost:3001/user-management/api)
   * account-management-api: [http://localhost:3002/account-management/api](http://localhost:3002/account-management/api)

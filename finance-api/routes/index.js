@@ -4,6 +4,7 @@ var router = express.Router();
 var stockQuoteCtrl = require('../controllers/stockQuoteController');
 var histQuoteCtrl = require('../controllers/historicalStockQuoteController');
 var chartCtrl = require('../controllers/stockChartController');
+var symbolLookupCtrl = require('../controllers/symbolLookupController');
 
 // Stock Quote
 router
@@ -19,5 +20,10 @@ router
 router
   .route('/stocks/charts')
   .get(chartCtrl.get);
+
+// Symbol Lookup
+router
+  .route('/stocks/symbols')
+  .get(symbolLookupCtrl.get);
 
 module.exports = router;

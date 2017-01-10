@@ -10,7 +10,7 @@ This project is a work in progress. Features implemented so far are listed below
   * Calculated on demand: current stock price, gain/loss
 * Retrieve detailed stock quotes for one or more symbols
 * Retrieve historical stock quote for a given symbol
-* PLot a chart of stock prices for a given symbol within a time range
+* Plot a chart of stock prices for a given symbol within a time range
 
 ---------------------------------------
 ### Microservice Architecture (MEAN Stack) ###
@@ -42,7 +42,7 @@ This project is a work in progress. Features implemented so far are listed below
 * To execute secured endpoints, at the top of swagger home page, enter admin/admin and click "Set Token" to authenticate once
 
 ---------------------------------------
-### Build and Run API Projects Locally ###
+### Build and Run Locally ###
 * Build project by running "npm install"
 * Create and seed database by runnning "/scripts/init.js"
 * Start API by running "node server" or "nodemon server"

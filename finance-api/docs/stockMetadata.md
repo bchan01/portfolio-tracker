@@ -43,9 +43,9 @@ Day Low | g
 52-Week High | k
 52-Week Low | j
 Chg 52-Wk Low | j5
-Percent Change From 52 week Low | j6
+Percent Change From 52-week Low | j6
 Chg 52-Wk High | k4
-Percent Change From 52 week High | k5
+Percent Change From 52-week High | k5
 Shares Outstanding | j2
 Short Ratio | s7
 
@@ -58,7 +58,6 @@ Percent Change From 50 Day Moving Average | m8
 200 Day Moving Average | m4
 Change From 200 Day Moving Average | m5
 Percent Change From 200 Day Moving Average | m6
-
 
 ## Fundamentals ## 
 Field | Key
@@ -90,8 +89,7 @@ Price / EPS Estimate Current Year | r6
 Price / EPS Estimate Next Year | r7
 PEG Ratio | r5
 
-
-## Misc #
+## Misc ##
 Field | Description
 ------------- | -------------
 i5 |  Order Book (Realtime)

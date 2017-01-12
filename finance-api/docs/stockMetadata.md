@@ -1,6 +1,6 @@
-# Yahoo Stock API - Supported Data Fields #
+# Yahoo Stock API - Supported Data Fields
 
-## Basic ##
+## Basic
 Field | Key
 ------------- | -------------
 Symbol | s
@@ -49,7 +49,7 @@ Percent Change From 52-week High | k5
 Shares Outstanding | j2
 Short Ratio | s7
 
-## Moving Averages ##
+## Moving Averages
 Field | Description
 ------------- | -------------
 50 Day Moving Average | m3
@@ -59,7 +59,7 @@ Percent Change From 50 Day Moving Average | m8
 Change From 200 Day Moving Average | m5
 Percent Change From 200 Day Moving Average | m6
 
-## Fundamentals ## 
+## Fundamentals
 Field | Key
 ------------- | -------------
 Earnings per Share | e
@@ -78,7 +78,7 @@ Price/Sales | p5
 EBITDA | j4
 Revenue | s6
 
-## Estimates ## 
+## Estimates
 Field | Key
 ------------- | -------------
 1 yr Target Price | t8
@@ -89,7 +89,7 @@ Price / EPS Estimate Current Year | r6
 Price / EPS Estimate Next Year | r7
 PEG Ratio | r5
 
-## Misc ##
+## Misc
 Field | Description
 ------------- | -------------
 i5 |  Order Book (Realtime)

@@ -1,120 +1,103 @@
 # Yahoo Stock API - Supported Data Fields #
 
-## Symbol Info ##
+## Basic ##
+Field | Key
+------------- | -------------
+Symbol | s
+Name | n
+Stock Exchange | x
+Last Trade (With Time) | l
+Last Trade (Price Only) | l1
+Last Trade Time |  t1
+Last Trade Date | d1
+Last Trade (Realtime) With Time | k1
+Change & Percent Change | c
+Change | c1
+Percent Change | p2
+Change (Realtime) | c6
+Change Percent (Realtime) | k2
+After Hours Change (Realtime) | c8
+Volume | v
+Average Daily Volume | a2
+More Info | i
+Currency | ??
+
+## Details ##
+Field | Key
+------------- | -------------
+Bid | b
+Bid Size | b6
+Bid (Realtime) | b3
+Ask | a
+Ask Size | a5
+Ask (Realtime) | b2
+Last Trade Size | k3
+Float Shares | f6
+Prev Close | p
+Open | o
+Day's Range | m
+Day’s Range (Realtime) | m2
+Day High | h
+Day Low | g
+52-Week Range  | w
+52-Week High | k
+52-Week Low | j
+Chg 52-Wk Low | j5
+Percent Change From 52 week Low | j6
+Chg 52-Wk High | k4
+Percent Change From 52 week High | k5
+Shares Outstanding | j2
+Short Ratio | s7
+
+## Moving Averages ##
 Field | Description
 ------------- | -------------
-i |  More Info
-j1 |  Market Capitalization
-j3 |  Market Cap (Realtime)
-f6 |  Float Shares
-n |  Name
-n4 |  Notes
-s |  Symbol
-x |  Stock Exchange
-j2 |  Shares Outstanding
+50 Day Moving Average | m3
+Change From 50 Day Moving Average | m7
+Percent Change From 50 Day Moving Average | m8
+200 Day Moving Average | m4
+Change From 200 Day Moving Average | m5
+Percent Change From 200 Day Moving Average | m6
 
-## Pricing ##
+
+## Fundamentals ## 
+Field | Key
+------------- | -------------
+Earnings per Share | e
+P/E Ratio | r
+P/E Ratio (Realtime) | r2
+P/E Next Year | r3??
+Div Pay Date | r1
+Ex-Dividend Date | q
+Dividend per Share | d
+Dividend Yield | y
+Market Capitalization | j1
+Market Capitalization (Realtime) | j3
+Book Value | b4
+Price/Book | p6
+Price/Sales | p5
+EBITDA | j4
+Revenue | s6
+
+## Estimates ## 
+Field | Key
+------------- | -------------
+1 yr Target Price | t8
+EPS Estimate Current Year | e7
+EPS Estimate Next Year | e8
+EPS Estimate Next Quarter | e9
+Price / EPS Estimate Current Year | r6	
+Price / EPS Estimate Next Year | r7
+PEG Ratio | r5
+
+
+## Misc #
 Field | Description
 ------------- | -------------
-l1 |  Last Trade (Price Only)
-a |  Ask
-b |  Bid
-b2 |  Ask (Realtime)
-b3 |  Bid (Realtime)
-p |  Previous Close	
-o |  Open
-c1 |  Change
-c |  Change & Percent Change
-c6 |  Change (Realtime)
-k2 |  Change Percent (Realtime)
-p2 |  Change in Percent
-c8 |  After Hours Change (Realtime)
-g |  Day’s Low
-h |  Day’s High
-w1 |  Day’s Value Change
-w4 |  Day’s Value Change (Realtime)
-m |  Day’s Range	
-m2 |  Day’s Range (Realtime)
-k |  52 Week High
-j |  52 week Low
-j5 |  Change From 52 Week Low
-k4 |  Change From 52 week High
-j6 |  Percent Change From 52 week Low
-k5 |  Percent Change From 52 week High
-w |  52 week Range
-v |  Volume	
-a5 |  Ask Size	
-b6 |  Bid Size	
-
-
-## Date ##
-Field | Description
-------------- | -------------
-d1 |  Last Trade Date
-d2 |  Trade Date
-t1 |  Last Trade Time
-k1 |  Last Trade (Realtime) With Time
-l |  Last Trade (With Time)
-
-## Misc ##
-Field | Description
-------------- | -------------
-k3 |  Last Trade Size	
-a2 |  Average Daily Volume	
 i5 |  Order Book (Realtime)
 t7 |  Ticker Trend
 t6 |  Trade Links
 
-## Dividends ##
-Field | Description
-------------- | -------------
-y |  Dividend Yield
-d |  Dividend per Share
-r1 |  Dividend Pay Date
-q |  Ex-Dividend Date
 
-## Averages ##
-Field | Description
-------------- | -------------
-m5 |  Change From 200 Day Moving Average
-m6 |  Percent Change From 200 Day Moving Average
-m7 |  Change From 50 Day Moving Average
-m8 |  Percent Change From 50 Day Moving Average
-m3 |  50 Day Moving Average
-m4 |  200 Day Moving Average
 
-## Statistisc and Ratios ##
-Field | Description
-------------- | -------------
-l2 |  High Limit
-l3 |  Low Limit
-e |  Earnings per Share	
-e7 |  EPS Estimate Current Year	
-e8 |  EPS Estimate Next Year	
-e9 |  EPS Estimate Next Quarter
-s6 | Revenue
-t8 |  1 yr Target Price	
-b4 |  Book Value	
-j4 |  EBITDA	
-p5 |  Price / Sales	
-p6 |  Price / Book	
-r |  P/E Ratio	
-r2 |  P/E Ratio (Realtime)	
-r5 |  PEG Ratio	
-r6 |  Price / EPS Estimate Current Year	
-r7 |  Price / EPS Estimate Next Year	
-s7 |  Short Ratio	
 
-## Yahoo Portfolio Holding ##
-Field | Description
-------------- | -------------
-c3 |  Commission
-p1 |  Price Paid
-s1 |  Shares Owned
-g1 |  Holdings Gain Percent
-g3 |  Annualized Gain
-g4 |  Holdings Gain
-g5 |  Holdings Gain Percent (Realtime)
-g6 |  Holdings Gain (Realtime)
-v1 |  Holdings Value
-v7 |  Holdings Value (Realtime)

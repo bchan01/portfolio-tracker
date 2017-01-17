@@ -1,15 +1,7 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name portfolioTrackerAppApp
- * @description
- * # portfolioTrackerAppApp
- *
- * Main module of the application.
- */
 angular
-  .module('portfolioTrackerApp', [
+  .module('financeApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -32,5 +24,6 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+      // Fix Hashbang in path
       $locationProvider.hashPrefix('');
   });

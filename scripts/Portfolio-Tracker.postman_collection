@@ -32,7 +32,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\"username\": \"admin\",\n\"userPassword\": \"admin\"\n}"
+					"raw": "{\n\"username\" : \"admin\",\n\"userPassword\" : \"admin\"\n}"
 				},
 				"description": ""
 			},
@@ -68,7 +68,7 @@
 				"header": [
 					{
 						"key": "x-access-token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg1Y2FkMGI1MmYzM2M4MDliOTk0Nzg2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzI0MjQ0MSwiZXhwIjoxNDgzMjQzMDQxLCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.P6_5lM-j_HS2e7pxPDJ--hud55_HMhXmflXAxbfeimI",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg2YmUxYWEwODQwMWE0MjNiMzZjZmQ2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzQ4OTk2MCwiZXhwIjoxNDgzNTE4NzYwLCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.82bylzgZWlhpIspILxYYYHDPy7X9wFd0aMZqU13xEwU",
 						"description": ""
 					},
 					{
@@ -93,7 +93,7 @@
 				"header": [
 					{
 						"key": "x-access-token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg1Y2FkMGI1MmYzM2M4MDliOTk0Nzg2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzI0MjQ0MSwiZXhwIjoxNDgzMjQzMDQxLCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.P6_5lM-j_HS2e7pxPDJ--hud55_HMhXmflXAxbfeimI",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg2YmUxYWEwODQwMWE0MjNiMzZjZmQ2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzQ4OTk2MCwiZXhwIjoxNDgzNTE4NzYwLCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.82bylzgZWlhpIspILxYYYHDPy7X9wFd0aMZqU13xEwU",
 						"description": ""
 					},
 					{
@@ -118,10 +118,21 @@
 				"header": [
 					{
 						"key": "x-access-token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg1Y2FkMGI1MmYzM2M4MDliOTk0Nzg2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzI0MjQ0MSwiZXhwIjoxNDgzMjQzMDQxLCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.P6_5lM-j_HS2e7pxPDJ--hud55_HMhXmflXAxbfeimI",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg2YmUxYWEwODQwMWE0MjNiMzZjZmQ2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzQ4OTk2MCwiZXhwIjoxNDgzNTE4NzYwLCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.82bylzgZWlhpIspILxYYYHDPy7X9wFd0aMZqU13xEwU",
 						"description": ""
 					}
 				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Symbol Lookup",
+			"request": {
+				"url": "http://localhost:3003/finance/api/stocks/symbols?name=Face",
+				"method": "GET",
+				"header": [],
 				"body": {},
 				"description": ""
 			},
@@ -139,9 +150,64 @@
 			"response": []
 		},
 		{
+			"name": "Stock - Quotes - Basic",
+			"request": {
+				"url": "http://localhost:3003/finance/api/stocks/quotes/views/basic?symbols=GOOG",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Stock - Quotes - Details",
+			"request": {
+				"url": "http://localhost:3003/finance/api/stocks/quotes/views/details?symbols=GE",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Stock - Quotes - Moving Averages",
+			"request": {
+				"url": "http://localhost:3003/finance/api/stocks/quotes/views/estimates?symbols=GOOG",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Stock - Quotes - Fundamentals",
+			"request": {
+				"url": "http://localhost:3003/finance/api/stocks/quotes/views/fundamentals?symbols=GE",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Stock - Quotes - Estimates",
+			"request": {
+				"url": "http://localhost:3003/finance/api/stocks/quotes/views/estimates?symbols=GE",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
 			"name": "Stock - Historical Quotes",
 			"request": {
-				"url": "http://localhost:3003/finance/api/stocks/historicalQuotes?symbol=AAPL&frequency=daily&startDate=12-14-1980&endDate=12-14-2016",
+				"url": "http://localhost:3003/finance/api/stocks/historicalQuotes?symbol=AAPL&frequency=weekly&startDate=12-14-1980&endDate=12-14-2016",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -161,9 +227,20 @@
 			"response": []
 		},
 		{
-			"name": "Stock - Yahoo Chart API",
+			"name": "Yahoo Chart API",
 			"request": {
 				"url": "http://chart.finance.yahoo.com/z?s=GOOG",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Yahoo Symbol Lookup",
+			"request": {
+				"url": "http://d.yimg.com/aq/autoc?region=US&lang=en-US&query=Face",
 				"method": "GET",
 				"header": [],
 				"body": {},
@@ -179,7 +256,7 @@
 				"header": [
 					{
 						"key": "x-access-token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg1Y2FkMGI1MmYzM2M4MDliOTk0Nzg2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzI0MDAzMCwiZXhwIjoxNDgzMjQwNjMwLCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.3dWAhQIZd5lAWePwiMZOIdMJsn2rhCipr5vl2yn2DMc",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg1Y2FkMGI1MmYzM2M4MDliOTk0Nzg2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzQ1NDAzNSwiZXhwIjoxNDgzNDgyODM1LCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.ij9emf-xyVirm78jLN77VGAVaQ37UaMzHqEpVn71QuU",
 						"description": ""
 					}
 				],
@@ -196,7 +273,7 @@
 				"header": [
 					{
 						"key": "x-access-token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg1Y2FkMGI1MmYzM2M4MDliOTk0Nzg2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzM2OTA2OSwiZXhwIjoxNDgzMzY5NjY5LCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.pPWmP_VY9yw_wnSfsHBx51yijMvZ7xP8n11vu2vqwWw",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg1Y2FkMGI1MmYzM2M4MDliOTk0Nzg2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzQ1MjIxMSwiZXhwIjoxNDgzNDU0MDExLCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.QanzX66kpcNJSSthM4LCg5MvD8JRLhgyCiu7O5e_Eg0",
 						"description": ""
 					}
 				],
@@ -213,7 +290,7 @@
 				"header": [
 					{
 						"key": "x-access-token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg1Y2FkMGI1MmYzM2M4MDliOTk0Nzg2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzI0MDAzMCwiZXhwIjoxNDgzMjQwNjMwLCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.3dWAhQIZd5lAWePwiMZOIdMJsn2rhCipr5vl2yn2DMc",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg1Y2FkMGI1MmYzM2M4MDliOTk0Nzg2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzQ1MjIxMSwiZXhwIjoxNDgzNDU0MDExLCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.QanzX66kpcNJSSthM4LCg5MvD8JRLhgyCiu7O5e_Eg0",
 						"description": ""
 					},
 					{
@@ -233,12 +310,12 @@
 		{
 			"name": "Portfolios - UpdateOne",
 			"request": {
-				"url": "http://localhost:3002/account-management/api/portfolios/5868688fbd17e42cd39fc566",
+				"url": "http://localhost:3002/account-management/api/portfolios/586bafb695a8a51492974fe2",
 				"method": "PUT",
 				"header": [
 					{
 						"key": "x-access-token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg1Y2FkMGI1MmYzM2M4MDliOTk0Nzg2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzI0MDAzMCwiZXhwIjoxNDgzMjQwNjMwLCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.3dWAhQIZd5lAWePwiMZOIdMJsn2rhCipr5vl2yn2DMc",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg1Y2FkMGI1MmYzM2M4MDliOTk0Nzg2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzQ1MjIxMSwiZXhwIjoxNDgzNDU0MDExLCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.QanzX66kpcNJSSthM4LCg5MvD8JRLhgyCiu7O5e_Eg0",
 						"description": ""
 					},
 					{
@@ -249,7 +326,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\"name\" : \"Technology\"\n}"
+					"raw": "{\n\"name\" : \"Mutual Fund\"\n}"
 				},
 				"description": ""
 			},
@@ -258,12 +335,12 @@
 		{
 			"name": "Portfolios - DeleteOne",
 			"request": {
-				"url": "http://localhost:3002/account-management/api/portfolios/5868706f85deb036782902cc",
+				"url": "http://localhost:3002/account-management/api/portfolios/586bafb695a8a51492974fe2",
 				"method": "DELETE",
 				"header": [
 					{
 						"key": "x-access-token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg1Y2FkMGI1MmYzM2M4MDliOTk0Nzg2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzI0MDAzMCwiZXhwIjoxNDgzMjQwNjMwLCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.3dWAhQIZd5lAWePwiMZOIdMJsn2rhCipr5vl2yn2DMc",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg1Y2FkMGI1MmYzM2M4MDliOTk0Nzg2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzQ1MjIxMSwiZXhwIjoxNDgzNDU0MDExLCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.QanzX66kpcNJSSthM4LCg5MvD8JRLhgyCiu7O5e_Eg0",
 						"description": ""
 					}
 				],
@@ -280,11 +357,31 @@
 				"header": [
 					{
 						"key": "x-access-token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg1Y2FkMGI1MmYzM2M4MDliOTk0Nzg2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzQwNzUzOCwiZXhwIjoxNDgzNDA5MzM4LCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.MDoC_72SNJg71m6-Xu-b-MuvoFM36vXIXOdQUgqQPKQ",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg2YmUxYWEwODQwMWE0MjNiMzZjZmQ2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzQ4OTk2MCwiZXhwIjoxNDgzNTE4NzYwLCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.82bylzgZWlhpIspILxYYYHDPy7X9wFd0aMZqU13xEwU",
 						"description": ""
 					}
 				],
 				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Holdings - Get One",
+			"request": {
+				"url": "http://localhost:3002/account-management/api/portfolios/586872bb6aa63a3c296305d7/holdings/586a74b63a2bdc1159a1435c",
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg2YmUxYWEwODQwMWE0MjNiMzZjZmQ2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzQ4OTk2MCwiZXhwIjoxNDgzNTE4NzYwLCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.82bylzgZWlhpIspILxYYYHDPy7X9wFd0aMZqU13xEwU",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -297,7 +394,7 @@
 				"header": [
 					{
 						"key": "x-access-token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg1Y2FkMGI1MmYzM2M4MDliOTk0Nzg2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzM3NTA4NCwiZXhwIjoxNDgzMzc2ODg0LCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.67UA_GwHVmQ8hTG6d8xHAxvaSw8uNm8GTSPRc5Mwjsc",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg1Y2FkMGI1MmYzM2M4MDliOTk0Nzg2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzQ1MjIxMSwiZXhwIjoxNDgzNDU0MDExLCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.QanzX66kpcNJSSthM4LCg5MvD8JRLhgyCiu7O5e_Eg0",
 						"description": ""
 					},
 					{
@@ -308,27 +405,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"symbol\" : \"BABA\",\n    \"description\" : \"Ali Baba\",\n    \"shares\" : 500,\n    \"purchasePrice\" : 90.78,\n    \"commission\" : 9.99,\n    \"tradeDate\" : \"2013-02-02\"\n}"
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Holdings - Get One",
-			"request": {
-				"url": "http://localhost:3002/account-management/api/portfolios/586872bb6aa63a3c296305d7/holdings/586a77ddb6bc751549bbe442",
-				"method": "GET",
-				"header": [
-					{
-						"key": "x-access-token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg1Y2FkMGI1MmYzM2M4MDliOTk0Nzg2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzM3MTM0MCwiZXhwIjoxNDgzMzczMTQwLCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.7srkXAF_LfbSwo4ku88Nzo-g2_CZnu_x8KpsbOsAjE0",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
+					"raw": "{\n\t\"symbol\" : \"FB\",\n    \"description\" : \"Facebook\",\n    \"shares\" : 200,\n    \"purchasePrice\" : 90.78,\n    \"commission\" : 9.99,\n    \"tradeDate\" : \"2016-02-28\"\n}"
 				},
 				"description": ""
 			},
@@ -342,7 +419,7 @@
 				"header": [
 					{
 						"key": "x-access-token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg1Y2FkMGI1MmYzM2M4MDliOTk0Nzg2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzM3NTA4NCwiZXhwIjoxNDgzMzc2ODg0LCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.67UA_GwHVmQ8hTG6d8xHAxvaSw8uNm8GTSPRc5Mwjsc",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg1Y2FkMGI1MmYzM2M4MDliOTk0Nzg2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzQ1MjIxMSwiZXhwIjoxNDgzNDU0MDExLCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.QanzX66kpcNJSSthM4LCg5MvD8JRLhgyCiu7O5e_Eg0",
 						"description": ""
 					},
 					{
@@ -353,7 +430,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"symbol\" : \"BABA\",\n    \"description\" : \"Ali Baba\",\n    \"shares\" : 150,\n    \"purchasePrice\" : 99.55,\n    \"commission\" : 9.99,\n    \"tradeDate\" : \"2014-01-01\"\n}"
+					"raw": "{\n\t\"symbol\" : \"BABA\",\n    \"description\" : \"Ali Baba\",\n    \"shares\" : 150,\n    \"purchasePrice\" : 99.55,\n    \"commission\" : 9.99,\n    \"tradeDate\" : \"2014-01-32\"\n}"
 				},
 				"description": ""
 			},
@@ -367,7 +444,7 @@
 				"header": [
 					{
 						"key": "x-access-token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg1Y2FkMGI1MmYzM2M4MDliOTk0Nzg2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzQwNzUzOCwiZXhwIjoxNDgzNDA5MzM4LCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.MDoC_72SNJg71m6-Xu-b-MuvoFM36vXIXOdQUgqQPKQ",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiUFQgQWRtaW4iLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjoiNTg1Y2FkMGI1MmYzM2M4MDliOTk0Nzg2Iiwicm9sZXMiOlsiUmVhZFdyaXRlIl0sImlhdCI6MTQ4MzQ1MjIxMSwiZXhwIjoxNDgzNDU0MDExLCJhdWQiOiJQb3J0Zm9saW9UcmFja2VyIiwiaXNzIjoiYjJtY29tcHV0aW5nIiwic3ViIjoiYWRtaW4ifQ.QanzX66kpcNJSSthM4LCg5MvD8JRLhgyCiu7O5e_Eg0",
 						"description": ""
 					}
 				],

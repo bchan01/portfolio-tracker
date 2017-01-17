@@ -10,6 +10,9 @@ var symbolLookupCtrl = require('../controllers/symbolLookupController');
 router
   .route('/stocks/quotes')
   .get(stockQuoteCtrl.get);
+router
+  .route('/stocks/quotes/views/:name')
+  .get(stockQuoteCtrl.getView);
 
 // Historical Quote
 router

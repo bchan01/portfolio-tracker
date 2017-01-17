@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 angular
-  .module('portfolioTrackerAppApp', [
+  .module('portfolioTrackerApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -17,7 +17,7 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -32,4 +32,5 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+      $locationProvider.hashPrefix('');
   });

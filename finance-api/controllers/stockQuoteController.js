@@ -2,14 +2,16 @@
  
  var parse = require('papaparse'),
  	config = require('../config/config'),
+    stockQuoteFields = require('../config/stockQuoteFields'),
     commonUtils = require('common-api-utils'),
     responseHandler = commonUtils.auditableResponseHandler,
-    request = require("request");
+    request = require('request'),
+     _ = require('lodash');
 
 const timeout = config.financeAPI.requestTimeout;
 const baseUrl = config.financeAPI.quoteUrl;
-const fieldKeys = config.financeAPI.quoteFields.keys;
-const fieleNames = config.financeAPI.quoteFields.names;
+const defaultFieldKeys = config.financeAPI.quoteFields.keys;
+const defaultFieldNames = config.financeAPI.quoteFields.names;
 
 /**
  * @SwaggerDefinitions
@@ -71,6 +73,26 @@ const fieleNames = config.financeAPI.quoteFields.names;
  *           $ref: "#/definitions/StockQuote"
  */
 
+ /**
+ * @SwaggerDefinitions
+ *   StockQuoteView:
+ *     type: object
+ */
+
+ /**
+ * @SwaggerDefinitions
+ *   StockQuoteViewResponse:
+ *     type: object
+ *     properties:
+ *       outcome:
+ *         type: object
+ *         $ref: "#/definitions/Outcome"
+ *       data:
+ *         type: array
+ *         items:
+ *           $ref: "#/definitions/StockQuoteView"
+ */
+
 /**
  * @SwaggerPath
  *   /stocks/quotes:
@@ -98,9 +120,9 @@ const fieleNames = config.financeAPI.quoteFields.names;
  *             $ref: "#/definitions/Response"
  */
 module.exports.get = function(req, res, next) {
-    request(processRequest(req), function(error, response, body) {
+    request(processRequest(req, defaultFieldKeys), function(error, response, body) {
         if (!error && response.statusCode == 200) {
-            var data = processResponse(body);
+            var data = processResponse(body, defaultFieldNames);
             responseHandler.handleSuccess(req, res, next, data, 'quotes');
         } else {
             responseHandler.handleError(req, res, next, error, 'quotes');
@@ -108,7 +130,66 @@ module.exports.get = function(req, res, next) {
     });
 };
 
-function processRequest(req) {
+
+/**
+ * @SwaggerPath
+ *   /stocks/quotes/views/{name}:
+ *     get:
+ *       summary: Get Stock Quote data by view name
+ *       description: Get Stock Quote data by view name
+ *       produces:
+ *         - application/json
+ *       parameters:
+ *         - name: name
+ *           in: path
+ *           description: view name
+ *           required: true
+ *           type : string
+ *           enum: ['basic','details','fundamentals','movingAverages','estimates']
+ *         - name: symbols
+ *           in: query
+ *           description: comma-delimited list of symbols
+ *           required: true
+ *           type : string
+ *       tags:
+ *         - StockQuote
+ *       responses:
+ *         200:
+ *           description: Successful operation
+ *           schema:
+ *             $ref: "#/definitions/StockQuoteViewResponse"
+ *         500:
+ *           description: error retrieving data
+ *           schema:
+ *             $ref: "#/definitions/Response"
+ */
+module.exports.getView = function(req, res, next) {
+
+    // Determine fields to request for the given view
+    var fields = stockQuoteFields[req.params.name];
+    if (!fields) {
+        var error = {
+            'status' : 400,
+            'message' : 'Valid view names are: basic, fundamentals, details, estimates, movingAverages.'};
+        responseHandler.handleError(req, res, next, error,'quotes');
+        return;
+    }
+    var fieldNames = _.keys(fields).join(",");
+    var fieldKeys = _.values(fields).join('');
+    
+    request(processRequest(req, fieldKeys), function(error, response, body) {
+        if (!error && response.statusCode == 200) {
+            var data = processResponse(body, fieldNames);
+            responseHandler.handleSuccess(req, res, next, data, 'quotes');
+        } else {
+            responseHandler.handleError(req, res, next, error, 'quotes');
+        }
+    });
+};
+
+
+
+function processRequest(req, fieldKeys) {
 	var options = {
         uri: baseUrl + '?s=' + req.query.symbols + '&f=' + fieldKeys,
         method : 'GET',
@@ -117,8 +198,8 @@ function processRequest(req) {
 	return options;
 }
 
-function processResponse(body) {
-	var csv = fieleNames + '\n' + body.trim();
+function processResponse(body, fieldNames) {
+	var csv = fieldNames + '\n' + body.trim();
     var data = parse.parse(csv, {'header' : true, dynamicTyping: true});
     return data['data'];
 }

@@ -7,7 +7,7 @@
  * # AboutCtrl
  * Controller of the portfolioTrackerAppApp
  */
-angular.module('portfolioTrackerAppApp')
+angular.module('portfolioTrackerApp')
   .controller('AboutCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',

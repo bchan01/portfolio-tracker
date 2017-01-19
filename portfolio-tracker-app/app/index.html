@@ -13,34 +13,27 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/font-awesome.css" />
-    <link rel="stylesheet" href="styles/custom.css">
     <!-- endbuild -->
   </head>
   <body ng-app="portfolioTrackerApp">
-    <!--[if lte IE 8]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-
-    <!-- Add your site or application content here -->
-    <div class="header">
+    
+     <!-- HEADER AND NAVBAR -->
+     <div class="header">
       <div class="navbar navbar-default" role="navigation">
         <div class="container">
           <div class="navbar-header">
-
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
             </button>
-
-            <a class="navbar-brand" href="#/">Portfolio Tracker</a>
+            <span class="navbar-brand glyphicon glyphicon-signal fa-2x" style="color:green"></span>
           </div>
-
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
+              <li><a href="#/">Home</a></li>
               <li><a ng-href="#/portfolio">Portfolio</a></li>
               <li><a ng-href="#/quote">Stock quote</a></li>
               <li><a ng-href="#/histQuote">Historical Quote</a></li>
@@ -51,17 +44,13 @@
       </div>
     </div>
 
+    <!-- MAIN CONTENT AND INJECTED VIEWS -->
     <div class="container">
-    <div ng-view=""></div>
+        <!-- angular templating -->
+        <!-- this is where content will be injected -->
+        <div ng-view></div>
     </div>
-
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-signal"></span> Investment Portfolio Tracker</p>
-      </div>
-    </div>
-
-
+ 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
@@ -89,14 +78,15 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/portfolio.js"></script>
-        <script src="scripts/controllers/quote.js"></script>
-        <script src="scripts/controllers/histquote.js"></script>
-        <script src="scripts/controllers/chart.js"></script>
-        <script src="scripts/controllers/register.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/config.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/portfolio.js"></script>
+    <script src="scripts/controllers/quote.js"></script>
+    <script src="scripts/controllers/histquote.js"></script>
+    <script src="scripts/controllers/chart.js"></script>
+    <script src="scripts/controllers/register.js"></script>
+    <!-- endbuild -->
 </body>
 </html>

@@ -1,10 +1,9 @@
 'use strict';
+angular.module('portfolioTrackerApp').controller('HomeController', HomeController);
 
-angular.module('portfolioTrackerApp')
-  .controller('HomeCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+function HomeController($http) {
+  var vm = this;
+  vm.title = 'Market Trends';
+  // TODO Get Major Indices Data 
+}
+

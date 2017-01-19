@@ -7,43 +7,73 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
-  ])
-  .config(function ($routeProvider, $locationProvider) {
+    'ngTouch',
+    'angular-jwt'
+  ]).config(config).run(run);
+
+function config($httpProvider, $routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/home.html',
-        controller: 'HomeCtrl',
-        controllerAs: 'home'
-      })
-      .when('/portfolio', {
-        templateUrl: 'views/portfolio.html',
-        controller: 'PortfolioCtrl',
-        controllerAs: 'portfolio'
+        controller: 'HomeController',
+        controllerAs: 'vm',
+        access: {
+          restricted: false
+        }
       })
       .when('/quote', {
         templateUrl: 'views/quote.html',
-        controller: 'QuoteCtrl',
-        controllerAs: 'quote'
+        controller: 'QuoteController',
+        controllerAs: 'vm',
+        access: {
+          restricted: false
+        }
       })
       .when('/histQuote', {
         templateUrl: 'views/histQuote.html',
-        controller: 'HistQuoteCtrl',
-        controllerAs: 'histQuote'
+        controller: 'HistQuoteController',
+        controllerAs: 'vm',
+        access: {
+          restricted: false
+        }
       })
       .when('/chart', {
         templateUrl: 'views/chart.html',
-        controller: 'ChartCtrl',
-        controllerAs: 'chart'
+        controller: 'ChartController',
+        controllerAs: 'vm',
+        access: {
+          restricted: false
+        }
       })
       .when('/register', {
         templateUrl: 'views/register.html',
-        controller: 'RegisterCtrl',
-        controllerAs: 'register'
+        controller: 'RegisterController',
+        controllerAs: 'vm',
+        access: {
+          restricted: false
+        }
+      })
+      .when('/portfolio', {
+        templateUrl: 'views/portfolio.html',
+        controller: 'PortfolioController',
+        controllerAs: 'vm',
+        access: {
+          restricted: true
+        }
       })
       .otherwise({
         redirectTo: '/'
       });
       // Fix Hashbang in path
       $locationProvider.hashPrefix('');
+  }
+
+
+function run($rootScope, $location, $window, AuthFactory) {
+  $rootScope.$on('$routeChangeStart', function(event, nextRoute, currentRoute) {
+    if (nextRoute.access !== undefined && nextRoute.access.restricted && !$window.sessionStorage.token && !AuthFactory.isLoggedIn) {
+      event.preventDefault();
+      $location.path('/');
+    }
   });
+}

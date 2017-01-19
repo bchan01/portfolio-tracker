@@ -1,10 +1,7 @@
 'use strict';
+angular.module('portfolioTrackerApp').controller('PortfolioController', PortfolioController);
 
-angular.module('portfolioTrackerApp')
-  .controller('PortfolioCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+function PortfolioController($http) {
+  var vm = this;
+  vm.title = 'User Portfolios';
+}

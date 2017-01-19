@@ -1,10 +1,7 @@
 'use strict';
+angular.module('portfolioTrackerApp').controller('RegisterController', RegisterController);
 
-angular.module('portfolioTrackerApp')
-  .controller('RegisterCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+function RegisterController($http) {
+  var vm = this;
+  vm.title = 'Register New User';
+}

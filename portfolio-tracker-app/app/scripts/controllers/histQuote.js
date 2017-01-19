@@ -1,10 +1,8 @@
 'use strict';
+angular.module('portfolioTrackerApp').controller('HistQuoteController', HistQuoteController);
 
-angular.module('portfolioTrackerApp')
-  .controller('HistQuoteCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+function HistQuoteController($http) {
+  var vm = this;
+  vm.title = 'Historical Stock Prices';
+}
+

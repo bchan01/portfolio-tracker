@@ -1,10 +1,7 @@
 'use strict';
+angular.module('portfolioTrackerApp').controller('ChartController', ChartController);
 
-angular.module('portfolioTrackerApp')
-  .controller('ChartCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+function ChartController($http) {
+  var vm = this;
+  vm.title = 'Stock Price Chart and Trends';
+}

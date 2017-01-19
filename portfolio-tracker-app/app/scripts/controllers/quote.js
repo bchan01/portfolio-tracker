@@ -1,10 +1,8 @@
 'use strict';
+angular.module('portfolioTrackerApp').controller('QuoteController', QuoteController);
 
-angular.module('portfolioTrackerApp')
-  .controller('QuoteCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+function QuoteController($http) {
+  var vm = this;
+  vm.title = 'Delayed Stock Quote';
+}
+

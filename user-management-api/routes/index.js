@@ -19,7 +19,7 @@ router
 router
   .route('/users')
   .get(usersCtrl.getAll)
-  .post(authCheck, usersCtrl.add);
+  .post(usersCtrl.add);
   
 router
   .route('/users/:username')

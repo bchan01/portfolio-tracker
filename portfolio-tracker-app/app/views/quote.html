@@ -1,1 +1,14 @@
 <h3>{{ vm.title }}</h3>
+<div ng-if="vm.error" class="alert alert-danger" role="alert">
+  {{ vm.error }}
+</div>
+<form ng-hide="vm.message" name="quote" ng-submit="vm.quote()">
+     <div>
+        <span><label for="username">Symbols:</label></span>
+        <span><input type="text" class="form-control input-sm" placeholder="symbols" ng-model="vm.symbols" autocapitalize="none"></span>
+        <span><button type="submit" class="btn btn-sm btn-success">Go</button></span>
+      </div>
+</form>
+
+ 
+

@@ -1,14 +1,18 @@
-<h3>{{ vm.title }}</h3>
-<div ng-if="vm.error" class="alert alert-danger" role="alert">
-  {{ vm.error }}
-</div>
-<form ng-hide="vm.message" name="quote" ng-submit="vm.quote()">
-     <div>
-        <span><label for="username">Symbols:</label></span>
-        <span><input type="text" class="form-control input-sm" placeholder="symbols" ng-model="vm.symbols" autocapitalize="none"></span>
-        <span><button type="submit" class="btn btn-sm btn-success">Go</button></span>
-      </div>
+<h3>Delayed Stock Quotes</h3>
+<br><br>
+<form name="quote" ng-submit="vm.getData()">
+  <div class="form-group form-inline" width="50%">                            
+      <label for="symbols" class="lb lb-md">Symbols: </label>
+      <input type="text" class="form-control input-sm" id="symbols" ng-model="vm.symbols" placeholder="symnols" autocapitalize="none">
+      <button type="submit" class="btn btn-sm btn-success">Go</button>
+  </div>
 </form>
 
- 
+<div>
+<table>
+  <tr ng-repeat="result in vm.results track by $index">
+    <td>{{ result.symbol }}</td>
+  </tr>
+</table>
+</div>
 

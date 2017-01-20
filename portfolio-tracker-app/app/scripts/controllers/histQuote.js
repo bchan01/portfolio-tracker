@@ -3,6 +3,15 @@ angular.module('portfolioTrackerApp').controller('HistQuoteController', HistQuot
 
 function HistQuoteController($http) {
   var vm = this;
-  vm.title = 'Historical Stock Prices';
+
+   vm.getData = function() {
+    vm.results = [];
+    if (vm.symbol) {
+       for (var i = 0; i < 20; i++) { 
+           vm.results.push({'entry' : i, 'price': 10+i});
+        }
+    } 
+   
+  }
 }
 

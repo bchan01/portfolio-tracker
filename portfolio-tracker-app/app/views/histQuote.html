@@ -1,2 +1,17 @@
-<h3>{{ vm.title }}</h3>
+<h3>Historical Stock Prices</h3>
+<br><br>
+<form name="histQuote" ng-submit="vm.getData()">
+  <div class="form-group form-inline" width="50%">                            
+      <label for="symbol" class="lb lb-md">Symbol: </label>
+      <input type="text" class="form-control input-sm" id="symbol" ng-model="vm.symbol" placeholder="symnol" autocapitalize="none">
+      <button type="submit" class="btn btn-sm btn-success">Go</button>
+  </div>
+</form>
 
+<div>
+<table>
+  <tr ng-repeat="result in vm.results track by $index">
+    <td>{{ result.price }}</td>
+  </tr>
+</table>
+</div>

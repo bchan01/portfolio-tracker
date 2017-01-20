@@ -30,7 +30,5 @@ function RegisterController($http, AppConfig) {
       }
     }
   }
-  vm.startRegister = function() {
-  
-  }
+ 
 };

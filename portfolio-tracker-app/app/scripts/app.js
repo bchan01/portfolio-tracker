@@ -53,6 +53,14 @@ function config($httpProvider, $routeProvider, $locationProvider) {
           restricted: false
         }
       })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginController',
+        controllerAs: 'vm',
+        access: {
+          restricted: false
+        }
+      })
       .when('/portfolio', {
         templateUrl: 'views/portfolio.html',
         controller: 'PortfolioController',

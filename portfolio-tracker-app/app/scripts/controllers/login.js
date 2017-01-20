@@ -12,7 +12,9 @@ function LoginController($http, $location, $window, AuthFactory, jwtHelper, AppC
   };
 
   vm.login = function() {
-    if (vm.username && vm.userPassword) {
+   if (!vm.username || !vm.userPassword) {
+      vm.error = 'User and Password are both required.'
+    } else  {
       var user = {
         username: vm.username,
         userPassword: vm.userPassword
@@ -25,9 +27,11 @@ function LoginController($http, $location, $window, AuthFactory, jwtHelper, AppC
           var token = $window.sessionStorage.token;
           //var decodedToken = jwtHelper.decodeToken(token);
           vm.loggedInUser = response.data.data.username;
+          $location.path('/');
         }
       }).catch(function(error) {
         console.log(error);
+        vm.error = 'Login failed, please try again.'
       })
     
     }

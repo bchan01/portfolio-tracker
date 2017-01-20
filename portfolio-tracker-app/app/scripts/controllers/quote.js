@@ -3,6 +3,16 @@ angular.module('portfolioTrackerApp').controller('QuoteController', QuoteControl
 
 function QuoteController($http) {
   var vm = this;
-  vm.title = 'Delayed Stock Quote';
+  
+  vm.getData = function() {
+    vm.results = [];
+    if (vm.symbols) {
+       var inputs = vm.symbols.split(",");
+       for (var i in inputs) {
+          vm.results.push({'entry': i, 'symbol':inputs[i]});
+       }
+    } 
+   
+  }
 }
 

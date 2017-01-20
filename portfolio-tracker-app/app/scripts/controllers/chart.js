@@ -3,5 +3,12 @@ angular.module('portfolioTrackerApp').controller('ChartController', ChartControl
 
 function ChartController($http) {
   var vm = this;
-  vm.title = 'Stock Price Chart and Trends';
+  vm.getData = function() {
+    vm.result = '';
+    if (vm.symbol) {
+      vm.result = 'TODO -- show chart for ' + vm.symbol;
+    } 
+   
+  }
+   
 }

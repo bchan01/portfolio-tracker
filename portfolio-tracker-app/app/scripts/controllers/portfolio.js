@@ -3,5 +3,5 @@ angular.module('portfolioTrackerApp').controller('PortfolioController', Portfoli
 
 function PortfolioController($http) {
   var vm = this;
-  vm.title = 'User Portfolios';
+
 }

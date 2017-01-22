@@ -32,7 +32,10 @@ function financeDataService($http, AppConfig) {
   }
 
   function getChart(symbol) {
-    //return $http.post('/api/hotels/' + id + '/reviews', review).then(complete).catch(failed);
+    return $http.get(AppConfig.financeAPI + '/stocks/charts/url?symbol=' + symbol
+       + '&range=max&type=line&scale=arithmetic&size=medium'
+      ).then(complete)
+      .catch(failed);
   }
 
   function complete(response) {

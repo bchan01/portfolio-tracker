@@ -23,6 +23,9 @@ router
 router
   .route('/stocks/charts')
   .get(chartCtrl.get);
+router
+  .route('/stocks/charts/url')
+  .get(chartCtrl.getURL);
 
 // Symbol Lookup
 router

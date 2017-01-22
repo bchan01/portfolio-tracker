@@ -8,6 +8,6 @@
   </div>
 </form>
 
-<div>
-  {{ vm.result }}
+<div ng-if="vm.result">
+   <img src="{{vm.result}}" alt="Stock Chart"/>
 </div>

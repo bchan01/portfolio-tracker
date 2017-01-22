@@ -1,17 +1,19 @@
 'use strict';
 angular.module('portfolioTrackerApp').controller('HistQuoteController', HistQuoteController);
 
-function HistQuoteController($http) {
+function HistQuoteController($http, financeDataService) {
   var vm = this;
 
-   vm.getData = function() {
+   vm.getData = function(symbol) {
     vm.results = [];
     if (vm.symbol) {
-       for (var i = 0; i < 20; i++) { 
-           vm.results.push({'entry' : i, 'price': 10+i});
-        }
+       financeDataService.getHistQuote(vm.symbol).then(function(response) {
+          console.log(response);
+          if (response.data.outcome.code == 200) {
+              vm.results = response.data.data;
+          }
+      });
     } 
-   
   }
 }
 

@@ -3,16 +3,48 @@
 <form name="quote" ng-submit="vm.getData()">
   <div class="form-group form-inline" width="50%">                            
       <label for="symbols" class="lb lb-md">Symbols: </label>
-      <input type="text" class="form-control input-sm" id="symbols" ng-model="vm.symbols" placeholder="symnols" autocapitalize="none">
+      <input type="text" class="form-control input-sm" id="symbols" ng-model="vm.symbols" placeholder="symbols" autocapitalize="none">
       <button type="submit" class="btn btn-sm btn-success">Go</button>
   </div>
 </form>
 
-<div>
-<table>
+<div ng-if="vm.results.length > 0">
+<table border="1">
+ <tr>
+    <th>Symbol</th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Date</th>
+    <th>Time</th>
+    <th>Change</th>
+    <th>% Change</th>
+    <th>Bid</th>
+    <th>Ask</th>
+    <th>Day High</th>
+    <th>Day Low</th>
+    <th>52 Week High</th>
+    <th>52 Week Low</th>
+    <th>Open</th>
+    <th>Previous Close</th>
+    <th>Volume</th>
+  </tr>
   <tr ng-repeat="result in vm.results track by $index">
     <td>{{ result.symbol }}</td>
+    <td>{{ result.name }}</td>
+    <td>{{ result.price }}</td>
+    <td>{{ result.date }}</td>
+    <td>{{ result.time }}</td>
+    <td>{{ result.change }}</td>
+    <td>{{ result.changePercent }}</td>
+    <td>{{ result.bid }}</td>
+    <td>{{ result.ask }}</td>
+    <td>{{ result.daysHigh }}</td>
+    <td>{{ result.daysLow }}</td>
+    <td>{{ result.high52Weeks }}</td>
+    <td>{{ result.low52Weeks }}</td>
+    <td>{{ result.open }}</td>
+    <td>{{ result.previousClose }}</td>
+    <td>{{ result.volume }}</td>
   </tr>
 </table>
 </div>
-

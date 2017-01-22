@@ -3,15 +3,31 @@
 <form name="histQuote" ng-submit="vm.getData()">
   <div class="form-group form-inline" width="50%">                            
       <label for="symbol" class="lb lb-md">Symbol: </label>
-      <input type="text" class="form-control input-sm" id="symbol" ng-model="vm.symbol" placeholder="symnol" autocapitalize="none">
+      <input type="text" class="form-control input-sm" id="symbol" ng-model="vm.symbol" placeholder="symbol" autocapitalize="none">
       <button type="submit" class="btn btn-sm btn-success">Go</button>
   </div>
 </form>
 
-<div>
-<table>
+
+<div ng-if="vm.results.length > 0">
+<table border="1">
+ <tr>
+    <th>Date</th>
+    <th>Open</th>
+    <th>High</th>
+    <th>Low</th>
+    <th>Close</th>
+    <th>Adjusted Close</th>
+    <th>Volume</th>
+  </tr>
   <tr ng-repeat="result in vm.results track by $index">
-    <td>{{ result.price }}</td>
+    <td>{{ result.date }}</td>
+    <td>{{ result.open }}</td>
+    <td>{{ result.high }}</td>
+    <td>{{ result.low }}</td>
+    <td>{{ result.close }}</td>
+    <td>{{ result.adjustedClose }}</td>
+    <td>{{ result.volume }}</td>
   </tr>
 </table>
 </div>

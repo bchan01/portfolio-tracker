@@ -22,7 +22,7 @@ function LoginController($http, $location, $window, AuthFactory, jwtHelper, AppC
       $http.post(AppConfig.userAPI +"/tokens", user).then(function(response) {
         console.log(response);
         if (response.data.outcome.code == 200) {
-          $window.sessionStorage.token = response.data.token;
+          $window.sessionStorage.token = response.data.data.token;
           AuthFactory.isLoggedIn = true;
           var token = $window.sessionStorage.token;
           //var decodedToken = jwtHelper.decodeToken(token);

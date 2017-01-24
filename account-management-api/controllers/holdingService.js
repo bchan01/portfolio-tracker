@@ -179,11 +179,13 @@ var calculateHoldingGains = function(holdings) {
             if (!error && response.statusCode == 200) {
                 var stockQuotes = quoteProcessor.processResponse(body);
                 // Build map of stock price keyed by symbol
-                var stockQuotesBySymbol = _.zipObject(_.pluck(stockQuotes, 'symbol'), _.pluck(stockQuotes, 'price'));
+                var priceBySymbol = _.zipObject(_.pluck(stockQuotes, 'symbol'), _.pluck(stockQuotes, 'price'));
+                var changeBySymbol = _.zipObject(_.pluck(stockQuotes, 'symbol'), _.pluck(stockQuotes, 'change'));
                 // Populate holdings ....
                 var holdingValues  = [];
                 holdings.forEach( function (holding) {
-                    var price = stockQuotesBySymbol[holding.symbol];
+                    holding['change'] = changeBySymbol[holding.symbol];
+                    var price = priceBySymbol[holding.symbol];
                     holding['price'] = parseFloat(price).toFixed(2);
                     holding['marketValue'] = (holding.shares * holding.price).toFixed(2);
                     holding['cost'] = (holding.shares * holding.purchasePrice + holding.commission).toFixed(2);

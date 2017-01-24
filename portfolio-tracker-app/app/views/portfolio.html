@@ -1,2 +1,45 @@
 <h3>User Investment Portfolios</h3>
+<div class="form-group">
+     <select name="name"
+             id="id" 
+             ng-model="vm.portfolio" 
+             ng-options="p as p.name for p in vm.portfolios"
+             class="form-control" 
+             ng-change="vm.getHoldings()">
+     </select>
+</div>
 
+<div ng-if="vm.message" class="alert alert-info" role="alert">
+  <p>{{ vm.message }}</p>
+</div>
+
+<div ng-if="vm.holdings && vm.holdings.length > 0">
+<table border="1">
+ <tr>
+    <th>Symbol</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Change</th>
+    <th>Market Value</th>
+    <th>Loss/Gain</th>
+    <th>Shares</th>
+    <th>Purchase Price</th>
+    <th>Trade Date</th>
+    <th>Commission</th>
+    <th>Cost</th>
+  </tr>
+  <tr ng-repeat="result in vm.holdings track by $index">
+    <td>{{ result.symbol }}</td>
+    <td>{{ result.description }}</td>
+    <td>{{ result.price }}</td>
+    <td>{{ result.change }}</td>
+    <td>{{ result.marketValue }}</td>
+    <td>{{ result.gain}}</td>
+    <td>{{ result.shares }}</td>
+    <td>{{ result.purchasePrice }}</td>
+    <td>{{ result.tradeDate }}</td>
+    <td>{{ result.commission }}</td>
+    <td>{{ result.cost }}</td>
+  </tr>
+</table>
+</div>

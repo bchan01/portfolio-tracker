@@ -48,6 +48,9 @@ var mongoose = require('mongoose'),
   *       price:
   *         type: number
   *         format: double
+  *       change:
+  *         type: number
+  *         format: double
   *       cost:
   *         type: number
   *         format: double
@@ -66,6 +69,7 @@ var mongoose = require('mongoose'),
     tradeDate :  { type: Date, required: true},
     commission : { type: Number, required: true, min : 0, default : 0.0 },
     price : {type : Number},
+    change : {type : Number},
     cost : { type: Number},
     marketValue : { type: Number},
     gain : {type : Number}

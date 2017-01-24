@@ -18,7 +18,7 @@ This project is a work in progress. Features implemented so far are listed below
 * user-management-api: manages users
 * account-management-api: manage user accounts
 * finance-api: retrieve financial data
-* portfolio-tracker-web: web application to be developed
+* portfolio-tracker-app: angular web app consuming the above microservices
 
 ![Swagger Docs](docs/architecture.png)
 
@@ -43,17 +43,21 @@ This project is a work in progress. Features implemented so far are listed below
 
 ---------------------------------------
 ### Build and Run Locally ###
-* Build project by running "npm install"
+* Build API projects by running "npm install"
 * Create and seed database by runnning "/scripts/init.js"
 * Start API by running "node server" or "nodemon server"
-* API Base URL: 
+* Build Web App project by running "npm install" and then "bower install"
+* Start Web Application by running "grunt serve"
+* API and Web Application URL: 
   * user-management-api: [http://localhost:3001/user-management/api](http://localhost:3001/user-management/api)
   * account-management-api: [http://localhost:3002/account-management/api](http://localhost:3002/account-management/api)
   * finance-api: [http://localhost:3003/finance/api](http://localhost:3003/finance/api)
+  * portfolio-tracker-app: [http://localhost:4000](http://localhost:4000)
 
 ---------------------------------------
 ### Deploy and Run Microservices using NGINX ###
-NGINX can be used to proxy requests to all API's. This is one way to enable Web App to seamlessly consume REST API served from a different origin. Otherwise, it will encounter CORS issue (Cross-Origin Resource Sharing). 
+NGINX can be used to proxy requests to all API's. This is one way to enable Web App to seamlessly consume REST API served from a different origin. 
+Otherwise, it will encounter CORS issue (Cross-Origin Resource Sharing). 
 
 * Install NGINX
 * copy '/scripts/nginx.conf' to your local installation (ex: /usr/local/etc/nginx/nginx.conf)
@@ -63,6 +67,7 @@ NGINX can be used to proxy requests to all API's. This is one way to enable Web 
   * User Management: [http://localhost/user-management/api/docs](http://localhost/user-management/api/docs)
   * Account-Management: [http://localhost/account-management/api/docs](http://localhost/account-management/api/docs)
   * Financial Data: [http://localhost/finance/api/docs](http://localhost/finance/api/docs)
+  * Web Application: [http://localhost/](http://localhost)
   
 ### Using Vagrant to Create VM to host Microservices ###
 Vagrant can be used to spin up a VM to host Portfolio Tracker Mircoservices with NGINX. Refer to [portfolio-tracker-vagrant project](https://github.com/bchan01/portfolio-tracker-vagrant)
@@ -81,4 +86,16 @@ Q | handle Async callbacks
 lodash | useful utilities
 papaparse | convert CSV to JSON
 grunt swagger-docs | generate swagger
+
+---------------------------------------
+### Web Application Implementation Overview ###
+Portfolio Tracker Web Application is a single-page Web App implemented in Angular, the following components are used:
+
+Component | Usage
+------------- | -------------
+grunt | serve web application (locally)
+grunt-connect-proxy | proxy request to API's (work around CORS issues)
+angular-jwt  | deals with JWT token
+angular-smart-table | table display
+bootstrap, font-awesome | styling
 

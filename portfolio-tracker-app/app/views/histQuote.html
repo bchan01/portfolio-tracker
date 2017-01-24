@@ -13,24 +13,28 @@
 </div>
 
 <div ng-if="vm.results.length > 0">
-<table border="1">
- <tr>
-    <th>Date</th>
+<table st-table="vm.results" class="table table-striped">
+	<thead>
+	<tr>
+		<th>Date</th>
     <th>Open</th>
     <th>High</th>
     <th>Low</th>
     <th>Close</th>
     <th>Adjusted Close</th>
     <th>Volume</th>
-  </tr>
-  <tr ng-repeat="result in vm.results track by $index">
-    <td>{{ result.date }}</td>
+	</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="result in vm.results track by $index">
+	  <td>{{ result.date | date : 'yyyy-MM-dd'}}</td>
     <td>{{ result.open }}</td>
     <td>{{ result.high }}</td>
     <td>{{ result.low }}</td>
     <td>{{ result.close }}</td>
     <td>{{ result.adjustedClose }}</td>
     <td>{{ result.volume }}</td>
-  </tr>
+	</tr>
+	</tbody>
 </table>
 </div>

@@ -8,7 +8,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'angular-jwt'
+    'angular-jwt',
+    'smart-table'
   ]).config(config).run(run);
 
 function config($httpProvider, $routeProvider, $locationProvider) {

@@ -14,9 +14,10 @@
 </div>
 
 <div ng-if="vm.holdings && vm.holdings.length > 0">
-<table border="1">
- <tr>
-    <th>Symbol</th>
+<table st-table="vm.holdings" class="table table-striped">
+	<thead>
+	<tr>
+	  <th>Symbol</th>
     <th>Description</th>
     <th>Price</th>
     <th>Change</th>
@@ -27,9 +28,11 @@
     <th>Trade Date</th>
     <th>Commission</th>
     <th>Cost</th>
-  </tr>
-  <tr ng-repeat="result in vm.holdings track by $index">
-    <td>{{ result.symbol }}</td>
+	</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="result in vm.holdings track by $index">
+	  <td>{{ result.symbol }}</td>
     <td>{{ result.description }}</td>
     <td>{{ result.price }}</td>
     <td>{{ result.change }}</td>
@@ -37,9 +40,10 @@
     <td>{{ result.gain}}</td>
     <td>{{ result.shares }}</td>
     <td>{{ result.purchasePrice }}</td>
-    <td>{{ result.tradeDate }}</td>
+    <td>{{ result.tradeDate | date : 'yyyy-MM-dd' }}</td>
     <td>{{ result.commission }}</td>
     <td>{{ result.cost }}</td>
-  </tr>
+	</tr>
+	</tbody>
 </table>
 </div>

@@ -13,9 +13,10 @@
 </div>
 
 <div ng-if="vm.results.length > 0">
-<table border="1">
- <tr>
-    <th>Symbol</th>
+<table st-table="vm.results" class="table table-striped">
+	<thead>
+	<tr>
+		<th>Symbol</th>
     <th>Name</th>
     <th>Price</th>
     <th>Date</th>
@@ -31,12 +32,14 @@
     <th>Open</th>
     <th>Previous Close</th>
     <th>Volume</th>
-  </tr>
-  <tr ng-repeat="result in vm.results track by $index">
-    <td>{{ result.symbol }}</td>
+	</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="result in vm.results track by $index">
+	  <td>{{ result.symbol }}</td>
     <td>{{ result.name }}</td>
     <td>{{ result.price }}</td>
-    <td>{{ result.date }}</td>
+    <td>{{ result.date | date : 'yyyy-MM-dd'}}</td>
     <td>{{ result.time }}</td>
     <td>{{ result.change }}</td>
     <td>{{ result.changePercent }}</td>
@@ -49,6 +52,7 @@
     <td>{{ result.open }}</td>
     <td>{{ result.previousClose }}</td>
     <td>{{ result.volume }}</td>
-  </tr>
+	</tr>
+	</tbody>
 </table>
 </div>

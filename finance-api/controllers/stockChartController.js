@@ -2,7 +2,7 @@
 
 var config = require('../config/config'),
     commonUtils = require('common-api-utils'),
-    responseHandler = commonUtils.auditableResponseHandler,
+    responseHandler = commonUtils.responseHandler,
     request = require("request");
 
 const timeout = config.financeAPI.requestTimeout;

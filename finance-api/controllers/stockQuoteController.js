@@ -4,7 +4,7 @@
  	config = require('../config/config'),
     stockQuoteFields = require('../config/stockQuoteFields'),
     commonUtils = require('common-api-utils'),
-    responseHandler = commonUtils.auditableResponseHandler,
+    responseHandler = commonUtils.responseHandler,
     request = require('request'),
      _ = require('lodash');
 

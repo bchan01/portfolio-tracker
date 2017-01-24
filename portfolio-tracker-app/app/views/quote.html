@@ -8,6 +8,10 @@
   </div>
 </form>
 
+<div ng-if="vm.message" class="alert alert-info" role="alert">
+  <p>{{ vm.message }}</p>
+</div>
+
 <div ng-if="vm.results.length > 0">
 <table border="1">
  <tr>

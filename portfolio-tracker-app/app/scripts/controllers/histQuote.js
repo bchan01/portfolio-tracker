@@ -6,12 +6,15 @@ function HistQuoteController($http, financeDataService) {
 
    vm.getData = function(symbol) {
     vm.results = [];
+    vm.message = null;
     if (vm.symbol) {
        financeDataService.getHistQuote(vm.symbol).then(function(response) {
           console.log(response);
-          if (response.data.outcome.code == 200) {
-              vm.results = response.data.data;
-          }
+          if (response.status === 200) {
+              vm.results = response.data;
+          } else {
+            vm.message = response.message;
+        }
       });
     } 
   }

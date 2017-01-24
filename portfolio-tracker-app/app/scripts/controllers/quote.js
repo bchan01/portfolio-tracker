@@ -6,12 +6,15 @@ function QuoteController($http, financeDataService) {
   
   vm.getData = function() {
     vm.results = [];
+    vm.message = null;
     if (vm.symbols) {
        financeDataService.getQuote(vm.symbols).then(function(response) {
           console.log(response);
-          if (response.data.outcome.code == 200) {
-              vm.results = response.data.data;
-          }
+          if (response.status === 200) {
+              vm.results = response.data;
+          } else {
+            vm.message = response.message;
+        }
       });
     } 
   }

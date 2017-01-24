@@ -7,7 +7,9 @@
       <button type="submit" class="btn btn-sm btn-success">Go</button>
   </div>
 </form>
-
+<div ng-if="vm.message" class="alert alert-info" role="alert">
+  <p>{{ vm.message }}</p>
+</div>
 <div ng-if="vm.result">
    <img src="{{vm.result}}" alt="Stock Chart"/>
 </div>

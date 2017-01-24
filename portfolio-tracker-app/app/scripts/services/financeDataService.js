@@ -7,10 +7,38 @@ function financeDataService($http, AppConfig) {
     getChart: getChart
   };
 
-  function getQuote(symbols) {
-    return $http.get(AppConfig.financeAPI + '/stocks/quotes?symbols=' + symbols).then(complete).catch(failed);
+  function success(response) {
+    console.log('financeDataService Success - status:' + response.status);
+    console.log(response);
+    return {status : response.status , data : response.data.data};
   }
 
+  function error(response) {
+    console.log('financeDataService Error - status:' + response.status);
+    console.log(response);
+    var res = {status: response.status};
+    if (response.data.outcome) {
+      if (response.data.outcome.message) {
+         res.message = response.data.outcome.message;
+      }
+      if (response.data.outcome.errors) {
+         res.errors = response.data.outcome.errors;
+      }
+    }
+    return res;
+  }
+
+  /**
+   * Get delayed quotes for a given list of symbols
+   */
+  function getQuote(symbols) {
+    return $http.get(AppConfig.financeAPI + '/stocks/quotes?symbols=' + symbols)
+      .then(success, error);
+  }
+
+  /**
+   * Get historical quotes for a given symbol
+   */
   function getHistQuote(symbol) {
     //TODO -- refactor hacky codes below
     var today = new Date();
@@ -27,23 +55,16 @@ function financeDataService($http, AppConfig) {
 
     return $http.get(AppConfig.financeAPI + '/stocks/historicalQuotes?symbol=' + symbol
        + '&frequency=daily&startDate=01-01-2000&endDate=' + endDate
-      ).then(complete)
-      .catch(failed);
+      ).then(success, error);
   }
 
+  /**
+   * Get chart as image for a given symbol
+   */
   function getChart(symbol) {
     return $http.get(AppConfig.financeAPI + '/stocks/charts/url?symbol=' + symbol
        + '&range=max&type=line&scale=arithmetic&size=medium'
-      ).then(complete)
-      .catch(failed);
-  }
-
-  function complete(response) {
-    return response;
-  }
-
-  function failed(error) {
-    console.log(error.statusText);
+      ).then(success, error);
   }
 
 }

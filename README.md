@@ -97,5 +97,5 @@ grunt | serve web application (locally)
 grunt-connect-proxy | proxy request to API's (work around CORS issues)
 angular-jwt  | deals with JWT token
 angular-smart-table | table display
-bootstrap, font-awesome | styling
+bootstrap | styling
 

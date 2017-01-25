@@ -43,8 +43,8 @@
     <td>{{ result.price }}</td>
     <td>{{ result.date | date : 'yyyy-MM-dd'}}</td>
     <td>{{ result.time }}</td>
-    <td>{{ result.change }}</td>
-    <td>{{ result.changePercent }}</td>
+    <td ng-class="{'price-down': result.change < 0 , 'price-up': result.change >= 0}">{{ result.change }}</td>
+    <td  ng-class="{'price-down': result.changePercent.startsWith('-') , 'price-up': result.changePercent.startsWith('+')}">{{ result.changePercent }}</td>
     <td>{{ result.bid }}</td>
     <td>{{ result.ask }}</td>
     <td>{{ result.daysHigh }}</td>

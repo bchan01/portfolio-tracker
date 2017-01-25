@@ -2,3 +2,28 @@
 <p class="text-muted">
    <img src="/images/stocks.jpg" alt="Portfoloi Tracker App"/>
 </p>
+
+<div ng-if="vm.message" class="alert alert-info" role="alert">
+  <p>{{ vm.message }}</p>
+</div>
+
+<div ng-if="vm.results.length > 0">
+<table st-table="vm.results" class="table table-striped">
+	<thead>
+	<tr>
+	<th>Name</th>
+    <th>Price</th>
+    <th>Change</th>
+    <th>Change %</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="result in vm.results track by $index">
+    <td>{{ result.name }}</td>
+    <td>{{ result.price }}</td>
+    <td ng-class="{'price-down': result.change < 0 , 'price-up': result.change >= 0}">{{ result.change }}</td>
+    <td  ng-class="{'price-down': result.changePercent.startsWith('-') , 'price-up': result.changePercent.startsWith('+')}">{{ result.changePercent }}</td>
+	</tr>
+	</tbody>
+</table>
+</div>

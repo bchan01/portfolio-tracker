@@ -9,7 +9,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'angular-jwt',
-    'smart-table'
+    'smart-table',
+    'ui.bootstrap'
   ]).config(config).run(run);
 
 function config($httpProvider, $routeProvider, $locationProvider) {
@@ -17,6 +18,14 @@ function config($httpProvider, $routeProvider, $locationProvider) {
       .when('/', {
         templateUrl: 'views/home.html',
         controller: 'HomeController',
+        controllerAs: 'vm',
+        access: {
+          restricted: false
+        }
+      })
+      .when('/lookup', {
+        templateUrl: 'views/symbolLookup.html',
+        controller: 'SymbolLookupController',
         controllerAs: 'vm',
         access: {
           restricted: false

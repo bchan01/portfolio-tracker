@@ -1,0 +1,36 @@
+<h3>Symbol Lookup</h3>
+<div class="container">
+<br>
+<form class="form-inline" name="symbolLookup" ng-submit="vm.getSymbol()">
+    <div class="form-group">
+      <label for="name" class="control-label">Name:&nbsp;</label>
+      <input type="text" class="form-control" id="name" ng-model="vm.name" placeholder="name" autocapitalize="none">
+    </div>
+    <button type="submit" class="btn btn-success">Go</button>
+</form>
+</div>
+
+<div ng-if="vm.message" class="alert alert-info" role="alert">
+  <p>{{ vm.message }}</p>
+</div>
+
+<div ng-if="vm.results.length > 0">
+<table st-table="vm.results" class="table table-striped">
+	<thead>
+	<tr>
+		<th>Symbol</th>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Exchange</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="result in vm.results track by $index">
+	  <td>{{ result.symbol}}</td>
+    <td>{{ result.name }}</td>
+    <td>{{ result.type }}</td>
+    <td>{{ result.exchange }}</td>
+	</tr>
+	</tbody>
+</table>
+</div>

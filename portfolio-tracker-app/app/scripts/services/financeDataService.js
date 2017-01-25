@@ -4,7 +4,8 @@ function financeDataService($http, AppConfig) {
   return {
     getQuote: getQuote,
     getHistQuote: getHistQuote,
-    getChart: getChart
+    getChart: getChart,
+    lookupSymbols : lookupSymbols
   };
 
   function success(response) {
@@ -65,6 +66,15 @@ function financeDataService($http, AppConfig) {
     return $http.get(AppConfig.financeAPI + '/stocks/charts/url?symbol=' + symbol
        + '&range=max&type=line&scale=arithmetic&size=medium'
       ).then(success, error);
+  }
+
+
+  /**
+   * Lookup Symbol with given name
+   */
+  function lookupSymbols(name) {
+    return $http.get(AppConfig.financeAPI + '/stocks/symbols?name=' + name)
+      .then(success, error);
   }
 
 }

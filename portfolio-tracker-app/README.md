@@ -2,7 +2,7 @@
 
 This Single-Page Angular Web application manages and tracks performances of investment portfolios. 
 
-## Build & development
+#### Build & development ####
 
 * npm install
 * bower install

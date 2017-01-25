@@ -1,12 +1,15 @@
 <h3>Stock Price Chart</h3>
-<br><br>
-<form name="chart" ng-submit="vm.getData()">
-  <div class="form-group form-inline" width="50%">                            
-      <label for="symbol" class="lb lb-md">Symbol: </label>
-      <input type="text" class="form-control input-sm" id="symbol" ng-model="vm.symbol" placeholder="symbol" autocapitalize="none">
-      <button type="submit" class="btn btn-sm btn-success">Go</button>
-  </div>
+<div class="container">
+<br>
+<form class="form-inline" name="chart" ng-submit="vm.getData()">
+    <div class="form-group">
+      <label for="symbol" class="control-label">Symbol:&nbsp;</label>
+      <input type="text" class="form-control" id="symbol" ng-model="vm.symbol" placeholder="symbol" autocapitalize="none">
+    </div>
+    <button type="submit" class="btn btn-success">Go</button>
 </form>
+</div>
+
 <div ng-if="vm.message" class="alert alert-info" role="alert">
   <p>{{ vm.message }}</p>
 </div>

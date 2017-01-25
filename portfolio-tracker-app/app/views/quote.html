@@ -1,12 +1,14 @@
 <h3>Delayed Stock Quotes</h3>
-<br><br>
-<form name="quote" ng-submit="vm.getData()">
-  <div class="form-group form-inline" width="50%">                            
-      <label for="symbols" class="lb lb-md">Symbols: </label>
-      <input type="text" class="form-control input-sm" id="symbols" ng-model="vm.symbols" placeholder="symbols" autocapitalize="none">
-      <button type="submit" class="btn btn-sm btn-success">Go</button>
-  </div>
+<div class="container">
+<br>
+<form class="form-inline" name="quote" ng-submit="vm.getData()">
+    <div class="form-group">
+      <label for="symbols" class="control-label">Symbols:&nbsp;</label>
+      <input type="text" class="form-control" id="symbols" ng-model="vm.symbols" placeholder="symbols" autocapitalize="none">
+    </div>
+    <button type="submit" class="btn btn-success">Go</button>
 </form>
+</div>
 
 <div ng-if="vm.message" class="alert alert-info" role="alert">
   <p>{{ vm.message }}</p>

@@ -1,12 +1,11 @@
-# portfolio-tracker-app
+# Portfolio Tracker Web Application #
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.15.1.
+This Single-Page Angular Web application manages and tracks performances of investment portfolios. 
 
 ## Build & development
 
-Run `grunt` for building and `grunt serve` for preview.
+* npm install
+* bower install
+* grunt serve
 
-## Testing
-
-Running `grunt test` will run the unit tests with karma.
+![Swagger Docs](portfolio-tracker-app.png)

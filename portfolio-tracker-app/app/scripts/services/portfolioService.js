@@ -3,7 +3,8 @@ angular.module('portfolioTrackerApp').factory('portfolioService', portfolioServi
 function portfolioService($http, $window, AppConfig) {
   return {
     getPortfolios: getPortfolios,
-    getHoldings: getHoldings
+    getHoldings: getHoldings,
+    deleteHolding: deleteHolding
   };
 
   function success(response) {
@@ -58,6 +59,24 @@ function portfolioService($http, $window, AppConfig) {
       }
     }).then(success, error);
   }
+
+  /**
+   * Get holdings for a given portfolio
+   */
+  function deleteHolding(portfolioId, holdingId) {
+    console.log('portfolioService.deleteHolding() for portfolio:' + portfolioId + ' and holdingId:' + holdingId);
+    var token = $window.sessionStorage.token;
+    return $http({
+      method: 'DELETE',
+      url: AppConfig.accountAPI + '/portfolios/' + portfolioId + '/holdings/' + holdingId,
+      headers: {
+        'x-access-token': token,
+        'Accept': 'application/json'
+      }
+    }).then(success, error);
+  }
+
+
 
  
 

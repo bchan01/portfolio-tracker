@@ -51,10 +51,22 @@ function PortfolioController($http, portfolioService) {
                 break;
             }
         }
-        if( index === -1 ) {
-            alert( "Something gone wrong" );
-        }
-        vm.holdings.splice( index, 1 );	
+        //if( index === -1 ) {
+       //     alert( "Something gone wrong" );
+       // }
+       // vm.holdings.splice( index, 1 );	
+       if (index === -1) {
+           return;
+       }
+       portfolioService.deleteHolding(vm.portfolio.id, holdingId).then(function(response) {
+            if (response.status === 200) {
+                vm.message = null;
+            } else {
+                vm.message = response.message;
+            }
+        });
+        // Reload Holdings
+        vm.getHoldings();
     }
 
     /**

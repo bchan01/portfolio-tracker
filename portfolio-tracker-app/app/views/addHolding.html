@@ -1,0 +1,44 @@
+<form class="form-horizontal" name="addHolding" ng-submit="vm.addHolding()">
+    <div class="form-group">
+      <label for="symbol" class="control-label col-sm-2">Symbol:&nbsp;</label>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" id="symbol" ng-model="vm.symbol" placeholder="symbol" autocapitalize="none">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="description" class="control-label col-sm-2">Description:&nbsp;</label>
+      <div class="col-sm-3">
+      <input type="text" class="form-control" id="description" ng-model="vm.description" placeholder="description" autocapitalize="none">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="shares" class="control-label col-sm-2">Shares:&nbsp;</label>
+      <div class="col-sm-3">
+      <input type="text" class="form-control" id="shares" ng-model="vm.shares" placeholder="xx.xx" autocapitalize="none">
+      </div>
+    </div>
+     <div class="form-group">
+      <label for="purchasePrice" class="control-label col-sm-2">Purchase Price:&nbsp;</label>
+      <div class="col-sm-3">
+      <input type="text" class="form-control" id="purchasePrice" ng-model="vm.purchasePrice" placeholder="xx.xx" autocapitalize="none">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="tradeDate" class="control-label col-sm-2">Purchase Date:&nbsp;</label>
+      <div class="col-sm-3">
+      <input type="text" class="form-control" id="tradeDate" ng-model="vm.tradeDate" placeholder="yyyy-MM-dd" autocapitalize="none">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="commission" class="control-label col-sm-2">Commission:&nbsp;</label>
+      <div class="col-sm-3">
+      <input type="text" class="form-control" id="commission" ng-model="vm.commission" placeholder="xx.xx" autocapitalize="none">
+      </div>
+    </div>
+    <div class="form-group"> 
+    <div class="col-sm-offset-2 col-sm-3">
+      <button type="submit" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-plus">Add</span></button>
+      <button type="reset" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-remove">Reset</span></button>
+    </div>
+    </div>  
+</form>

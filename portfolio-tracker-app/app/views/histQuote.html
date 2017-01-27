@@ -1,12 +1,40 @@
 <h3>Historical Stock Prices</h3>
 <div class="container">
 <br>
-<form class="form-inline" name="histQuote" ng-submit="vm.getData()">
+<form class="form-horizontal" name="histQuote" ng-submit="vm.getData()">
     <div class="form-group">
-      <label for="symbol" class="control-label">Symbol:&nbsp;</label>
+      <label for="symbol" class="control-label col-sm-2">Symbol:&nbsp;</label>
+      <div class="col-sm-3">
       <input type="text" class="form-control" id="symbol" ng-model="vm.symbol" placeholder="symbol" autocapitalize="none">
+      </div>
     </div>
-    <button type="submit" class="btn btn-success">Go</button>
+     <div class="form-group">
+      <label for="frequency" class="control-label col-sm-2">Frequency:&nbsp;</label>
+      <div class="col-sm-3">
+        <select ng-model="vm.frequency" class="form-control" id="frequency">
+          <option value="daily">daily</option>
+          <option value="weekly">weekly</option>
+          <option value="monthly">monthly</option>
+        </select>
+      </div>
+    </div>
+     <div class="form-group">
+      <label for="startDate" class="control-label col-sm-2">Start Date:&nbsp;</label>
+      <div class="col-sm-3">
+      <input type="text" class="form-control" id="startDate" ng-model="vm.startDate" placeholder="MM-DD-YYYY" autocapitalize="none">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="endDate" class="control-label col-sm-2">End Date:&nbsp;</label>
+      <div class="col-sm-3">
+      <input type="text" class="form-control" id="endDate" ng-model="vm.endDate" placeholder="MM-DD-YYYY" autocapitalize="none">
+      </div>
+    </div>
+    <div class="form-group"> 
+      <div class="col-sm-offset-2 col-sm-3">
+      <button type="submit" class="btn btn-success">Go</button>
+      </div>
+    </div>
 </form>
 </div>
 

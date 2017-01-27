@@ -4,11 +4,11 @@ angular.module('portfolioTrackerApp').controller('HistQuoteController', HistQuot
 function HistQuoteController($http, financeDataService) {
   var vm = this;
 
-   vm.getData = function(symbol) {
+   vm.getData = function() {
     vm.results = [];
     vm.message = null;
     if (vm.symbol) {
-       financeDataService.getHistQuote(vm.symbol).then(function(response) {
+       financeDataService.getHistQuote(vm.symbol, vm.frequency, vm.startDate, vm.endDate).then(function(response) {
           console.log(response);
           if (response.status === 200) {
               vm.results = response.data;

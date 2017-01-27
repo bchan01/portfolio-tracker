@@ -40,22 +40,29 @@ function financeDataService($http, AppConfig) {
   /**
    * Get historical quotes for a given symbol
    */
-  function getHistQuote(symbol) {
-    //TODO -- refactor hacky codes below
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth()+1; //January is 0!
-    var yyyy = today.getFullYear();
-    if(dd<10){
-        dd='0'+dd;
-    } 
-    if(mm<10){
-        mm='0'+mm;
-    } 
-    var endDate = mm+'-'+dd+'-'+yyyy;
+  function getHistQuote(symbol, frequency, startDate, endDate) {
 
+    var start = startDate || '01-01-2000';
+    var end = endDate;
+    if (!end) {
+      var today = new Date();
+      var dd = today.getDate();
+      var mm = today.getMonth()+1; //January is 0!
+      var yyyy = today.getFullYear();
+      if(dd<10){
+          dd='0'+dd;
+      } 
+      if(mm<10){
+          mm='0'+mm;
+      } 
+      end = mm+'-'+dd+'-'+yyyy;
+    }
+    var freq = frequency || 'daily';
+    console.log('financeDataService.getHistQuote() - symbol:' + symbol + ',frequency:' + freq + ',startDate:' + start + ',endDate:' + end);
     return $http.get(AppConfig.financeAPI + '/stocks/historicalQuotes?symbol=' + symbol
-       + '&frequency=daily&startDate=01-01-2000&endDate=' + endDate
+       + '&frequency=' + freq
+       + '&startDate=' + start
+       + '&endDate=' + end
       ).then(success, error);
   }
 

@@ -36,9 +36,9 @@
 	  <td>{{ result.symbol }}</td>
     <td>{{ result.description }}</td>
     <td>{{ result.price }}</td>
-    <td>{{ result.change }}</td>
+    <td ng-class="{'price-down': result.change < 0 , 'price-up': result.change >= 0}">{{ result.change }}</td>
     <td>{{ result.marketValue }}</td>
-    <td>{{ result.gain}}</td>
+    <td ng-class="{'price-down': result.gain < 0 , 'price-up': result.gain >= 0}">{{ result.gain }}</td>
     <td>{{ result.shares }}</td>
     <td>{{ result.purchasePrice }}</td>
     <td>{{ result.tradeDate | date : 'yyyy-MM-dd' }}</td>

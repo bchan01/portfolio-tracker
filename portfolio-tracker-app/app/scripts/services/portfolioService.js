@@ -4,7 +4,8 @@ function portfolioService($http, $window, AppConfig) {
   return {
     getPortfolios: getPortfolios,
     getHoldings: getHoldings,
-    deleteHolding: deleteHolding
+    deleteHolding: deleteHolding,
+    addHolding : addHolding
   };
 
   function success(response) {
@@ -61,7 +62,7 @@ function portfolioService($http, $window, AppConfig) {
   }
 
   /**
-   * Get holdings for a given portfolio
+   * Delete a holding from a given portfolio
    */
   function deleteHolding(portfolioId, holdingId) {
     console.log('portfolioService.deleteHolding() for portfolio:' + portfolioId + ' and holdingId:' + holdingId);
@@ -72,6 +73,25 @@ function portfolioService($http, $window, AppConfig) {
       headers: {
         'x-access-token': token,
         'Accept': 'application/json'
+      }
+    }).then(success, error);
+  }
+
+  /**
+   * Add a new holding to a given portfolio
+   */
+  function addHolding(portfolioId, newHolding) {
+    console.log('portfolioService.addHolding() for portfolio:' + portfolioId + ' with data:');
+    console.log(JSON.stringify(newHolding));
+    var token = $window.sessionStorage.token;
+    return $http({
+      method: 'POST',
+      url: AppConfig.accountAPI + '/portfolios/' + portfolioId + '/holdings',
+      data : newHolding,
+      headers: {
+        'x-access-token': token,
+        'Accept': 'application/json',
+        'Content-Type' : 'application/json'
       }
     }).then(success, error);
   }

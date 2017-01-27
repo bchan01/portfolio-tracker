@@ -21,6 +21,27 @@ function PortfolioController($http, portfolioService) {
         }
     });
 
+    function success(response) {
+        console.log('portfolioService Success - status:' + response.status);
+        console.log(response);
+        return {status : response.status , data : response.data.data};
+     }
+
+    function error(response) {
+        console.log('portfolioService Error - status:' + response.status);
+        console.log(response);
+        var res = {status: response.status};
+        if (response.data.outcome) {
+        if (response.data.outcome.message) {
+            res.message = response.data.outcome.message;
+        }
+        if (response.data.outcome.errors) {
+            res.errors = response.data.outcome.errors;
+        }
+        }
+        return res;
+    }
+
     /**
      * Load Holdings for selected portfolio
      */
@@ -29,6 +50,20 @@ function PortfolioController($http, portfolioService) {
         vm.message = null;
         console.log('getHoldings for portfolio: ' + vm.portfolio.id);
         portfolioService.getHoldings(vm.portfolio.id).then(function(response) {
+            if (response.status === 200) {
+                vm.holdings = response.data
+            } else {
+                vm.holdings = [];
+                vm.message = response.message;
+            }
+        });
+    }
+
+    function loadHolding(portfolioId) {
+        vm.holdings = [];
+        vm.message = null;
+        console.log('getHoldings for portfolio: ' + portfolioId);
+        portfolioService.getHoldings(portfolioId).then(function(response) {
             if (response.status === 200) {
                 vm.holdings = response.data
             } else {
@@ -51,22 +86,17 @@ function PortfolioController($http, portfolioService) {
                 break;
             }
         }
-        //if( index === -1 ) {
-       //     alert( "Something gone wrong" );
-       // }
-       // vm.holdings.splice( index, 1 );	
-       if (index === -1) {
-           return;
-       }
-       portfolioService.deleteHolding(vm.portfolio.id, holdingId).then(function(response) {
-            if (response.status === 200) {
-                vm.message = null;
-            } else {
-                vm.message = response.message;
-            }
-        });
-        // Reload Holdings
-        vm.getHoldings();
+        if (index >= 0) {
+            portfolioService.deleteHolding(vm.portfolio.id, holdingId).then(function(response) {
+                    if (response.status === 200) {
+                        // Reload Holdings
+                        console.log('holding removed, reloading holdings for portfolio:' + vm.portfolio.name);
+                        loadHolding(vm.portfolio.id);
+                    } else {
+                        vm.message = response.message;
+                    }
+            });
+        }
     }
 
     /**
@@ -82,8 +112,16 @@ function PortfolioController($http, portfolioService) {
             'tradeDate' : vm.tradeDate,
             'commission' : vm.commission
         }
-        console.log('addHolding: ' + JSON.stringify(holding));
-        vm.holdings.push(holding);
+        portfolioService.addHolding(vm.portfolio.id, holding).then(function(response) {
+            if (response.status === 201) {
+                 console.log('holding added, reloading holdings for portfolio:' + vm.portfolio.name);
+                // Reload Holdings
+                loadHolding(vm.portfolio.id);
+            } else {
+                vm.message = response.message;
+            }
+        });
+       
     }
 
 

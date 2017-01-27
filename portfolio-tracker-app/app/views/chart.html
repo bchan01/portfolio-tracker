@@ -1,18 +1,76 @@
 <h3>Stock Price Chart</h3>
 <div class="container">
 <br>
-<form class="form-inline" name="chart" ng-submit="vm.getData()">
+<form class="form-horizontal" name="chart" ng-submit="vm.getData()">
     <div class="form-group">
-      <label for="symbol" class="control-label">Symbol:&nbsp;</label>
+      <label for="symbol" class="control-label col-sm-2">Symbol:&nbsp;</label>
+      <div class="col-sm-3">
       <input type="text" class="form-control" id="symbol" ng-model="vm.symbol" placeholder="symbol" autocapitalize="none">
+      </div>
     </div>
-    <button type="submit" class="btn btn-success">Go</button>
+    <div class="form-group">
+      <label for="range" class="control-label col-sm-2">Range:&nbsp;</label>
+      <div class="col-sm-3">
+        <select ng-model="vm.range" class="form-control" id="range">
+          <option value="1d" selected>1 Day</option>
+          <option value="5d">5 Days</option>
+          <option value="3m">3 Months</option>
+           <option value="6m">6 Months</option>
+          <option value="ytd">Year-to-Date</option>
+          <option value="1y">1 Year</option>
+           <option value="2y">2 Years</option>
+          <option value="5y">5 Years</option>
+          <option value="10y">10 Years</option>
+          <option value="max">Max</option>
+        </select>
+      </div>
+    </div>
+     <div class="form-group">
+      <label for="type" class="control-label col-sm-2">Type:&nbsp;</label>
+      <div class="col-sm-3">
+        <select ng-model="vm.type" class="form-control" id="type">
+          <option value="line" selected>line</option>
+          <option value="bar">bar</option>
+          <option value="candle">candle</option>
+        </select>
+      </div>
+    </div>
+     <div class="form-group">
+      <label for="scale" class="control-label col-sm-2">Scale:&nbsp;</label>
+      <div class="col-sm-3">
+        <select ng-model="vm.scale" class="form-control" id="scale">
+          <option value="arithmetic" selected>arithmetic</option>
+          <option value="logarithmic">logarithmic</option>
+        </select>
+      </div>
+    </div>
+     <div class="form-group">
+      <label for="size" class="control-label col-sm-2">Size:&nbsp;</label>
+      <div class="col-sm-3">
+        <select ng-model="vm.size" class="form-control" id="size">
+          <option value="small" selected>small</option>
+          <option value="medium">medium</option>
+          <option value="large">large</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="compare" class="control-label col-sm-2">Compare to:&nbsp;</label>
+      <div class="col-sm-3">
+      <input type="text" class="form-control" id="compare" ng-model="vm.compare" placeholder="comma-delimited symbols" autocapitalize="none">
+      </div>
+    </div>
+    <div class="form-group"> 
+      <div class="col-sm-offset-2 col-sm-3">
+      <button type="submit" class="btn btn-success">Go</button>
+      </div>
+    </div>
 </form>
 </div>
 
 <div ng-if="vm.message" class="alert alert-info" role="alert">
   <p>{{ vm.message }}</p>
 </div>
-<div ng-if="vm.result">
+<div ng-if="!vm.message && vm.result">
    <img src="{{vm.result}}" alt="Stock Chart"/>
 </div>

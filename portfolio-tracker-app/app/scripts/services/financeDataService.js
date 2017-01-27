@@ -58,21 +58,33 @@ function financeDataService($http, AppConfig) {
       end = mm+'-'+dd+'-'+yyyy;
     }
     var freq = frequency || 'daily';
-    console.log('financeDataService.getHistQuote() - symbol:' + symbol + ',frequency:' + freq + ',startDate:' + start + ',endDate:' + end);
-    return $http.get(AppConfig.financeAPI + '/stocks/historicalQuotes?symbol=' + symbol
+    var requestUrl = AppConfig.financeAPI + '/stocks/historicalQuotes?symbol=' + symbol
        + '&frequency=' + freq
        + '&startDate=' + start
-       + '&endDate=' + end
-      ).then(success, error);
+       + '&endDate=' + end;
+    console.log('financeDataService.getHistQuote() - URL:' + requestUrl);
+    return $http.get(requestUrl).then(success, error);
   }
 
   /**
    * Get chart as image for a given symbol
    */
-  function getChart(symbol) {
-    return $http.get(AppConfig.financeAPI + '/stocks/charts/url?symbol=' + symbol
-       + '&range=max&type=line&scale=arithmetic&size=medium'
-      ).then(success, error);
+  function getChart(symbol, range, type, scale, size, compareSymbols) {
+    var rangeValue = range || 'max';
+    var typeValue = type || 'line';
+    var scaleValue = scale || 'arithmetic';
+    var sizeValue = size || 'medium';
+   
+    var requestUrl = AppConfig.financeAPI + '/stocks/charts/url?symbol=' + symbol
+       + '&range=' + rangeValue
+       + '&type=' + typeValue
+       + '&scale=' + scaleValue
+       + '&size=' + sizeValue;
+    if (compareSymbols) {
+       requestUrl += '&compare=' + compareSymbols;
+    }
+    console.log('financeDataService.getChart() - URL:' + requestUrl);
+    return $http.get(requestUrl).then(success, error);
   }
 
 

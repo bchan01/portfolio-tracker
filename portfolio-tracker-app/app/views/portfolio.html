@@ -1,5 +1,5 @@
 <h3>User Investment Portfolios</h3>
-<form class="form-horizontal" name="chart" ng-submit="vm.getData()">
+<form class="form-horizontal" name="form" ng-submit="vm.getData()">
    <div class="form-group">
     <div class="col-sm-6">
         <select name="name"
@@ -13,7 +13,7 @@
     <div ng-if="vm.portfolio" class="col-sm-2">
        <button type="button" class="btn btn-primary" ng-click="vm.refreshHoldings(vm.portfolio)">
           <span class="glyphicon glyphicon-refresh"></span></button>
-        <button type="button" class="btn btn-primary" ng-click="alert('create Portfolio')">
+        <button type="button" class="btn btn-primary" ng-click="vm.showCreatePortfolioForm()">
           <span class="glyphicon glyphicon-plus"></span></button>
      </div>
      <div ng-if="!vm.portfolio" class="col-sm-2">

@@ -59,6 +59,23 @@ function PortfolioController($http, portfolioService) {
         });
     }
 
+    /**
+     * Refresh Holdings for selected portfolio
+     */
+    vm.refreshHoldings = function(portfolio) {
+        vm.holdings = [];
+        vm.message = null;
+        console.log('refreshHoldings for portfolio: ' + portfolio.id);
+        portfolioService.getHoldings(vm.portfolio.id).then(function(response) {
+            if (response.status === 200) {
+                vm.holdings = response.data
+            } else {
+                vm.holdings = [];
+                vm.message = response.message;
+            }
+        });
+    }
+
     function loadHolding(portfolioId) {
         vm.holdings = [];
         vm.message = null;

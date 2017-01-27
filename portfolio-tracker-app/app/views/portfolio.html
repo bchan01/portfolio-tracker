@@ -1,19 +1,34 @@
 <h3>User Investment Portfolios</h3>
-<div class="form-group">
-     <select name="name"
-             id="id" 
-             ng-model="vm.portfolio" 
-             ng-options="p as p.name for p in vm.portfolios"
-             class="form-control" 
-             ng-change="vm.getHoldings()">
-     </select>
-</div>
+<form class="form-horizontal" name="chart" ng-submit="vm.getData()">
+   <div class="form-group">
+    <div class="col-sm-6">
+        <select name="name"
+                id="id" 
+                ng-model="vm.portfolio" 
+                ng-options="p as p.name for p in vm.portfolios"
+                class="form-control" 
+                ng-change="vm.getHoldings()">
+        </select>
+    </div>
+    <div ng-if="vm.portfolio" class="col-sm-2">
+       <button type="button" class="btn btn-primary" ng-click="vm.refreshHoldings(vm.portfolio)">
+          <span class="glyphicon glyphicon-refresh"></span></button>
+        <button type="button" class="btn btn-primary" ng-click="alert('create Portfolio')">
+          <span class="glyphicon glyphicon-plus"></span></button>
+     </div>
+     <div ng-if="!vm.portfolio" class="col-sm-2">
+       <button type="button" class="btn btn-primary" ng-click="alert('create Portfolio')">
+          <span class="glyphicon glyphicon-plus"></span></button>
+     </div>   
+   </div>
+</form>
 
 <div ng-if="vm.message" class="alert alert-info" role="alert">
   <p>{{ vm.message }}</p>
 </div>
 
 <div ng-if="vm.holdings && vm.holdings.length > 0">
+<hr>
 <table st-table="vm.holdings" class="table table-striped">
 	<thead>
 	<tr>
@@ -54,6 +69,4 @@
 </div>
 
 <!-- Add Holding forms -->
-<div ng-if="vm.portfolio" class="container" ng-include="'/views/addHolding.html'">
-<br>
-</div>
+<div ng-if="vm.portfolio" class="container" ng-include="'/views/addHolding.html'"></div>

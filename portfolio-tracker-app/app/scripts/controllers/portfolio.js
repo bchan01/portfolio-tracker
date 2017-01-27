@@ -102,7 +102,7 @@ function PortfolioController($http, portfolioService) {
     /**
      * Add new holding to a portfolio
      */
-    vm.addHolding = function(result) {
+    vm.addHolding = function() {
         vm.message = null;
         var holding = {
             'symbol' : vm.symbol,

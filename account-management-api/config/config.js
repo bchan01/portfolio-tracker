@@ -18,8 +18,8 @@ module.exports = {
         "requestTimeout" : 10000,
         "quoteUrl" : "http://finance.yahoo.com/d/quotes.csv",
         "quoteFields" : {
-            "keys" : "sl1c1",
-            "names" : "symbol,price,change"
+            "keys" : "snl1c1",
+            "names" : "symbol,name,price,change"
         }
     }
 

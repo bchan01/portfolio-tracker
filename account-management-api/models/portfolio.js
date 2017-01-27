@@ -63,7 +63,7 @@ var mongoose = require('mongoose'),
   */
   var HoldingSchama = new Schema({
     symbol : { type: String, required: true },
-    description : { type: String, required: true },
+    description : { type: String, required: false },
     shares : { type: Number, required: true, min : 0 },
     purchasePrice :  { type: Number, required: true , min : 0},
     tradeDate :  { type: Date, required: true},

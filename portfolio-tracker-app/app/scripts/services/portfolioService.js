@@ -3,6 +3,7 @@ angular.module('portfolioTrackerApp').factory('portfolioService', portfolioServi
 function portfolioService($http, $window, AppConfig) {
   return {
     getPortfolios: getPortfolios,
+    createPortfolio : createPortfolio, 
     getHoldings: getHoldings,
     deleteHolding: deleteHolding,
     addHolding : addHolding
@@ -41,6 +42,25 @@ function portfolioService($http, $window, AppConfig) {
       headers: {
         'x-access-token': token,
         'Accept': 'application/json'
+      }
+    }).then(success, error);
+  }
+
+  /**
+   * Create a new portfolio
+   */
+  function createPortfolio(name) {
+    var token = $window.sessionStorage.token;
+    var username = $window.sessionStorage.loggedInUser;
+    console.log('portfolioService.createPortfolio() with  name:' + name + ' and username:' + username);
+    return $http({
+      method: 'POST',
+      url: AppConfig.accountAPI + '/portfolios/',
+      data : {'name' : name, 'userId' : username},
+      headers: {
+        'x-access-token': token,
+        'Accept': 'application/json',
+        'Content-Type' : 'application/json'
       }
     }).then(success, error);
   }

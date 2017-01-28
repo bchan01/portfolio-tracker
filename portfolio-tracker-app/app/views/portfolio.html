@@ -7,11 +7,11 @@
                 ng-model="vm.portfolio" 
                 ng-options="p as p.name for p in vm.portfolios"
                 class="form-control" 
-                ng-change="vm.getHoldings()">
+                ng-change="vm.handlePortfolioChange()">
         </select>
     </div>
     <div ng-if="vm.portfolio" class="col-sm-2">
-       <button type="button" class="btn btn-primary" ng-click="vm.refreshHoldings(vm.portfolio)">
+       <button type="button" class="btn btn-primary" ng-click="vm.refreshHoldings(vm.portfolio.id)">
           <span class="glyphicon glyphicon-refresh"></span></button>
         <button type="button" class="btn btn-primary" ng-click="vm.showCreatePortfolioForm()">
           <span class="glyphicon glyphicon-plus"></span></button>

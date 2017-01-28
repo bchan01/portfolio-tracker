@@ -45,38 +45,21 @@ function PortfolioController($http, portfolioService) {
     /**
      * Load Holdings for selected portfolio
      */
-    vm.getHoldings = function() {
-        vm.holdings = [];
-        vm.message = null;
-        console.log('getHoldings for portfolio: ' + vm.portfolio.id);
-        portfolioService.getHoldings(vm.portfolio.id).then(function(response) {
-            if (response.status === 200) {
-                vm.holdings = response.data
-            } else {
-                vm.holdings = [];
-                vm.message = response.message;
-            }
-        });
+    vm.handlePortfolioChange = function() {
+        getHoldingsByPortfolioId(vm.portfolio.id);
     }
 
     /**
      * Refresh Holdings for selected portfolio
      */
-    vm.refreshHoldings = function(portfolio) {
-        vm.holdings = [];
-        vm.message = null;
-        console.log('refreshHoldings for portfolio: ' + portfolio.id);
-        portfolioService.getHoldings(vm.portfolio.id).then(function(response) {
-            if (response.status === 200) {
-                vm.holdings = response.data
-            } else {
-                vm.holdings = [];
-                vm.message = response.message;
-            }
-        });
+    vm.refreshHoldings = function(portfolioId) {
+        getHoldingsByPortfolioId(portfolioId);
     }
 
-    function loadHolding(portfolioId) {
+    /**
+     * Load holdings for a given portfolio Id
+     */
+    function getHoldingsByPortfolioId(portfolioId) {
         vm.holdings = [];
         vm.message = null;
         console.log('getHoldings for portfolio: ' + portfolioId);
@@ -108,7 +91,7 @@ function PortfolioController($http, portfolioService) {
                     if (response.status === 200) {
                         // Reload Holdings
                         console.log('holding removed, reloading holdings for portfolio:' + vm.portfolio.name);
-                        loadHolding(vm.portfolio.id);
+                        getHoldingsByPortfolioId(vm.portfolio.id);
                     } else {
                         vm.message = response.message;
                     }
@@ -133,7 +116,7 @@ function PortfolioController($http, portfolioService) {
             if (response.status === 201) {
                  console.log('holding added, reloading holdings for portfolio:' + vm.portfolio.name);
                 // Reload Holdings
-                loadHolding(vm.portfolio.id);
+                getHoldingsByPortfolioId(vm.portfolio.id);
             } else {
                 vm.message = response.message;
             }

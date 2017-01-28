@@ -71,9 +71,9 @@ function config($httpProvider, $routeProvider, $locationProvider) {
           restricted: false
         }
       })
-      .when('/portfolio', {
-        templateUrl: 'views/portfolio.html',
-        controller: 'PortfolioController',
+      .when('/holdings', {
+        templateUrl: 'views/holdings.html',
+        controller: 'HoldingController',
         controllerAs: 'vm',
         access: {
           restricted: true

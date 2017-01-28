@@ -3,10 +3,7 @@ angular.module('portfolioTrackerApp').factory('portfolioService', portfolioServi
 function portfolioService($http, $window, AppConfig) {
   return {
     getPortfolios: getPortfolios,
-    createPortfolio : createPortfolio, 
-    getHoldings: getHoldings,
-    deleteHolding: deleteHolding,
-    addHolding : addHolding
+    createPortfolio : createPortfolio
   };
 
   function success(response) {
@@ -64,60 +61,5 @@ function portfolioService($http, $window, AppConfig) {
       }
     }).then(success, error);
   }
-
-  /**
-   * Get holdings for a given portfolio
-   */
-  function getHoldings(portfolioId) {
-    console.log('portfolioService.getHoldings() for portfolio:' + portfolioId);
-    var token = $window.sessionStorage.token;
-    return $http({
-      method: 'GET',
-      url: AppConfig.accountAPI + '/portfolios/' + portfolioId + '/holdings',
-      headers: {
-        'x-access-token': token,
-        'Accept': 'application/json'
-      }
-    }).then(success, error);
-  }
-
-  /**
-   * Delete a holding from a given portfolio
-   */
-  function deleteHolding(portfolioId, holdingId) {
-    console.log('portfolioService.deleteHolding() for portfolio:' + portfolioId + ' and holdingId:' + holdingId);
-    var token = $window.sessionStorage.token;
-    return $http({
-      method: 'DELETE',
-      url: AppConfig.accountAPI + '/portfolios/' + portfolioId + '/holdings/' + holdingId,
-      headers: {
-        'x-access-token': token,
-        'Accept': 'application/json'
-      }
-    }).then(success, error);
-  }
-
-  /**
-   * Add a new holding to a given portfolio
-   */
-  function addHolding(portfolioId, newHolding) {
-    console.log('portfolioService.addHolding() for portfolio:' + portfolioId + ' with data:');
-    console.log(JSON.stringify(newHolding));
-    var token = $window.sessionStorage.token;
-    return $http({
-      method: 'POST',
-      url: AppConfig.accountAPI + '/portfolios/' + portfolioId + '/holdings',
-      data : newHolding,
-      headers: {
-        'x-access-token': token,
-        'Accept': 'application/json',
-        'Content-Type' : 'application/json'
-      }
-    }).then(success, error);
-  }
-
-
-
- 
 
 }

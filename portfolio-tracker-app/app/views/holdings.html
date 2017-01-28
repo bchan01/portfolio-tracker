@@ -1,7 +1,7 @@
-<h3>User Investment Portfolios</h3>
+<h3>My Portfolios</h3>
 <form class="form-horizontal" name="form" ng-submit="vm.getData()">
    <div class="form-group">
-    <div class="col-sm-6">
+    <div class="col-sm-5">
         <select name="name"
                 id="id" 
                 ng-model="vm.portfolio" 
@@ -10,16 +10,17 @@
                 ng-change="vm.handlePortfolioChange()">
         </select>
     </div>
-    <div ng-if="vm.portfolio" class="col-sm-2">
+    <div ng-if="vm.portfolio" class="col-sm-3">
        <button type="button" class="btn btn-primary" ng-click="vm.refreshHoldings(vm.portfolio.id)">
           <span class="glyphicon glyphicon-refresh"></span></button>
-        <button type="button" class="btn btn-primary" ng-click="vm.showCreatePortfolioForm()">
+        <button type="button" class="btn btn-success" ng-click="vm.createPortfolio()"><span class="glyphicon glyphicon-plus"></span></button>
+        <button type="button" class="btn btn-warning" ng-click="vm.editPortfolio()"><span class="glyphicon glyphicon-edit"></span></button>
+         <button type="button" class="btn btn-danger" ng-click="vm.deletePortfolio()"><span class="glyphicon glyphicon-remove"></span></button>
+     </div>
+     <div ng-if="!vm.portfolio" class="col-sm-3">
+        <button type="button" class="btn btn-primary" ng-click="vm.createPortfolio()">
           <span class="glyphicon glyphicon-plus"></span></button>
      </div>
-     <div ng-if="!vm.portfolio" class="col-sm-2">
-       <button type="button" class="btn btn-primary" ng-click="alert('create Portfolio')">
-          <span class="glyphicon glyphicon-plus"></span></button>
-     </div>   
    </div>
 </form>
 

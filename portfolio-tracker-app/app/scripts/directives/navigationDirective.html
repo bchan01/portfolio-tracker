@@ -20,7 +20,7 @@
        <li ng-class="vm.isActiveTab('quote')"><a href="#/quote">Quote</a></li>
        <li ng-class="vm.isActiveTab('histQuote')"><a href="#/histQuote">Historical Quote</a></li>
        <li ng-class="vm.isActiveTab('chart')"><a href="#/chart">Chart</a></li>
-       <li ng-class="vm.isActiveTab('portfolio')" ng-if="vm.isLoggedIn()"><a href="#/portfolio">Portfolio</a></li>
+       <li ng-class="vm.isActiveTab('portfolio') || vm.isActiveTab('holdings') " ng-if="vm.isLoggedIn()"><a href="#/holdings">Portfolio</a></li>
      </ul>
      <ul ng-if="!vm.isLoggedIn()" class="nav navbar-nav navbar-right">
       <li><a href="#/login"><button type="button" class="btn btn-sm btn-success">Login</button></a></li>

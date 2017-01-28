@@ -1,7 +1,7 @@
 'use strict';
-angular.module('portfolioTrackerApp').controller('PortfolioController', PortfolioController);
+angular.module('portfolioTrackerApp').controller('HoldingController', HoldingController);
 
-function PortfolioController($http, portfolioService) {
+function HoldingController($http, portfolioService, holdingService) {
     var vm = this;
     vm.portfolios = [];
     vm.holdings = [];
@@ -91,7 +91,7 @@ function PortfolioController($http, portfolioService) {
         vm.holdings = [];
         vm.message = null;
         console.log('getHoldings for portfolio: ' + portfolioId);
-        portfolioService.getHoldings(portfolioId).then(function(response) {
+        holdingService.getHoldings(portfolioId).then(function(response) {
             if (response.status === 200) {
                 vm.holdings = response.data
             } else {
@@ -115,7 +115,7 @@ function PortfolioController($http, portfolioService) {
             }
         }
         if (index >= 0) {
-            portfolioService.deleteHolding(vm.portfolio.id, holdingId).then(function(response) {
+            holdingService.deleteHolding(vm.portfolio.id, holdingId).then(function(response) {
                     if (response.status === 200) {
                         // Reload Holdings
                         console.log('holding removed, reloading holdings for portfolio:' + vm.portfolio.name);
@@ -140,7 +140,7 @@ function PortfolioController($http, portfolioService) {
             'tradeDate' : vm.tradeDate,
             'commission' : vm.commission
         }
-        portfolioService.addHolding(vm.portfolio.id, holding).then(function(response) {
+        holdingService.addHolding(vm.portfolio.id, holding).then(function(response) {
             if (response.status === 201) {
                  console.log('holding added, reloading holdings for portfolio:' + vm.portfolio.name);
                 // Reload Holdings
@@ -150,6 +150,18 @@ function PortfolioController($http, portfolioService) {
             }
         });
        
+    }
+
+    vm.createPortfolio = function() {
+          console.log('Create new portfolio');
+    }
+
+    vm.deletePortfolio = function() {
+          console.log('Delete portfolio with name:' + vm.portfolio.name + ' and id:' + vm.portfolio.id);
+    }
+
+     vm.editPortfolio = function() {
+        console.log('Edit portfolio with name:' + vm.portfolio.name + ' and id:' + vm.portfolio.id);
     }
 
 

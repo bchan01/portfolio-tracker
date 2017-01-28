@@ -43,6 +43,34 @@ function PortfolioController($http, portfolioService) {
     }
 
     /**
+     * Create new Portfolio
+     */
+    vm.createPortfolio = function() {
+        vm.message = null;
+        console.log('PortfolioController.createPortfolio() - name:' + vm.name);
+        portfolioService.createPortfolio(vm.name).then(function(response) {
+            if (response.status === 201) {
+                 console.log('portfolio added, reloading portfolios ...');
+                // Reload Portfolios
+                portfolioService.getPortfolios().then(function(response) {
+                    console.log('PortfolioController.getPortfolios()');
+                    console.log(response);
+                    if (response.status === 200) {
+                        vm.portfolios = response.data;
+                        console.log('portfolio found - count:' + vm.portfolios.length);
+                    } else {
+                        vm.portfolios = [];
+                        vm.message = response.message;
+                        console.log('portfolio not found - count:' + vm.portfolios.length);
+                    }
+                });
+            } else {
+                vm.message = response.message;
+            }
+        });
+    }
+
+    /**
      * Load Holdings for selected portfolio
      */
     vm.handlePortfolioChange = function() {

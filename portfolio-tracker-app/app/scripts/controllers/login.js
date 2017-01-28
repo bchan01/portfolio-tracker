@@ -27,6 +27,7 @@ function LoginController($http, $location, $window, AuthFactory, jwtHelper, AppC
           var token = $window.sessionStorage.token;
           //var decodedToken = jwtHelper.decodeToken(token);
           vm.loggedInUser = response.data.data.username;
+          $window.sessionStorage.loggedInUser = response.data.data.username;
           $location.path('/portfolio');
         }
       }).catch(function(error) {
@@ -40,6 +41,7 @@ function LoginController($http, $location, $window, AuthFactory, jwtHelper, AppC
   vm.logout = function() {
     AuthFactory.isLoggedIn = false;
     delete $window.sessionStorage.token;
+    delete $window.sessionStorage.loggedInUser;
     $location.path('/');
   }
 

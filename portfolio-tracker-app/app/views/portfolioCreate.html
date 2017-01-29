@@ -2,11 +2,12 @@
 <div ng-if="vm.message" class="alert alert-danger" role="alert">
   <p>{{ vm.message }}</p>
 </div>
-<form name="form" ng-submit="vm.create()">
-   <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" placeholder="name" ng-model="vm.name" autocapitalize="none">
+<form name="form" ng-submit="vm.create(form.$valid)" novalidate>
+  <div class="form-group" ng-class="{ 'has-error' : form.name.$invalid && !form.name.$pristine}">
+      <label for="name" class="control-label">Name*</label>
+      <input type="text" class="form-control" id="name" name="name" placeholder="name" ng-model="vm.name" autocapitalize="none" required>
+      <p ng-show="form.name.$invalid && !form.name.$pristine" class="help-block">name is required.</p>
   </div>
-  <button type="submit" class="btn btn-success">OK</button>
+  <button type="submit" class="btn btn-success" ng-disabled="form.$invalid">OK</button>
   <button type="button" class="btn btn-success" ng-click="vm.cancel()">Cancel</button>
 </form>

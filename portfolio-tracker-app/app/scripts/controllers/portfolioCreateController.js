@@ -6,17 +6,19 @@ function PortfolioCreateController($http, $location, portfolioService) {
     vm.name = null;
     vm.message = null;
     
-    vm.create = function() {
-        vm.message = null;
-        console.log('PortfolioCreateController.create() - name:' + vm.name);
-        portfolioService.createPortfolio(vm.name).then(function(response) {
-            if (response.status === 201) {
-                 console.log('portfolio created');
-                 $location.path('/holdings');
-            } else {
-                vm.message = response.message;
-            }
-        });
+    vm.create = function(isValid) {
+        if (isValid) {
+            vm.message = null;
+            console.log('PortfolioCreateController.create() - name:' + vm.name);
+            portfolioService.createPortfolio(vm.name).then(function(response) {
+                if (response.status === 201) {
+                    console.log('portfolio created');
+                    $location.path('/holdings');
+                } else {
+                    vm.message = response.message;
+                }
+            });
+        }
     }
     
     vm.cancel = function() {

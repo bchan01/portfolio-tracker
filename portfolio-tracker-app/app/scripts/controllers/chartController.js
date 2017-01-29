@@ -5,11 +5,11 @@ function ChartController($http, financeDataService) {
   var vm = this;
   vm.result = null;
   vm.message = null;
-  vm.getData = function() {
+  vm.getData = function(isValid) {
     vm.result = null;
-    vm.message = null;
-    if (vm.symbol) {
-       financeDataService.getChart(vm.symbol, vm.range, vm.type, vm.scale, vm.size, vm.compare).then(function(response) {
+    vm.message = null; 
+    if (isValid) {
+      financeDataService.getChart(vm.symbol, vm.range, vm.type, vm.scale, vm.size, vm.compare).then(function(response) {
           console.log(response);
           if (response.status === 200) {
               vm.result = response.data;
@@ -17,6 +17,7 @@ function ChartController($http, financeDataService) {
               vm.message = response.message;
         }
       });
-    } 
+    }
+    
   }
 }

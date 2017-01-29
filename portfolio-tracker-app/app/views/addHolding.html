@@ -1,35 +1,44 @@
 <hr>
-<form class="form-horizontal" name="form" ng-submit="vm.addHolding()">
+<form class="form-horizontal" name="form" ng-submit="vm.addHolding(form.$valid)" novalidate>
     <div class="form-group">
-      <label for="symbol" class="control-label col-sm-2">Symbol:&nbsp;</label>
+      <label for="symbol" class="control-label col-sm-2">Symbol*:</label>
       <div class="col-sm-3">
-        <input type="text" class="form-control" id="symbol" ng-model="vm.symbol" placeholder="symbol" autocapitalize="none">
+        <input type="text" class="form-control" id="symbol" ng-model="vm.symbol" placeholder="symbol" autocapitalize="none" required>
+         <p ng-show="form.symbol.$invalid && !form.symbol.$pristine" class="help-block">symbol is required.</p>
       </div>
-      <label for="shares" class="control-label col-sm-2">Shares:&nbsp;</label>
+      <label for="shares" class="control-label col-sm-2">Shares*:</label>
       <div class="col-sm-3">
-      <input type="text" class="form-control" id="shares" ng-model="vm.shares" placeholder="xx.xx" autocapitalize="none">
+      <input type="text" class="form-control" id="shares" ng-model="vm.shares" placeholder="xx.xx" autocapitalize="none" 
+          ng-pattern="/^\d{0,9}(\.\d{1,9})?$/"  required>
+         <p ng-show="form.shares.$invalid && !form.shares.$pristine" class="help-block">shares is a required number greater than zero.</p>
       </div>
     </div>
     <div class="form-group">
-       <label for="purchasePrice" class="control-label col-sm-2">Purchase Price:&nbsp;</label>
+      <label for="purchasePrice" class="control-label col-sm-2">Purchase Price*</label>
       <div class="col-sm-3">
-      <input type="text" class="form-control" id="purchasePrice" ng-model="vm.purchasePrice" placeholder="xx.xx" autocapitalize="none">
+      <input type="text" class="form-control" id="purchasePrice" ng-model="vm.purchasePrice" placeholder="xx.xx" autocapitalize="none" 
+          ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" required>
+          <p ng-show="form.purchasePrice.$invalid && !form.purchasePrice.$pristine" class="help-block">purchase price is a required number greater than zero.</p>
       </div>
       <label for="tradeDate" class="control-label col-sm-2">Purchase Date:&nbsp;</label>
       <div class="col-sm-3">
-      <input type="text" class="form-control" id="tradeDate" ng-model="vm.tradeDate" placeholder="yyyy-MM-dd" autocapitalize="none">
+      <input type="text" class="form-control" id="tradeDate" ng-model="vm.tradeDate" placeholder="yyyy-MM-dd" autocapitalize="none"
+          ng-pattern="^\d{4}-\d{2}-\d{2}$">
+           <p ng-show="form.tradeDate.$invalid && !form.tradeDate.$pristine" class="help-block">trade date is invalid.</p>
       </div>
     </div>
     
     <div class="form-group">
       <label for="commission" class="control-label col-sm-2">Commission:&nbsp;</label>
       <div class="col-sm-3">
-      <input type="text" class="form-control" id="commission" ng-model="vm.commission" placeholder="xx.xx" autocapitalize="none">
+      <input type="text" class="form-control" id="commission" ng-model="vm.commission" placeholder="xx.xx" autocapitalize="none" 
+          ng-pattern="/^\d{0,9}(\.\d{1,9})?$/">
+           <p ng-show="form.commission.$invalid && !form.commission.$pristine" class="help-block">commission must be greater than zero.</p>
       </div>
     </div>
     <div class="form-group"> 
     <div class="col-sm-offset-2 col-sm-3">
-      <button type="submit" class="btn btn-sm btn-success">Add</span></button>
+      <button type="submit" class="btn btn-sm btn-success" ng-disabled="form.$invalid">Add</span></button>
       <button type="reset" class="btn btn-sm btn-success">Reset</span></button>
     </div>
     </div>  

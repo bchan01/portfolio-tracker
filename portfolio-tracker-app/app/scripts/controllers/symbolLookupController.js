@@ -3,10 +3,10 @@ angular.module('portfolioTrackerApp').controller('SymbolLookupController', Symbo
 
 function SymbolLookupController($http, financeDataService) {
   var vm = this;
-  vm.getSymbol = function(name) {
+  vm.getSymbol = function(isValid) {
     vm.results = [];
     vm.message = null;
-    if (vm.name) {
+    if (isValid) {
        financeDataService.lookupSymbols(vm.name).then(function(response) {
           console.log(response);
           if (response.status === 200) {

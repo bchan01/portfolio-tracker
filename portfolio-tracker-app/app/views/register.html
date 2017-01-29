@@ -5,31 +5,31 @@
 <div ng-if="vm.error" class="alert alert-danger" role="alert">
   {{ vm.error }}
 </div>
-<form ng-hide="vm.message" name="form" ng-submit="vm.register()">
+<form ng-hide="vm.message" name="form" ng-submit="vm.register(form.$valid)" novalidate>
    <div class="form-group">
-    <label for="firstName">First Name</label>
-    <input type="text" class="form-control" id="firstName" placeholder="firstName" ng-model="vm.firstName" autocapitalize="none">
+    <label for="firstName">First Name*</label>
+    <input type="text" class="form-control" id="firstName" placeholder="firstName" ng-model="vm.firstName" autocapitalize="none" required>
   </div>
     <div class="form-group">
-    <label for="lastName">Last Name</label>
-    <input type="text" class="form-control" id="lastName" placeholder="lastName" ng-model="vm.lastName" autocapitalize="none">
+    <label for="lastName">Last Name*</label>
+    <input type="text" class="form-control" id="lastName" placeholder="lastName" ng-model="vm.lastName" autocapitalize="none" required>
   </div>
     <div class="form-group">
-    <label for="username">Email</label>
-    <input type="email" class="form-control" id="email" placeholder="email" ng-model="vm.email" autocapitalize="none">
+    <label for="username">Email*</label>
+    <input type="email" class="form-control" id="email" placeholder="email" ng-model="vm.email" autocapitalize="none" required>
   </div>
   <div class="form-group">
-    <label for="username">Username</label>
-    <input type="text" class="form-control" id="username" placeholder="username" ng-model="vm.username" autocapitalize="none">
+    <label for="username">Username*</label>
+    <input type="text" class="form-control" id="username" placeholder="username" ng-model="vm.username" autocapitalize="none" required>
   </div>
   <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" class="form-control" id="userPassword" placeholder="Password" ng-model="vm.userPassword" autocapitalize="none">
+    <label for="password">Password*</label>
+    <input type="password" class="form-control" id="userPassword" placeholder="Password" ng-model="vm.userPassword" autocapitalize="none" required>
   </div>
   <div class="form-group">
-    <label for="password-repeat">Repeat Password</label>
-    <input type="password" class="form-control" id="password-repeat" placeholder="Password" ng-model="vm.userPasswordRepeat" autocapitalize="none">
+    <label for="password-repeat">Repeat Password*</label>
+    <input type="password" class="form-control" id="password-repeat" placeholder="Password" ng-model="vm.userPasswordRepeat" autocapitalize="none" required>
   </div>
-  <button type="submit" class="btn btn-success">Register</button>
+  <button type="submit" class="btn btn-success" ng-disabled="form.$invalid">Register</button>
 </form>
 

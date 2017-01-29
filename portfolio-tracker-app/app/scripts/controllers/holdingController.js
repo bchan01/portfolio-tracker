@@ -90,25 +90,27 @@ function HoldingController($http, $location, portfolioService, holdingService) {
     /**
      * Add new holding to a portfolio
      */
-    vm.addHolding = function() {
-        vm.message = null;
-        var holding = {
-            'symbol' : vm.symbol,
-            'description' :  vm.description,
-            'shares' : vm.shares,
-            'purchasePrice' : vm.purchasePrice,
-            'tradeDate' : vm.tradeDate,
-            'commission' : vm.commission
-        }
-        holdingService.addHolding(vm.portfolio.id, holding).then(function(response) {
-            if (response.status === 201) {
-                 console.log('holding added, reloading holdings for portfolio with name:' + vm.portfolio.name);
-                // Reload Holdings
-                getHoldingsByPortfolioId(vm.portfolio.id);
-            } else {
-                vm.message = response.message;
+    vm.addHolding = function(isValid) {
+        if (isValid) {
+            vm.message = null;
+            var holding = {
+                'symbol' : vm.symbol,
+                'description' :  vm.description,
+                'shares' : vm.shares,
+                'purchasePrice' : vm.purchasePrice,
+                'tradeDate' : vm.tradeDate,
+                'commission' : vm.commission
             }
-        });   
+            holdingService.addHolding(vm.portfolio.id, holding).then(function(response) {
+                if (response.status === 201) {
+                    console.log('holding added, reloading holdings for portfolio with name:' + vm.portfolio.name);
+                    // Reload Holdings
+                    getHoldingsByPortfolioId(vm.portfolio.id);
+                } else {
+                    vm.message = response.message;
+                }
+            }); 
+        }
     }
 
     /**

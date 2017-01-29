@@ -4,10 +4,10 @@ angular.module('portfolioTrackerApp').controller('QuoteController', QuoteControl
 function QuoteController($http, financeDataService) {
   var vm = this;
   
-  vm.getData = function() {
+  vm.getData = function(isValid) {
     vm.results = [];
     vm.message = null;
-    if (vm.symbols) {
+    if (isValid) {
        financeDataService.getQuote(vm.symbols).then(function(response) {
           console.log(response);
           if (response.status === 200) {

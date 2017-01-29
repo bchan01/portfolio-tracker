@@ -1,11 +1,11 @@
 <h3>Historical Stock Prices</h3>
 <div class="container">
 <br>
-<form class="form-horizontal" name="form" ng-submit="vm.getData()">
+<form class="form-horizontal" name="form" ng-submit="vm.getData(form.$valid)" novalidate>
     <div class="form-group">
-      <label for="symbol" class="control-label col-sm-2">Symbol:&nbsp;</label>
+      <label for="symbol" class="control-label col-sm-2">Symbol*:&nbsp;</label>
       <div class="col-sm-3">
-      <input type="text" class="form-control" id="symbol" ng-model="vm.symbol" placeholder="symbol" autocapitalize="none">
+      <input type="text" class="form-control" id="symbol" ng-model="vm.symbol" placeholder="symbol" autocapitalize="none" required>
       </div>
       <label for="frequency" class="control-label col-sm-2">Frequency:&nbsp;</label>
       <div class="col-sm-3">
@@ -26,7 +26,7 @@
       <input type="text" class="form-control" id="endDate" ng-model="vm.endDate" placeholder="MM-DD-YYYY" autocapitalize="none">
       </div>
       <div class="col-sm-2">
-        <button type="submit" class="btn btn-success">Go</button>
+        <button type="submit" class="btn btn-success" ng-disabled="form.$invalid">Go</button>
       </div>
     </div>
 </form>

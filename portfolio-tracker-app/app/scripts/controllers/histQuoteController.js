@@ -1,8 +1,11 @@
 'use strict';
 angular.module('portfolioTrackerApp').controller('HistQuoteController', HistQuoteController);
 
-function HistQuoteController($http, financeDataService) {
+function HistQuoteController($http, financeDataService, AppConfig) {
   var vm = this;
+
+  vm.itemsByPage= AppConfig.paginationSize;
+  console.log('HistQuoteController with itemsByPage:' + AppConfig.paginationSize);
 
    vm.getData = function(isValid) {
     vm.results = [];

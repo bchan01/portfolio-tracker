@@ -50,12 +50,11 @@ function portfolioService($http, $window, AppConfig) {
    */
   function createPortfolio(name) {
     var token = $window.sessionStorage.token;
-    var username = $window.sessionStorage.loggedInUser;
-    console.log('portfolioService.createPortfolio() with  name:' + name + ' and username:' + username);
+    console.log('portfolioService.createPortfolio() with  name:' + name);
     return $http({
       method: 'POST',
       url: AppConfig.accountAPI + '/portfolios/',
-      data : {'name' : name, 'userId' : username},
+      data : {'name' : name},
       headers: {
         'x-access-token': token,
         'Accept': 'application/json',
@@ -64,7 +63,9 @@ function portfolioService($http, $window, AppConfig) {
     }).then(success, error);
   }
 
-
+  /**
+   * Update the given portfolio
+   */
   function updatePortfolio(id, name) {
     var token = $window.sessionStorage.token;
     var username = $window.sessionStorage.loggedInUser;
@@ -81,6 +82,9 @@ function portfolioService($http, $window, AppConfig) {
     }).then(success, error);
   }
 
+  /**
+   * Delete the given portfolio
+   */
   function deletePortfolio(id) {
     var token = $window.sessionStorage.token;
     var username = $window.sessionStorage.loggedInUser;

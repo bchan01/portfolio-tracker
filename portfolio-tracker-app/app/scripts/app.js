@@ -95,6 +95,14 @@ function config($httpProvider, $routeProvider, $locationProvider) {
           restricted: true
         }
       })
+      .when('/portfolio/delete/:id', {
+        templateUrl: 'views/holdings.html',
+        controller: 'PortfolioDeleteController',
+        controllerAs: 'vm',
+        access: {
+          restricted: true
+        }
+      })
       .otherwise({
         redirectTo: '/'
       });

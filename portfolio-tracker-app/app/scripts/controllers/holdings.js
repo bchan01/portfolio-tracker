@@ -8,18 +8,9 @@ function HoldingController($http, $location, portfolioService, holdingService) {
     vm.message = null;
     vm.portfolio = null;
 
-    portfolioService.getPortfolios().then(function(response) {
-        console.log('PortfolioController.getPortfolios()');
-        console.log(response);
-        if (response.status === 200) {
-            vm.portfolios = response.data;
-            console.log('portfolio found - count:' + vm.portfolios.length);
-        } else {
-            vm.portfolios = [];
-            vm.message = response.message;
-            console.log('portfolio not found - count:' + vm.portfolios.length);
-        }
-    });
+    // Load portfolios for existing user
+    console.log('HoldingController entered, loading portfolios for current user');
+    loaddPortfolios();
 
     /**
      * Load Holdings for selected portfolio
@@ -33,6 +24,24 @@ function HoldingController($http, $location, portfolioService, holdingService) {
      */
     vm.refreshHoldings = function(portfolioId) {
         getHoldingsByPortfolioId(portfolioId);
+    }
+
+    /**
+     * Loads portfolios for the curret user
+     */
+    function loaddPortfolios() {
+        portfolioService.getPortfolios().then(function(response) {
+            console.log('PortfolioController.loaddPortfolios()');
+            console.log(response);
+            if (response.status === 200) {
+                vm.portfolios = response.data;
+                console.log('portfolio found - count:' + vm.portfolios.length);
+            } else {
+                vm.portfolios = [];
+                vm.message = response.message;
+                console.log('portfolio not found - count:' + vm.portfolios.length);
+            }
+        });
     }
 
     /**
@@ -69,7 +78,7 @@ function HoldingController($http, $location, portfolioService, holdingService) {
             holdingService.deleteHolding(vm.portfolio.id, holdingId).then(function(response) {
                     if (response.status === 200) {
                         // Reload Holdings
-                        console.log('holding removed, reloading holdings for portfolio:' + vm.portfolio.name);
+                        console.log('holding removed, reloading holdings for portfolio with name' + vm.portfolio.name);
                         getHoldingsByPortfolioId(vm.portfolio.id);
                     } else {
                         vm.message = response.message;
@@ -93,7 +102,7 @@ function HoldingController($http, $location, portfolioService, holdingService) {
         }
         holdingService.addHolding(vm.portfolio.id, holding).then(function(response) {
             if (response.status === 201) {
-                 console.log('holding added, reloading holdings for portfolio:' + vm.portfolio.name);
+                 console.log('holding added, reloading holdings for portfolio with name:' + vm.portfolio.name);
                 // Reload Holdings
                 getHoldingsByPortfolioId(vm.portfolio.id);
             } else {
@@ -102,21 +111,9 @@ function HoldingController($http, $location, portfolioService, holdingService) {
         });   
     }
 
-     vm.deletePortfolio = function(id) {
-        vm.message = null;
-        console.log('HoldingController.deletePortfolio() with id:' + id);
-        /*portfolioService.deletePortfolio(vm.id).then(function(response) {
-            if (response.status === 200) {
-                 console.log('portfolio deleted!!');
-                // Reload Holdings
-                getHoldingsByPortfolioId(vm.portfolio.id);
-            } else {
-                vm.message = response.message;
-            }
-        }); */
-        $location.path('/holdings');
-    }
-
+    /**
+     * Redirect to Portfolio views
+     */
     vm.gotoPortfolioRoute = function(action, id, name) {
         var routePath = '/portfolio/' + action;
         if (id) {

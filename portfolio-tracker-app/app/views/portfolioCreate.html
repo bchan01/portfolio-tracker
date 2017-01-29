@@ -1,0 +1,13 @@
+<h3>Create New Portfolio</h3>
+<div ng-if="vm.message" class="alert alert-danger" role="alert">
+  <p>{{ vm.message }}</p>
+</div>
+<form name="form" ng-submit="vm.create()">
+   <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" placeholder="name" ng-model="vm.name" autocapitalize="none">
+  </div>
+  <button type="submit" class="btn btn-success">OK</button>
+  <button type="button" class="btn btn-success" ng-click="vm.cancel()">Cancel</button>
+</form>
+

@@ -45,8 +45,14 @@ function LoginController($http, $location, $window, AuthFactory, jwtHelper, AppC
     $location.path('/');
   }
 
-  vm.isActiveTab = function(url) {
+  vm.isActiveTab = function(url, compareStartsWith) {
     var currentPath = $location.path().split('/')[1];
-    return (url === currentPath ? 'active' : '');
+    if (url === currentPath) {
+       return 'active';
+    } else if (compareStartsWith && currentPath.startsWith(url)) {
+      return 'active';
+    } else {
+      return '';
+    }
   }
 }

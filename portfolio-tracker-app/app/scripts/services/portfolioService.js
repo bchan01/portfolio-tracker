@@ -3,7 +3,9 @@ angular.module('portfolioTrackerApp').factory('portfolioService', portfolioServi
 function portfolioService($http, $window, AppConfig) {
   return {
     getPortfolios: getPortfolios,
-    createPortfolio : createPortfolio
+    createPortfolio : createPortfolio,
+    updatePortfolio : updatePortfolio,
+    deletePortfolio : deletePortfolio
   };
 
   function success(response) {
@@ -54,6 +56,38 @@ function portfolioService($http, $window, AppConfig) {
       method: 'POST',
       url: AppConfig.accountAPI + '/portfolios/',
       data : {'name' : name, 'userId' : username},
+      headers: {
+        'x-access-token': token,
+        'Accept': 'application/json',
+        'Content-Type' : 'application/json'
+      }
+    }).then(success, error);
+  }
+
+
+  function updatePortfolio(id, name) {
+    var token = $window.sessionStorage.token;
+    var username = $window.sessionStorage.loggedInUser;
+    console.log('portfolioService.updatePortfolio() with  id:' + id + ' and name:' + name);
+    return $http({
+      method: 'PUT',
+      url: AppConfig.accountAPI + '/portfolios/' + id,
+      data : {'name' : name},
+      headers: {
+        'x-access-token': token,
+        'Accept': 'application/json',
+        'Content-Type' : 'application/json'
+      }
+    }).then(success, error);
+  }
+
+  function deletePortfolio(id) {
+    var token = $window.sessionStorage.token;
+    var username = $window.sessionStorage.loggedInUser;
+    console.log('portfolioService.deletePortfolio() with  id:' + id);
+    return $http({
+      method: 'DELETE',
+      url: AppConfig.accountAPI + '/portfolios/' + id,
       headers: {
         'x-access-token': token,
         'Accept': 'application/json',

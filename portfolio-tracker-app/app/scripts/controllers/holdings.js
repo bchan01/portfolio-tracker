@@ -1,7 +1,7 @@
 'use strict';
 angular.module('portfolioTrackerApp').controller('HoldingController', HoldingController);
 
-function HoldingController($http, portfolioService, holdingService) {
+function HoldingController($http, $location, portfolioService, holdingService) {
     var vm = this;
     vm.portfolios = [];
     vm.holdings = [];
@@ -20,55 +20,6 @@ function HoldingController($http, portfolioService, holdingService) {
             console.log('portfolio not found - count:' + vm.portfolios.length);
         }
     });
-
-    function success(response) {
-        console.log('portfolioService Success - status:' + response.status);
-        console.log(response);
-        return {status : response.status , data : response.data.data};
-     }
-
-    function error(response) {
-        console.log('portfolioService Error - status:' + response.status);
-        console.log(response);
-        var res = {status: response.status};
-        if (response.data.outcome) {
-        if (response.data.outcome.message) {
-            res.message = response.data.outcome.message;
-        }
-        if (response.data.outcome.errors) {
-            res.errors = response.data.outcome.errors;
-        }
-        }
-        return res;
-    }
-
-    /**
-     * Create new Portfolio
-     */
-    vm.createPortfolio = function() {
-        vm.message = null;
-        console.log('PortfolioController.createPortfolio() - name:' + vm.name);
-        portfolioService.createPortfolio(vm.name).then(function(response) {
-            if (response.status === 201) {
-                 console.log('portfolio added, reloading portfolios ...');
-                // Reload Portfolios
-                portfolioService.getPortfolios().then(function(response) {
-                    console.log('PortfolioController.getPortfolios()');
-                    console.log(response);
-                    if (response.status === 200) {
-                        vm.portfolios = response.data;
-                        console.log('portfolio found - count:' + vm.portfolios.length);
-                    } else {
-                        vm.portfolios = [];
-                        vm.message = response.message;
-                        console.log('portfolio not found - count:' + vm.portfolios.length);
-                    }
-                });
-            } else {
-                vm.message = response.message;
-            }
-        });
-    }
 
     /**
      * Load Holdings for selected portfolio
@@ -148,21 +99,34 @@ function HoldingController($http, portfolioService, holdingService) {
             } else {
                 vm.message = response.message;
             }
-        });
-       
+        });   
     }
 
-    vm.createPortfolio = function() {
-          console.log('Create new portfolio');
+     vm.deletePortfolio = function(id) {
+        vm.message = null;
+        console.log('HoldingController.deletePortfolio() with id:' + id);
+        /*portfolioService.deletePortfolio(vm.id).then(function(response) {
+            if (response.status === 200) {
+                 console.log('portfolio deleted!!');
+                // Reload Holdings
+                getHoldingsByPortfolioId(vm.portfolio.id);
+            } else {
+                vm.message = response.message;
+            }
+        }); */
+        $location.path('/holdings');
     }
 
-    vm.deletePortfolio = function() {
-          console.log('Delete portfolio with name:' + vm.portfolio.name + ' and id:' + vm.portfolio.id);
+    vm.gotoPortfolioRoute = function(action, id, name) {
+        var routePath = '/portfolio/' + action;
+        if (id) {
+            routePath += '/' + id;
+        } 
+        if (name) {
+            routePath += '/' + name;
+        }
+        console.log('HoldingController.gotoPortfolioRoute() with path:' + routePath);
+        $location.path(routePath);
     }
-
-     vm.editPortfolio = function() {
-        console.log('Edit portfolio with name:' + vm.portfolio.name + ' and id:' + vm.portfolio.id);
-    }
-
 
 }

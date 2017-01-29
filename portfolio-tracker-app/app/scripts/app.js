@@ -79,6 +79,22 @@ function config($httpProvider, $routeProvider, $locationProvider) {
           restricted: true
         }
       })
+      .when('/portfolio/create', {
+        templateUrl: 'views/portfolioCreate.html',
+        controller: 'PortfolioCreateController',
+        controllerAs: 'vm',
+        access: {
+          restricted: true
+        }
+      })
+      .when('/portfolio/update/:id/:name', {
+        templateUrl: 'views/portfolioUpdate.html',
+        controller: 'PortfolioUpdateController',
+        controllerAs: 'vm',
+        access: {
+          restricted: true
+        }
+      })
       .otherwise({
         redirectTo: '/'
       });

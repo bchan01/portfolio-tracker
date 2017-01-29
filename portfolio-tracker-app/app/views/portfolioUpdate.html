@@ -1,0 +1,14 @@
+<h3>Update Portfolio</h3>
+<div ng-if="vm.message" class="alert alert-danger" role="alert">
+  <p>{{ vm.message }}</p>
+</div>
+<form name="form" ng-submit="vm.update()">
+   <div class="form-group">
+    <label for="name">Name</label>
+    <input type="hidden" id="id" ng-model="vm.portfolio.id">
+    <input type="text" class="form-control" id="name" placeholder="name" ng-model="vm.portfolio.name" autocapitalize="none">
+  </div>
+  <button type="submit" class="btn btn-success">Update</button>
+  <button type="button" class="btn btn-success" ng-click="vm.cancel()">Cancel</button>
+</form>
+

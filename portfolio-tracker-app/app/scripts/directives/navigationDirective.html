@@ -15,12 +15,12 @@
    </div>
    <div id="navbar" class="collapse navbar-collapse">
      <ul class="nav navbar-nav">
-       <li ng-class="vm.isActiveTab('')" class="active"><a href="#/">Home</a></li>
+       <li ng-class="vm.isActiveTab('')"><a href="#/">Home</a></li>
         <li ng-class="vm.isActiveTab('lookup')"><a href="#/lookup">Lookup</a></li>
        <li ng-class="vm.isActiveTab('quote')"><a href="#/quote">Quote</a></li>
        <li ng-class="vm.isActiveTab('histQuote')"><a href="#/histQuote">Historical Quote</a></li>
        <li ng-class="vm.isActiveTab('chart')"><a href="#/chart">Chart</a></li>
-       <li ng-class="vm.isActiveTab('portfolio') || vm.isActiveTab('holdings') " ng-if="vm.isLoggedIn()"><a href="#/holdings">Portfolio</a></li>
+       <li ng-class="vm.isActiveTab('holdings') || vm.isActiveTab('portfolio')" ng-if="vm.isLoggedIn()"><a href="#/holdings">Portfolio</a></li>
      </ul>
      <ul ng-if="!vm.isLoggedIn()" class="nav navbar-nav navbar-right">
       <li><a href="#/login"><button type="button" class="btn btn-sm btn-success">Login</button></a></li>

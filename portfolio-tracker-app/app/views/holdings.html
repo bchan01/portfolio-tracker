@@ -13,12 +13,15 @@
     <div ng-if="vm.portfolio" class="col-sm-3">
        <button type="button" class="btn btn-primary" ng-click="vm.refreshHoldings(vm.portfolio.id)">
           <span class="glyphicon glyphicon-refresh"></span></button>
-        <button type="button" class="btn btn-success" ng-click="vm.createPortfolio()"><span class="glyphicon glyphicon-plus"></span></button>
-        <button type="button" class="btn btn-warning" ng-click="vm.editPortfolio()"><span class="glyphicon glyphicon-edit"></span></button>
-         <button type="button" class="btn btn-danger" ng-click="vm.deletePortfolio()"><span class="glyphicon glyphicon-remove"></span></button>
+        <button type="button" class="btn btn-success" ng-click="vm.gotoPortfolioRoute('create')">
+          <span class="glyphicon glyphicon-plus"></span></button>
+        <button type="button" class="btn btn-warning" ng-click="vm.gotoPortfolioRoute('update', vm.portfolio.id, vm.portfolio.name)">
+          <span class="glyphicon glyphicon-edit"></span></button>
+         <button type="button" class="btn btn-danger" ng-click="vm.deletePortfolio(vm.portfolio.id)">
+          <span class="glyphicon glyphicon-remove"></span></button>
      </div>
      <div ng-if="!vm.portfolio" class="col-sm-3">
-        <button type="button" class="btn btn-primary" ng-click="vm.createPortfolio()">
+        <button type="button" class="btn btn-success" ng-click="vm.gotoPortfolioRoute('create')">
           <span class="glyphicon glyphicon-plus"></span></button>
      </div>
    </div>
@@ -61,7 +64,7 @@
     <td>{{ result.commission }}</td>
     <td>{{ result.cost }}</td>
     <td>
-      <button type="button" class="btn btn-sm btn-primary" ng-click="vm.removeHolding(result._id)"><span class="glyphicon glyphicon-trash"></span></button>
+      <button type="button" class="btn btn-xs btn-danger" ng-click="vm.removeHolding(result._id)"><span class="glyphicon glyphicon-trash"></span></button>
       <!-- <button type="button" class="btn btn-sm btn-primary" ng-click="vm.updateHolding(result)"><span class="glyphicon glyphicon-edit"></span></button> -->
       </td>
 	</tr>

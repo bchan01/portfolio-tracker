@@ -1,10 +1,7 @@
-<h3>Register New User</h3>
-<div ng-if="vm.message" class="alert alert-success" role="alert">
-  <p>{{ vm.message }}</p>
-</div>
-<div ng-if="vm.error" class="alert alert-danger" role="alert">
-  {{ vm.error }}
-</div>
+<div class="panel panel-primary">
+<div class="panel-heading">Register New User</div>
+<div class="panel-body">
+<br>
 <form ng-hide="vm.message" name="form" ng-submit="vm.register(form.$valid)" novalidate>
    <div class="form-group">
     <label for="firstName">First Name*</label>
@@ -32,4 +29,14 @@
   </div>
   <button type="submit" class="btn btn-success" ng-disabled="form.$invalid">Register</button>
 </form>
+<br>
+<div ng-if="vm.message" class="alert alert-success" role="alert">
+  <p>{{ vm.message }}</p>
+</div>
+<div ng-if="vm.error" class="alert alert-danger" role="alert">
+  {{ vm.error }}
+</div>
+
+</div> <!-- panel-body end -->
+</div> <!-- panel-primary end -->
 

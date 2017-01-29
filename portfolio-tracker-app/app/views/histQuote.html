@@ -1,5 +1,6 @@
-<h3>Historical Stock Prices</h3>
-<div class="container">
+<div class="panel panel-primary">
+<div class="panel-heading">Historical Prices</div>
+<div class="panel-body">
 <br>
 <form class="form-horizontal" name="form" ng-submit="vm.getData(form.$valid)" novalidate>
     <div class="form-group">
@@ -30,13 +31,13 @@
       </div>
     </div>
 </form>
-</div>
 
 <div ng-if="vm.message" class="alert alert-info" role="alert">
   <p>{{ vm.message }}</p>
 </div>
 
 <div ng-if="vm.results.length > 0">
+<hr>
 <table st-table="vm.results" class="table table-striped">
 	<thead>
 	<tr>
@@ -62,3 +63,6 @@
 	</tbody>
 </table>
 </div>
+
+</div> <!-- panel-body end -->
+</div> <!-- panel-primary end -->

@@ -1,5 +1,6 @@
-<h3>Symbol Lookup</h3>
-<div class="container">
+<div class="panel panel-primary">
+<div class="panel-heading">Symbol Lookup</div>
+<div class="panel-body">
 <br>
 <form class="form-inline" name="form" ng-submit="vm.getSymbol(form.$valid)" novalidate>
     <div class="form-group">
@@ -8,13 +9,13 @@
     </div>
     <button type="submit" class="btn btn-success" ng-disabled="form.$invalid">Go</button>
 </form>
-</div>
 
 <div ng-if="vm.message" class="alert alert-info" role="alert">
   <p>{{ vm.message }}</p>
 </div>
 
 <div ng-if="vm.results.length > 0">
+<hr>
 <table st-table="vm.results" class="table table-striped">
 	<thead>
 	<tr>
@@ -34,3 +35,6 @@
 	</tbody>
 </table>
 </div>
+
+</div> <!-- panel-body end -->
+</div> <!-- panel-primary end -->

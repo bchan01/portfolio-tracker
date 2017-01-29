@@ -1,4 +1,7 @@
-<h3>My Portfolios</h3>
+<div class="panel panel-primary">
+<div class="panel-heading">Portfolio Details</div>
+<div class="panel-body">
+<br>
 <form class="form-horizontal" name="form" ng-submit="vm.getData()">
    <div class="form-group">
     <div class="col-sm-5">
@@ -73,4 +76,8 @@
 </div>
 
 <!-- Add Holding forms -->
-<div ng-if="vm.portfolio" class="container" ng-include="'/views/addHolding.html'"></div>
+<div ng-if="vm.portfolio" class="panel panel-default" ng-include="'/views/addHolding.html'"></div>
+
+
+</div> <!-- panel-body end -->
+</div> <!-- panel-primary end -->

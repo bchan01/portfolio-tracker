@@ -1,5 +1,6 @@
-<h3>Delayed Stock Quotes</h3>
-<div class="container">
+<div class="panel panel-primary">
+<div class="panel-heading">Delayed Stock Quote</div>
+<div class="panel-body">
 <br>
 <form class="form-inline" name="form" ng-submit="vm.getData(form.$valid)" novalidate>
     <div class="form-group">
@@ -15,6 +16,7 @@
 </div>
 
 <div ng-if="vm.results.length > 0">
+<hr>
 <table st-table="vm.results" class="table table-striped">
 	<thead>
 	<tr>
@@ -58,3 +60,6 @@
 	</tbody>
 </table>
 </div>
+
+</div> <!-- panel-body end -->
+</div> <!-- panel-primary end -->

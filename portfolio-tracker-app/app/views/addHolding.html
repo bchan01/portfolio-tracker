@@ -1,4 +1,5 @@
-<hr>
+<div class="panel-heading">Add New Holding</div>
+<div class="panel-body">
 <form class="form-horizontal" name="form" ng-submit="vm.addHolding(form.$valid)" novalidate>
   <div class="form-group">
      <label class="control-label col-sm-2">Symbol*</label>
@@ -19,7 +20,7 @@
       <input type="text" class="form-control" id="purchasePrice" ng-model="vm.purchasePrice" placeholder="xx.xx" autocapitalize="none" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" required>
       </div>
       <div class="col-sm-2">
-      <input type="text" class="form-control" id="tradeDate" ng-model="vm.tradeDate" placeholder="yyyy-MM-dd" autocapitalize="none" ng-pattern="^\d{4}-\d{2}-\d{2}$">
+      <input type="text" class="form-control" id="tradeDate" ng-model="vm.tradeDate" placeholder="yyyy-MM-dd" autocapitalize="none">
       </div>
       <div class="col-sm-2">
       <input type="text" class="form-control" id="commission" ng-model="vm.commission" placeholder="xx.xx" autocapitalize="none" ng-pattern="/^\d{0,9}(\.\d{1,9})?$/">
@@ -30,3 +31,4 @@
       </div>
   </div>
 </form>
+<div>

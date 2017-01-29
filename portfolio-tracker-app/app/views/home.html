@@ -1,14 +1,13 @@
-<h3>Market Trends</h3>
-<!-- 
-<p class="text-muted">
-   <img src="/images/stocks.jpg" alt="Portfoloi Tracker App"/>
-</p>
--->
+<div class="panel panel-primary">
+<div class="panel-heading">Market Trends</div>
+<div class="panel-body">
+
 <div ng-if="vm.message" class="alert alert-info" role="alert">
   <p>{{ vm.message }}</p>
 </div>
 
 <div ng-if="vm.results.length > 0">
+<br>
 <table st-table="vm.results" class="table table-striped">
 	<thead>
 	<tr>
@@ -27,4 +26,6 @@
 	</tr>
 	</tbody>
 </table>
+</div>
+
 </div>

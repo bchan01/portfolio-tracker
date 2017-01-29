@@ -1,5 +1,6 @@
-<h3>Stock Price Chart</h3>
-<div class="container">
+<div class="panel panel-primary">
+<div class="panel-heading">Stock Price Chart</div>
+<div class="panel-body">
 <br>
 <form class="form-horizontal" name="form" ng-submit="vm.getData(form.$valid)" novalidate>
     <div class="form-group">
@@ -58,11 +59,14 @@
       </div>
     </div>
 </form>
-</div>
 
 <div ng-if="vm.message" class="alert alert-info" role="alert">
   <p>{{ vm.message }}</p>
 </div>
-<div ng-if="!vm.message && vm.result">
+<div ng-if="!vm.message && vm.result" align="center">
+   <hr>
    <img src="{{vm.result}}" alt="Stock Chart"/>
 </div>
+
+</div> <!-- panel-body end -->
+</div> <!-- panel-primary end -->

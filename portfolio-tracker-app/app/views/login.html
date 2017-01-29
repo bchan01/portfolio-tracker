@@ -1,10 +1,7 @@
-<h3>Welcome to Portfolio Tracker</h3>
-<div ng-if="vm.message" class="alert alert-success" role="alert">
-  <p>{{ vm.message }}</p>
-</div>
-<div ng-if="vm.error" class="alert alert-danger" role="alert">
-  {{ vm.error }}
-</div>
+<div class="panel panel-primary">
+<div class="panel-heading">Welcome to Portfolio Tracker</div>
+<div class="panel-body">
+<br>
 <form ng-hide="vm.message" name="login" ng-submit="vm.login()">
   <div class="form-group">
     <label for="username">Username</label>
@@ -16,4 +13,14 @@
   </div>
   <button type="submit" class="btn btn-success">Login</button>
 </form>
+<br>
 
+<div ng-if="vm.message" class="alert alert-success" role="alert">
+  <p>{{ vm.message }}</p>
+</div>
+<div ng-if="vm.error" class="alert alert-danger" role="alert">
+  {{ vm.error }}
+</div>
+
+</div> <!-- panel-body end -->
+</div> <!-- panel-primary end -->

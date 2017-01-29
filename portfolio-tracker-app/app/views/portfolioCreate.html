@@ -1,7 +1,7 @@
-<h3>Create New Portfolio</h3>
-<div ng-if="vm.message" class="alert alert-danger" role="alert">
-  <p>{{ vm.message }}</p>
-</div>
+<div class="panel panel-primary">
+<div class="panel-heading">Add New Portfolio</div>
+<div class="panel-body">
+<br>
 <form name="form" ng-submit="vm.create(form.$valid)" novalidate>
   <div class="form-group" ng-class="{ 'has-error' : form.name.$invalid && !form.name.$pristine}">
       <label for="name" class="control-label">Name*:</label>
@@ -11,3 +11,10 @@
   <button type="submit" class="btn btn-success" ng-disabled="form.$invalid">OK</button>
   <button type="button" class="btn btn-success" ng-click="vm.cancel()">Cancel</button>
 </form>
+<br>
+<div ng-if="vm.message" class="alert alert-danger" role="alert">
+  <p>{{ vm.message }}</p>
+</div>
+
+</div> <!-- panel-body end -->
+</div> <!-- panel-primary end -->

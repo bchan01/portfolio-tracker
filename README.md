@@ -43,6 +43,9 @@ This project is a work in progress. Features implemented so far are listed below
 
 ---------------------------------------
 ### Build and Run Locally ###
+* Prerequisites: 
+  * Install MongoDB, Node on your local machine
+  * Install these NPM modules:  "npm install -g bower nodemon grunt-cli"
 * Build API projects by running "npm install"
 * Create and seed database by runnning "/scripts/init.js"
 * Start API by running "node server" or "nodemon server"

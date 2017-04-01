@@ -71,10 +71,7 @@ Otherwise, it will encounter CORS issue (Cross-Origin Resource Sharing).
     * Account-Management: [http://localhost/account-management/api/docs](http://localhost/account-management/api/docs)
     * Financial Data: [http://localhost/finance/api/docs](http://localhost/finance/api/docs)
     * Web Application: [http://localhost/](http://localhost)
-  
-### Using Vagrant to Create VM to host Microservices ###
-Vagrant can be used to spin up a VM to host Portfolio Tracker Mircoservices with NGINX. Refer to [portfolio-tracker-vagrant project](https://github.com/bchan01/portfolio-tracker-vagrant)
-
+    
 ---------------------------------------
 ### Microservice Implementation Overview ###
 The microservices are implemented with Express using Token-based security, the following node modules are used:
